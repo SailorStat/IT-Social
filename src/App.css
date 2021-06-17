@@ -4,7 +4,7 @@ body {
     background-size: 100% 700px;
     background-color: #e7e8ea;
     font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
-    font-size: 15px;
+    font-size: 20px;
     line-height: 1.5;
     color: #333;
 }
@@ -60,10 +60,10 @@ h4 {
 .container {
     width: 90%;
     margin: 0 auto;
-    padding: 10px;
+    padding: 10px 20px;
 
     color: #000;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #fff;
 }
 
