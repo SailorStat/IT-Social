@@ -1,10 +1,10 @@
-import "./Navigation.css"
-import NavigationItem from '../NavigationItem/NavigatinItem';
+import c from"./Navigation.module.css"
+import NavigationItem from '../NavigationItem/NavigationItem';
 
 const Navigation = () => {
   return (
-    <div className="navigation">
-      {["Профиль", "Сообщения", "Новости", "Настройки"].map((el) => <NavigationItem title={el} key={el}/>)}
+    <div className={c.navigation}>
+      {["Profile", "Messages", "News", "Settings"].map((el) => <NavigationItem title={el} key={el}/>)}
     </div>
   )
 }

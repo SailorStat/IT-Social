@@ -1,0 +1,23 @@
+.profile__info {
+
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 20px;
+  
+  padding: 15px 30px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.profile__name {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.profile__status {
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.7;
+}

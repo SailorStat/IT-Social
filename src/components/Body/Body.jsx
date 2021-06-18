@@ -1,11 +1,12 @@
-import "./Body.css"
+import c from "./Body.module.css"
 import Navigation from './../Navigation/Navigation';
+import Base from './../Base/Base';
 
 const Body = () => {
   return (
-    <div className="body">
+    <div className={c.body}>
       <Navigation />
-      <div>База</div>
+      <Base />
     </div>
   )
 }

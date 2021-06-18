@@ -1,8 +1,8 @@
-import "./NavigationItem.css"
+import c from "./NavigationItem.module.css"
 
 const NavigationItem = (prop) => {
   return (
-    <div className="navigationItem">
+    <div className={c.navigationItem}>
       {prop.title}
     </div>
   )

@@ -1,13 +1,13 @@
-import "./Header.css"
+import c from "./Header.module.css"
 
 const Header = () => {
     return (
-      <div className="header">
-        <div className="header__logo">IT-Social</div>
-        <div className="header__menu">
-          <div className="header__item">Login</div>
-          <div className="header__item">Registration</div>
-          <div className="header__item">Readme</div>
+      <div className={c.header}>
+        <div className={c.header__logo}>IT-Social</div>
+        <div className={c.header__menu}>
+          <div className={c.header__item}>Login</div>
+          <div className={c.header__item}>Registration</div>
+          <div className={c.header__item}>Readme</div>
         </div>
       </div>
     )
