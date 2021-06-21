@@ -21,16 +21,18 @@ const initialState = {
   "userId": 17725
 }
 
-const initialArrState = ["About Me", "Contacts", "Looking for a job", "Looking for a job description"]
+const initialStateArrName = ["About Me", "Contacts", "Looking for a job", "Looking for a job description"]
+
 
 function profileStatCreator(el, index) {
   if (["fullName", "userId"].includes(el)) return
   if (!initialState[el]) return
-  if (typeof initialState[el] !== "object") return <ProfileStat key={el} property={initialArrState[index]} subProfileStat={false} value={initialState[el]}/>
-  return [<ProfileStat key={el} property={initialArrState[index]} value={""} />, 
+  if (typeof initialState[el] !== "object") return <ProfileStat key={el} property={initialStateArrName[index]} subProfileStat={false} value={initialState[el]}/>
+  return [<ProfileStat key={el} property={initialStateArrName[index]} value={""} />, 
     Object.keys(initialState[el]).map((elm, index) => <ProfileStat key={elm} property={elm} subProfileStat={true} value={initialState[el][elm]}/>)
   ]
 }
+
 
 const ProfileInfo = () => {
   return (

@@ -1,0 +1,18 @@
+.nav__title {
+  margin: 3px 0;
+  padding: 0 10px;
+  cursor: default;;
+  border-radius: 5px;
+}
+
+.nav__title:hover {
+  background-color: #b18aac;
+}
+
+.nav__title:active {
+  background-color: #842691;
+}
+
+.nav__title.checked {
+  border: 2px #842691 solid;
+}

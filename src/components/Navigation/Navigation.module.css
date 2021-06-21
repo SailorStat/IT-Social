@@ -4,6 +4,8 @@
   top: 15px;
   height: 150px;
   padding: 5px 10px;
-  background-color: rgb(160, 128, 156);
+
+  border: 2px #842691 solid;
+  background-color: #a0809c;
   border-radius: 7px;
 }

@@ -1,16 +1,15 @@
 import c from "./ProfilePosts.module.css"
+import NewPost from './../NewPost/NewPost';
+import Post from './../Post/Post';
 
 const ProfilePosts = () => {
-  return (
+  return ( 
     <div>
       <div className={c.mypost__wrapper}>
-        <div className={c.mypost__title}>Мои посты</div>
-        <div className={c.newpost}>Новый пост</div>
+        <div className={c.mypost__title}>My posts</div>
+        <NewPost/>
       </div>
-      <div className={c.post}>пост</div>
-      <div className={c.post}>пост</div>
-      <div className={c.post}>пост</div>
-      <div className={c.post}>пост</div>
+      <Post />
     </div>
   )
 }
