@@ -1,4 +1,4 @@
-.newpost__wrapper {
+.textcreator__wrapper {
   display: table;
   width: 100%;
   margin-top: 10px;
@@ -20,14 +20,14 @@
   border-radius: 5px;
 }
 
-.newpost__content {
+.textcreator__content {
   display: table-cell;
   padding-left: 15px;
 }
 
-.newpost__textarea {
+.textcreator__textarea {
   width: 100%;
-  resize: vertical;
+  resize: none;
   min-height: 100px;
   margin-bottom: 2px;
   padding: 5px 10px;
@@ -40,8 +40,8 @@
   border-radius: 5px;
 }
 
-.newpost__textarea:focus,
-.newpost__textarea:hover {
+.textcreator__textarea:focus,
+.textcreator__textarea:hover {
   margin: 0;
   padding: 4px 9px 6px 9px;
 
@@ -49,27 +49,27 @@
   border: 3px #842691 solid;
 }
 
-.newpost__textarea::-webkit-scrollbar {
+.textcreator__textarea::-webkit-scrollbar {
   margin-right: 1px;
   width: 12px;
   background-color: #c49dbe;
 }
 
-.newpost__textarea::-webkit-scrollbar-thumb {
+.textcreator__textarea::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #842691;
 }
 
-.newpost__textarea::-webkit-scrollbar-track {
+.textcreator__textarea::-webkit-scrollbar-track {
   background-color: #c49dbe;
 }
 
-.newpost__textarea::-webkit-resizer {
+.textcreator__textarea::-webkit-resizer {
   margin-right: 1px;
   background: #842691;
 }
 
-.newpost__button {
+.textcreator__button {
   display: block;
   margin-left: auto;
   width: 120px;
@@ -84,11 +84,11 @@
   transition: background-color .3s linear;
 }
 
-.newpost__button:hover {
+.textcreator__button:hover {
   cursor: pointer;
   background-color: #b66ec0;
 }
 
-.newpost__button:active {
+.textcreator__button:active {
   background-color: #b83dc9;
 }

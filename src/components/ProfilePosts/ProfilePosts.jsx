@@ -1,13 +1,13 @@
 import c from "./ProfilePosts.module.css"
-import NewPost from './../NewPost/NewPost';
+import TextCreator from './../TextCreator/TextCreator';
 import Post from './../Post/Post';
 
 const ProfilePosts = () => {
   return ( 
     <div>
-      <div className={c.mypost__wrapper}>
+      <div className="content__wrapper">
         <div className={c.mypost__title}>My posts</div>
-        <NewPost/>
+        <TextCreator/>
       </div>
       <Post />
     </div>

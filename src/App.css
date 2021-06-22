@@ -5,7 +5,7 @@ body {
     background-color: #e7e8ea;
     font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
     font-size: 20px;
-    line-height: 1.5;
+    line-height: 1.4;
     color: #333;
 }
 
@@ -71,4 +71,12 @@ h4 {
     top: 0;
     border-radius: 0 0 10px 10px;
     background-color: rgb(78, 22, 85);
+}
+
+.content__wrapper {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: #fff;
 }

@@ -1,24 +1,24 @@
-.nav__title {
+.dialogsitem__title {
   display: block;
-  margin: 3px 0;
+  margin: 2px 10px 2px 0;
   padding: 0 10px;
 
-  color: #842691;
+  color: #752280;
   border-radius: 5px;
   border: 2px rgba(133, 39, 145, 0) solid;
   text-decoration: none;
   cursor: pointer;
 }
 
-.nav__title:hover {
+.dialogsitem__title:hover {
   background-color: #b18aac;
 }
 
-.nav__title:active {
+.dialogsitem__title:active {
   color: #44144b;
   background-color: #842691;
 }
 
-.nav__title.checked {
+.dialogsitem__title.checked {
   border: 2px #842691 solid;
 }

@@ -2,8 +2,9 @@
   position: -webkit-sticky;
   position: sticky;
   top: 15px;
-  height: 150px;
+  height: 170px;
   padding: 5px 10px;
+  color: #842691;
 
   border: 2px #842691 solid;
   background-color: #a0809c;

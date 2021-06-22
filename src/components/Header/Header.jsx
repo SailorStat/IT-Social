@@ -7,7 +7,6 @@ const Header = () => {
         <div className={c.header__menu}>
           <div className={c.header__item}>Login</div>
           <div className={c.header__item}>Registration</div>
-          <div className={c.header__item}>Readme</div>
         </div>
       </div>
     )

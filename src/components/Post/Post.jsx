@@ -18,7 +18,7 @@ const initialState = {
 
 const Post = () => {
   return (
-    <div className={c.post}>
+    <div className="content__wrapper">
       <div className={c.post__header}>
         <div className={c.user__smallphoto}>
           <img src={NoAvatar} alt="" />

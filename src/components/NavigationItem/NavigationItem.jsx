@@ -1,12 +1,20 @@
 import c from "./NavigationItem.module.css"
+import { NavLink } from "react-router-dom"
 
-const initialState = {"Profile": true, "Messages": false, "News": false, "Settings": false}
+const initialState = {
+  "Profile": "/",
+  "Dialogs": "/dialogs",
+  "News": "/news",
+  "Settings": "/settings"
+}
 
-const NavigationItem = (prop) => {
-  console.log(initialState)
+
+const NavigationItem = () => {
   return (
     <>
-      {Object.keys(initialState).map((el) => <div key={el} className={c.nav__title + " " + (initialState[el] ? c.checked : "")}>{el}</div>)}
+      {Object.keys(initialState).map((el) => 
+        <NavLink key={el} to={initialState[el]} className={c.nav__title} activeClassName={c.checked} exact>{el}</NavLink>
+      )}
     </>
   )
 }

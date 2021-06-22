@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import Body from './components/Body/Body';
 import Header from './components/Header/Header';
+import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <header className="section">
         <div className="container container__header">
           <Header />
@@ -17,7 +18,7 @@ const App = () => {
           <Body />
         </div>
       </section>
-    </div>
+    </BrowserRouter>
   )
 }
 export default App
