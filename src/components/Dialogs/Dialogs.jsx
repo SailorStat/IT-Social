@@ -1,22 +1,25 @@
 import c from "./Dialogs.module.css"
 import TextCreator from './../TextCreator/TextCreator';
 import DialogsItem from "../DialogsItem/DialogsItem";
+import Message from './../Message/Message';
+import userPhoto from "../../assets/userPhoto.jpg"
 
 const initialState = {
   "1121": {
     online: true,
     fullName: "Гоша",
-    messages: [{
-      from: false,
-      date: "12.03.2021",
-      message: "Привет)"
+    userPhoto: userPhoto,
+    messagesData: [{
+      fromCurrentUser: true,
+      date: "11:30 12.03.2021",
+      message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam veritatis eos blanditiis aliquid reprehenderit quasi repellendus optio, maxime ex aliquam!"
     }]
   },
   "1122": {
     online: true,
     fullName: "Петя",
-    messages: [{
-      from: false,
+    messagesData: [{
+      fromCurrentUser: false,
       date: "12.03.2021",
       message: "Привет)"
     }]
@@ -24,8 +27,8 @@ const initialState = {
   "1123": {
     online: true,
     fullName: "Ира",
-    messages: [{
-      from: false,
+    messagesData: [{
+      fromCurrentUser: false,
       date: "12.03.2021",
       message: "Привет)"
     }]
@@ -33,8 +36,8 @@ const initialState = {
   "1124": {
     online: true,
     fullName: "Юра",
-    messages: [{
-      from: false,
+    messagesData: [{
+      fromCurrentUser: false,
       date: "12.03.2021",
       message: "Привет)"
     }]
@@ -42,8 +45,8 @@ const initialState = {
   "1125": {
     online: true,
     fullName: "Света",
-    messages: [{
-      from: false,
+    messagesData: [{
+      fromCurrentUser: false,
       date: "12.03.2021",
       message: "Привет)"
     }]
@@ -58,11 +61,8 @@ const Dialogs = () => {
       </div>
       <div className={c.messages__inner}>
         <div className={c.message__items}>
-          <div className="message">Привет</div>
-          <div className="message">как ты?</div>
-          <div className="message">Олично</div>
-          <div className="message">Что случилось?</div>
-          <div className="message">Нашёл работу</div>
+          {console.log(initialState["1121"])}
+          <Message key={"1121"} userPhoto={initialState["1121"].userPhoto} fullName={initialState["1121"].fullName}  fromCurrentUser={initialState["1121"].messagesData[0].fromCurrentUser} message={initialState["1121"].messagesData[0].message} date={initialState["1121"].messagesData[0].date}/>
         </div>
         <TextCreator />
       </div>
