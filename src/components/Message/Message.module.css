@@ -52,6 +52,7 @@
 
   background-color: #f7c9ef;
   border-radius: 10px;
+  word-wrap: break-word;
 }
 
 .message__text.outgoing {

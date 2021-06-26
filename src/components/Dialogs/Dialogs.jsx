@@ -1,64 +1,28 @@
 import c from "./Dialogs.module.css"
 import TextCreator from './../TextCreator/TextCreator';
 import DialogsItem from "../DialogsItem/DialogsItem";
-import Message from './../Message/Message';
-import userPhoto from "../../assets/userPhoto.jpg"
+import MessageContainer from "./../Message/MessageContainer";
 
 const initialState = {
   "1121": {
     online: true,
-    fullName: "Гоша",
-    userPhoto: userPhoto,
-    messagesData: [{
-      fromCurrentUser: true,
-      date: "11:30 12.03.2021",
-      message: "Привет, как твои дела?"
-    }, {
-      fromCurrentUser: false,
-      date: "11:31 12.03.2021",
-      message: `Привет) Рад тебя видеть в сети \n
-У меня всё отлично, как твои дела?)`
-    }, {
-      fromCurrentUser: true,
-      date: "11:32 12.03.2021",
-      message: "Отдохнул, теперь снова готов работать не покладая мыши и клавиатуры)"
-    }]
+    fullName: "Гоша"
   },
   "1122": {
     online: true,
-    fullName: "Петя",
-    messagesData: [{
-      fromCurrentUser: false,
-      date: "12.03.2021",
-      message: "Привет)"
-    }]
+    fullName: "Петя"
   },
   "1123": {
     online: true,
-    fullName: "Ира",
-    messagesData: [{
-      fromCurrentUser: false,
-      date: "12.03.2021",
-      message: "Привет)"
-    }]
+    fullName: "Ира"
   },
   "1124": {
     online: true,
-    fullName: "Юра",
-    messagesData: [{
-      fromCurrentUser: false,
-      date: "12.03.2021",
-      message: "Привет)"
-    }]
+    fullName: "Юра"
   },
   "1125": {
     online: true,
-    fullName: "Света",
-    messagesData: [{
-      fromCurrentUser: false,
-      date: "12.03.2021",
-      message: "Привет)"
-    }]
+    fullName: "Света"
   }
 }
 
@@ -70,10 +34,7 @@ const Dialogs = () => {
       </div>
       
       <div className={c.messages__inner}>
-        <div className={c.message__items}>
-          {console.log(initialState["1121"])}
-          <Message key={"1121"} userPhoto={initialState["1121"].userPhoto} fullName={initialState["1121"].fullName}  fromCurrentUser={initialState["1121"].messagesData[0].fromCurrentUser} message={initialState["1121"].messagesData[0].message} date={initialState["1121"].messagesData[0].date}/>
-        </div>
+        <MessageContainer />
         <TextCreator />
       </div>
     </div>
