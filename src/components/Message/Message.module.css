@@ -26,30 +26,36 @@
 .message__data {
   display: inline-block;
   margin: 0 10px;
-  padding: 5px 10px;
   max-width: calc(100% - 120px);
   vertical-align: top;
+}
+
+.message__author {
+  margin-bottom: 3px;
+  padding: 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1;
+}
+
+.message__author.outgoing {
+  text-align: right;
+}
+
+.message__text {
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  
+  font-size: 19px;
+  opacity: 1;
 
   background-color: #f7c9ef;
   border-radius: 10px;
 }
 
-.message__data.outgoing {
+.message__text.outgoing {
   background-color: #c49dbe;
-}
-
-.message__author {
-  margin-bottom: 3px;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: left;
-}
-
-.message__text {
-  margin-bottom: 5px;
-  
-  font-size: 19px;
-  opacity: 1;
 }
 
 .message__date {

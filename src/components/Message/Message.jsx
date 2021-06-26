@@ -17,6 +17,7 @@ const Message = (props) => {
       </div>
     )
   }
+  
   return (
     <div className={c.message}>
       <div className={c.userPhoto}>

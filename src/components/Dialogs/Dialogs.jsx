@@ -12,7 +12,16 @@ const initialState = {
     messagesData: [{
       fromCurrentUser: true,
       date: "11:30 12.03.2021",
-      message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam veritatis eos blanditiis aliquid reprehenderit quasi repellendus optio, maxime ex aliquam!"
+      message: "Привет, как твои дела?"
+    }, {
+      fromCurrentUser: false,
+      date: "11:31 12.03.2021",
+      message: `Привет) Рад тебя видеть в сети \n
+У меня всё отлично, как твои дела?)`
+    }, {
+      fromCurrentUser: true,
+      date: "11:32 12.03.2021",
+      message: "Отдохнул, теперь снова готов работать не покладая мыши и клавиатуры)"
     }]
   },
   "1122": {
@@ -59,6 +68,7 @@ const Dialogs = () => {
       <div className={c.dialogs__inner}>
         {Object.keys(initialState).map(el => <DialogsItem key={el} fullName={initialState[el].fullName} userId={el}/>)}
       </div>
+      
       <div className={c.messages__inner}>
         <div className={c.message__items}>
           {console.log(initialState["1121"])}
