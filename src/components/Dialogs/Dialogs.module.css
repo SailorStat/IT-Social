@@ -6,26 +6,6 @@
   height: calc(100vh - 105px);
 }
 
-.dialogs__inner {
-  overflow-y: scroll;
-}
-
-
-.dialogs__inner::-webkit-scrollbar {
-  margin-right: 1px;
-  width: 12px;
-  background-color: #c49dbe;
-}
-
-.dialogs__inner::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #842691;
-}
-
-.dialogs__inner::-webkit-scrollbar-track {
-  background-color: #c49dbe;
-}
-
 .messages__inner {
   display: flex;
   flex-direction: column;

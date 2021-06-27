@@ -1,10 +1,10 @@
 import c from"./Navigation.module.css"
-import NavigationItem from '../NavigationItem/NavigationItem';
+import NavigationItemContainer from "./../NavigationItem/NavigationItemContainer";
 
 const Navigation = () => {
   return (
     <div className={c.navigation}>
-      <NavigationItem />
+      <NavigationItemContainer />
     </div>
   )
 }
