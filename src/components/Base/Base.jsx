@@ -9,11 +9,11 @@ import Dialogs from './../Dialogs/Dialogs';
 const Base = () => {
   return (
     <div className={c.base}>
-      <Route exact path="/" component={Profile} />
-      <Route path="/dialogs" component={Dialogs} />
-      <Route path="/news" component={News} />
-      <Route path="/settings" component={Settings} />
-      <Route path="/login" component={Login} />
+      <Route exact key="profile" path="/" component={Profile} />
+      <Route key="dialogs" path="/dialogs" component={Dialogs} />
+      <Route key="news" path="/news" component={News} />
+      <Route key="settings" path="/settings" component={Settings} />
+      <Route key="login" path="/login" component={Login} />
     </div>
   )
 }

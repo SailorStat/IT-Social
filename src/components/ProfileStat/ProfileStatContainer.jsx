@@ -1,4 +1,3 @@
-import c from "./ProfileStat.module.css"
 import ProfileStat from "./ProfileStat"
 
 const initialState = {

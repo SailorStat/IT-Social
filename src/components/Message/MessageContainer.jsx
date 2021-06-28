@@ -10,22 +10,25 @@ const initialState = {
     messagesData: [{
       fromCurrentUser: true,
       date: "11:30 12.03.2021",
-      message: "Привет, как твои дела?"
+      message: "Привет, как твои дела?",
+      messageId: 1233
     }, {
       fromCurrentUser: false,
       date: "11:31 12.03.2021",
-      message: `Привет) Рад тебя видеть в сети. У меня всё отлично, как твои дела?)`
+      message: `Привет) Рад тебя видеть в сети. У меня всё отлично, как твои дела?)`,
+      messageId: 1234
     }, {
       fromCurrentUser: true,
       date: "11:32 12.03.2021",
-      message: "Отдохнул, теперь снова готов работать, не покладая мыши и клавиатуры)."
+      message: "Отдохнул, теперь снова готов работать, не покладая мыши и клавиатуры).",
+      messageId: 1235
     }]
   }
 
 const MessageContainer = () => {
   return (
     <div className={c.message__container}>
-      {initialState.messagesData.map(el => <Message userPhoto={initialState.userPhoto} fullName={initialState.fullName}  fromCurrentUser={el.fromCurrentUser} message={el.message} date={el.date}/>)}
+      {initialState.messagesData.map(el => <Message key={el.messageId} userPhoto={initialState.userPhoto} fullName={initialState.fullName}  fromCurrentUser={el.fromCurrentUser} message={el.message} date={el.date}/>)}
     </div>
   )
 }

@@ -1,34 +1,18 @@
 import c from "./DialogsItemContainer.module.css"
 import DialogsItem from "./DialogsItem";
-
-const initialState = {
-  "1121": {
-    online: true,
-    fullName: "Гоша"
-  },
-  "1122": {
-    online: true,
-    fullName: "Петя"
-  },
-  "1123": {
-    online: true,
-    fullName: "Ира"
-  },
-  "1124": {
-    online: true,
-    fullName: "Юра"
-  },
-  "1125": {
-    online: true,
-    fullName: "Света"
-  }
-}
+import StoreContext from "../../StoreContext";
 
 const DialogsItemContainer = () => {
   return (
-    <div className={c.dialogs__inner}>
-      {Object.keys(initialState).map(el => <DialogsItem key={el} fullName={initialState[el].fullName} userId={el}/>)}
-    </div>
+    <StoreContext.Consumer>
+      {store => (
+        <div className={c.dialogs__inner}>
+          {Object.keys(store.users).map(el => (
+            <DialogsItem key={el} fullName={store.users[el].profileStats["fullName"]} userId={el}/>
+          ))}
+        </div>
+      )}
+    </StoreContext.Consumer>
   )
 }
 
