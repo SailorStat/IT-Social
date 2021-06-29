@@ -1,20 +1,17 @@
 import NavigationItem from "./NavigationItem"
-
-const initialState = {
-  "Profile": "/",
-  "Dialogs": "/dialogs",
-  "News": "/news",
-  "Settings": "/settings"
-}
-
+import StateContext from "./../../StateContext";
 
 const NavigationItemContainer = () => {
   return (
-    <>
-      {Object.keys(initialState).map((el) => 
-        <NavigationItem key={el} essence={el} link={initialState[el]}/>
+    <StateContext.Consumer>
+      {state => (
+        <>
+          {Object.keys(state.pages).map((el) => 
+            <NavigationItem key={"NavigationItem" + el} essence={el} link={state.pages[el]}/>
+          )}
+        </>
       )}
-    </>
+    </StateContext.Consumer>
   )
 }
 

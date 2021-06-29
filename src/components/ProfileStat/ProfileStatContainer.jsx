@@ -1,50 +1,33 @@
 import ProfileStat from "./ProfileStat"
+import StateContext from "./../../StateContext";
 
-const initialState = {
-  "aboutMe": "я крутой чувак",
-  "contacts": {
-    "skype": "skyp",
-    "vk": "vk.com",
-    "facebook": "facebook",
-    "icq": "icq",
-    "email": "email",
-    "googlePlus": "gogep",
-    "twitter": "twitter",
-    "instagram": "instagra",
-    "whatsApp": "watsapp"
-  },
-  "lookingForAJob": true,
-  "lookingForAJobDescription": 'Ищу работу, знаю это, это и это',
-  "fullName": "Sailor Stat",
-  "userId": 17725
-}
-
-const initialStateArrName = ["About Me", "Contacts", "Looking for a job", "Looking for a job description"]
-
-
-function profileStatCreator(el, index) {
+function profileStatCreator(state, el, index) {
   if (["fullName", "userId"].includes(el)) return
 
-  if (!initialState[el]) return
+  if (!state.users[17725].profileStats[el]) return
 
-  if (typeof initialState[el] !== "object") {
-    return <ProfileStat key={el} property={initialStateArrName[index]} subProfileStat={false} value={initialState[el]}/>
+  if (typeof state.users[17725].profileStats[el] !== "object") {
+    return <ProfileStat key={"ProfileStat" + el} property={state.userStats[index]} subProfileStat={false} value={state.users[17725].profileStats[el]}/>
   }
   
   return [
-    <ProfileStat key={el} property={initialStateArrName[index]} value={""} />, 
-    Object.keys(initialState[el]).map(elm => <ProfileStat key={elm} property={elm} subProfileStat={true} value={initialState[el][elm]}/>)
+    <ProfileStat key={"ProfileStat" + el} property={state.userStats[index]} value={""} />, 
+    Object.keys(state.users[17725].profileStats[el]).map(elm => <ProfileStat key={"ProfileStat" + elm} property={elm} subProfileStat={true} value={state.users[17725].profileStats[el][elm]}/>)
   ]
 }
 
 
 const ProfileStatContainer = () => {
   return (
-    <>
-    {
-      Object.keys(initialState).map((el, index) => profileStatCreator(el, index))
-    }
-    </>
+    <StateContext.Consumer>
+      {state => (
+        <>
+          {
+            Object.keys(state.users[17725].profileStats).map((el, index) => profileStatCreator(state, el, index))
+          }
+        </>
+      )}
+    </StateContext.Consumer>
   )
 }
 

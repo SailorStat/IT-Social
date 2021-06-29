@@ -5,15 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import state from "../src/redux/state"
-import StoreContext from "./StoreContext";
+import StateContext from "./StateContext";
 
 ReactDOM.render(
   <BrowserRouter>
-    <StoreContext.Provider value={state}>
+    <StateContext.Provider value={state}>
       <React.StrictMode >
         <App />
       </React.StrictMode>
-    </StoreContext.Provider>
+    </StateContext.Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );

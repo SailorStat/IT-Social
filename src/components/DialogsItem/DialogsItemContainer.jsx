@@ -1,18 +1,18 @@
 import c from "./DialogsItemContainer.module.css"
 import DialogsItem from "./DialogsItem";
-import StoreContext from "../../StoreContext";
+import StateContext from "../../StateContext";
 
 const DialogsItemContainer = () => {
   return (
-    <StoreContext.Consumer>
-      {store => (
+    <StateContext.Consumer>
+      {state => (
         <div className={c.dialogs__inner}>
-          {Object.keys(store.users).map(el => (
-            <DialogsItem key={el} fullName={store.users[el].profileStats["fullName"]} userId={el}/>
+          {Object.keys(state.users).map(el => (
+            <DialogsItem key={"DialogsItem" + el} fullName={state.users[el].profileStats["fullName"]} userId={el} setCheckedDialog={state.setCheckedDialog}/>
           ))}
         </div>
       )}
-    </StoreContext.Consumer>
+    </StateContext.Consumer>
   )
 }
 

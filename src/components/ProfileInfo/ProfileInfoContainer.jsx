@@ -1,6 +1,7 @@
 import noAvatar from "./../../assets/no-avatar.png"
 import userPhoto from "./../../assets/userPhoto.jpg"
 import ProfileInfo from "./ProfileInfo";
+import StateContext from "./../../StateContext";
 
 const initialState = {
   fullName: "Sailor Stat",
@@ -10,7 +11,11 @@ const initialState = {
 
 const ProfileInfoContainer = () => {
   return (
-    <ProfileInfo fullName={initialState.fullName} status={initialState.status} avatar={initialState.avatar || noAvatar}/>
+    <StateContext.Consumer>
+      {state => (
+        <ProfileInfo fullName={state.users[17725].profileStats.fullName} status={state.users[17725].status} avatar={state.users[17725].avatar || noAvatar}/>
+      )}
+    </StateContext.Consumer>
   )
 }
 
