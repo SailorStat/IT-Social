@@ -7,7 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 import state from "../src/redux/state"
 import StateContext from "./StateContext";
 
-ReactDOM.render(
+export const rerender = () => {
+  console.log("rerender")
+  ReactDOM.render(
   <BrowserRouter>
     <StateContext.Provider value={state}>
       <React.StrictMode >
@@ -16,7 +18,9 @@ ReactDOM.render(
     </StateContext.Provider>
   </BrowserRouter>,
   document.getElementById('root')
-);
+)}
+
+rerender()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -1,12 +1,12 @@
 import c from"./Profile.module.css"
-import PostWrapper from "./../ProfilePosts/PostWrapper";
 import ProfileInfoContainer from "../ProfileInfo/ProfileInfoContainer";
+import PostWrapperContainer from "./../PostWrapper/PostWrapperContainer";
 
 const Profile = () => {
   return (
     <div className={c.profile}>
       <ProfileInfoContainer />
-      <PostWrapper />
+      <PostWrapperContainer />
     </div>
   )
 }

@@ -1,4 +1,8 @@
 import userPhoto from "../assets/userPhoto.jpg"
+import noAvatar from "../assets/no-avatar.png"
+import {rerender} from "../index"
+
+
 
 let state = {
   users: {
@@ -102,13 +106,38 @@ let state = {
       }]
     }
   },
-  _checkedDialog: '',
+  _checkedDialog: localStorage.getItem('_checkedDialog'),
   setCheckedDialog: (userId) => {
     state._checkedDialog = userId
-    return
+    localStorage.setItem('_checkedDialog', userId)
   },
   getCheckedDialog: () => {
     return state._checkedDialog
+  },
+
+  _dialogsValueText: "",
+  setDialogsValueText(event) {
+    state._dialogsValueText = event?.target?.value || ""
+    rerender()
+  },
+  getDialogsValueText() {
+    return state._dialogsValueText
+  },
+  addMessage: () => {
+    if (!state.getDialogsValueText()) return
+
+    const newDate = new Date()
+    const currentMessagesList = state.dialogs[state.getCheckedDialog()].messagesData
+    currentMessagesList.push({
+      fullName: state.users[state.getCheckedDialog()].profileStats.fullName,
+      userPhoto: state.users["17725"]?.avatar || noAvatar,
+      fromCurrentUser: true,
+      date: `${newDate.getHours()}:${newDate.getMinutes()} ${newDate.getDate()}.${newDate.getMonth()}.${newDate.getFullYear()}`,
+      message: state.getDialogsValueText(),
+      messageId: (currentMessagesList[currentMessagesList.length - 1]?.messageId + 1 ) || 1
+    })
+    state.setDialogsValueText()
+    rerender()
   },
 
   pages: {
@@ -119,9 +148,9 @@ let state = {
   },
 
   posts: {
-    "1121": [{
+    "17725": [{
       userId: 17725,
-      postId: 1233,
+      postId: 1235,
       authorFullName: "Sailor Stat",
       postDate: "13.03.2021 13:15",
       postText: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quae nam velit ad magni fugit enim corrupti eaque harum. Molestiae et, laboriosam neque hic odio velit ipsam porro consectetur dolore ipsa, iusto quia libero? Reprehenderit doloribus molestias nulla tempora suscipit!",
@@ -142,7 +171,7 @@ let state = {
       currentUserReposted: true
     }, {
       userId: 17725,
-      postId: 1235,
+      postId: 1233,
       authorFullName: "Sailor Stat",
       postDate: "11.03.2021 13:23",
       postText: "Lorem ipsum dolor sit amet consectetur",
@@ -152,6 +181,21 @@ let state = {
       currentUserReposted: false,
       avatar: userPhoto
     }]
+  },
+  addPost(userId = 17725, postText = "Автор хотел что-то сказать, но его молнание оказалось многословней всего") {
+    const date = Date.now()
+    state.posts[userId].unshift({
+      userId,
+      postId: state.posts[userId].postId + 1,
+      authorFullName: state.users[userId].profileStats.fullName,
+      postDate: `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`,
+      postText,
+      likeCount: 0,
+      currentUserLiked: false,
+      repostCount: 0,
+      currentUserReposted: false,
+      avatar: state.users[userId].avatar
+    })
   }
 }
 
