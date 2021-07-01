@@ -7,8 +7,8 @@ const DialogsItemContainer = () => {
     <StateContext.Consumer>
       {state => (
         <div className={c.dialogs__inner}>
-          {Object.keys(state.users).map(el => (
-            <DialogsItem key={"DialogsItem" + el} fullName={state.users[el].profileStats["fullName"]} userId={el} setCheckedDialog={state.setCheckedDialog}/>
+          {Object.keys(state.profilePage.users).map(el => (
+            <DialogsItem key={"DialogsItem" + el} fullName={state.profilePage.users[el].profileStats["fullName"]} userId={el} setCheckedDialog={state.dialogsPage.setCheckedDialog}/>
           ))}
         </div>
       )}

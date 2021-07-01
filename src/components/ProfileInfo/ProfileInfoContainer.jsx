@@ -13,7 +13,7 @@ const ProfileInfoContainer = () => {
   return (
     <StateContext.Consumer>
       {state => (
-        <ProfileInfo fullName={state.users[17725].profileStats.fullName} status={state.users[17725].status} avatar={state.users[17725].avatar || noAvatar}/>
+        <ProfileInfo fullName={state.profilePage.users[17725].profileStats.fullName} status={state.profilePage.users[17725].status} avatar={state.profilePage.users[17725].avatar || noAvatar}/>
       )}
     </StateContext.Consumer>
   )

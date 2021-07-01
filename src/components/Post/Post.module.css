@@ -47,8 +47,16 @@
 
 
 /* BODY */
-.post__text {
+.post__body {
+  width: 100%;
+  overflow: hidden;
+}
 
+.post__text {
+  width: 100%;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .post__image {

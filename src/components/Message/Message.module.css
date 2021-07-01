@@ -1,6 +1,7 @@
 .message {
   margin: 5px 0;
   max-width: 80%;
+  overflow: hidden;
 }
 
 .message.outgoing {
@@ -47,13 +48,14 @@
 .message__text {
   margin-bottom: 5px;
   padding: 5px 10px;
-  
+
   font-size: 19px;
   opacity: 1;
 
   background-color: #f7c9ef;
   border-radius: 10px;
   word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .message__text.outgoing {

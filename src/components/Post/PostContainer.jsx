@@ -9,7 +9,7 @@ const PostContainer = () => {
     <StateContext.Consumer>
       {state => (
         <>
-          {state.posts["17725"]?.map(el => <Post key={"Post" + el.postId}
+          {state.profilePage.posts["17725"]?.map(el => <Post key={"Post" + el.postId}
                                         userId={el.userId}
                                         authorFullName={el.authorFullName}
                                         postDate={el.postDate}

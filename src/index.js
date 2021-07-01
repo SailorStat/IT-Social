@@ -8,7 +8,6 @@ import state from "../src/redux/state"
 import StateContext from "./StateContext";
 
 export const rerender = () => {
-  console.log("rerender")
   ReactDOM.render(
   <BrowserRouter>
     <StateContext.Provider value={state}>

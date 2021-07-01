@@ -3,16 +3,17 @@ import StateContext from "./../../StateContext";
 
 function profileStatCreator(state, el, index) {
   if (["fullName", "userId"].includes(el)) return
+  
+  const pages = state.profilePage
+  if (!pages.users[17725].profileStats[el]) return
 
-  if (!state.users[17725].profileStats[el]) return
-
-  if (typeof state.users[17725].profileStats[el] !== "object") {
-    return <ProfileStat key={"ProfileStat" + el} property={state.userStats[index]} subProfileStat={false} value={state.users[17725].profileStats[el]}/>
+  if (typeof pages.users[17725].profileStats[el] !== "object") {
+    return <ProfileStat key={"ProfileStat" + el} property={pages.userStats[index]} subProfileStat={false} value={pages.users[17725].profileStats[el]}/>
   }
   
   return [
-    <ProfileStat key={"ProfileStat" + el} property={state.userStats[index]} value={""} />, 
-    Object.keys(state.users[17725].profileStats[el]).map(elm => <ProfileStat key={"ProfileStat" + elm} property={elm} subProfileStat={true} value={state.users[17725].profileStats[el][elm]}/>)
+    <ProfileStat key={"ProfileStat" + el} property={pages.userStats[index]} value={""} />, 
+    Object.keys(pages.users[17725].profileStats[el]).map(elm => <ProfileStat key={"ProfileStat" + elm} property={elm} subProfileStat={true} value={pages.users[17725].profileStats[el][elm]}/>)
   ]
 }
 
@@ -23,7 +24,7 @@ const ProfileStatContainer = () => {
       {state => (
         <>
           {
-            Object.keys(state.users[17725].profileStats).map((el, index) => profileStatCreator(state, el, index))
+            Object.keys(state.profilePage.users[17725].profileStats).map((el, index) => profileStatCreator(state, el, index))
           }
         </>
       )}
