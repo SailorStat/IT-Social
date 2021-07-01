@@ -1,8 +1,7 @@
 import userPhoto from "../assets/userPhoto.jpg"
 import noAvatar from "../assets/no-avatar.png"
-import {rerender} from "../index"
 
-
+let rerenderEntireTree = () => {}
 
 let state = {
   profilePage: {
@@ -99,7 +98,7 @@ let state = {
     setPostValueText(event) {
       state._postValueText = event?.target?.value || ""
       console.log(state._postValueText)
-      rerender()
+      rerenderEntireTree()
     },
     getPostValueText() {
       return state._postValueText
@@ -169,7 +168,7 @@ let state = {
     _dialogValueText: "",
     setDialogValueText(event) {
       state.dialogsPage._dialogValueText = event?.target?.value || ""
-      rerender()
+      rerenderEntireTree()
     },
     getDialogValueText() {
       return state.dialogsPage._dialogValueText
@@ -184,8 +183,11 @@ let state = {
   }
 }
 
+export const getState = () => {
+  return state
+}
 
-export function addMessage() {
+export const addMessage = () => {
   const pages = state.dialogsPage
   if (!pages.getDialogValueText()) return
 
@@ -205,7 +207,7 @@ export function addMessage() {
 }
 
 
-export function addPost(userId = "17725") {
+export const addPost = (userId = "17725") => {
   const newDate = new Date()
   const pages = state.profilePage
 
@@ -223,6 +225,10 @@ export function addPost(userId = "17725") {
   })
 
   pages.setPostValueText("")
+}
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer
 }
 
 export default state
