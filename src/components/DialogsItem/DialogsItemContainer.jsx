@@ -1,18 +1,19 @@
 import c from "./DialogsItemContainer.module.css"
 import DialogsItem from "./DialogsItem";
-import StateContext from "../../StateContext";
+import StoreContext from "../../StoreContext";
+import { setChekedDialogActionCreator } from "../../redux/store";
 
 const DialogsItemContainer = () => {
   return (
-    <StateContext.Consumer>
-      {state => (
+    <StoreContext.Consumer>
+      {store => (
         <div className={c.dialogs__inner}>
-          {Object.keys(state.profilePage.users).map(el => (
-            <DialogsItem key={"DialogsItem" + el} fullName={state.profilePage.users[el].profileStats["fullName"]} userId={el} setCheckedDialog={state.dialogsPage.setCheckedDialog}/>
+          {Object.keys(store.getState().profilePage.users).map(el => (
+            <DialogsItem key={"DialogsItem" + el} fullName={store.getState().profilePage.users[el].profileStats["fullName"]} userId={el} setCheckedDialog={() => store.dispatch(setChekedDialogActionCreator(el))}/>
           ))}
         </div>
       )}
-    </StateContext.Consumer>
+    </StoreContext.Consumer>
   )
 }
 

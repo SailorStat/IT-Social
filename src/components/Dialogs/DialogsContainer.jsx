@@ -1,14 +1,14 @@
 import Dialogs from "./Dialogs";
-import StateContext from "./../../StateContext";
-import { addMessage } from "../../redux/state";
+import StoreContext from "./../../StoreContext";
+import { addMessageActionCreator } from "../../redux/store";
 
 const DialogsContainer = () => {
   return (
-    <StateContext.Consumer>
-      {state => (
-        <Dialogs getText={state.dialogsPage.getDialogValueText()} setText={state.dialogsPage.setDialogValueText.bind(state.dialogPage)} addBlock={addMessage}/>
+    <StoreContext.Consumer>
+      {store => (
+        <Dialogs getText={store.getDialogValueText()} setText={store.setDialogValueText.bind(store)} addBlock={() => store.dispatch(addMessageActionCreator())}/>
       )}
-    </StateContext.Consumer>
+    </StoreContext.Consumer>
   )
 }
 

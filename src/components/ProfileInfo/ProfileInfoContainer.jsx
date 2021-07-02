@@ -1,21 +1,16 @@
 import noAvatar from "./../../assets/no-avatar.png"
 import userPhoto from "./../../assets/userPhoto.jpg"
 import ProfileInfo from "./ProfileInfo";
-import StateContext from "./../../StateContext";
+import StoreContext from "./../../StoreContext";
 
-const initialState = {
-  fullName: "Sailor Stat",
-  status: "Live is perfect",
-  avatar: userPhoto
-}
 
 const ProfileInfoContainer = () => {
   return (
-    <StateContext.Consumer>
-      {state => (
-        <ProfileInfo fullName={state.profilePage.users[17725].profileStats.fullName} status={state.profilePage.users[17725].status} avatar={state.profilePage.users[17725].avatar || noAvatar}/>
+    <StoreContext.Consumer>
+      {store => (
+        <ProfileInfo fullName={store.getState().profilePage.users[17725].profileStats.fullName} status={store.getState().profilePage.users[17725].status} avatar={store.getState().profilePage.users[17725].avatar || noAvatar}/>
       )}
-    </StateContext.Consumer>
+    </StoreContext.Consumer>
   )
 }
 

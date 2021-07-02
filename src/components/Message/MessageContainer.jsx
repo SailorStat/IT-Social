@@ -1,17 +1,17 @@
 import Message from './../Message/Message';
 import c from "./MessageContainer.module.css"
-import StateContext from "../../StateContext";
+import StoreContext from "../../StoreContext";
 import noAvatar from "../../assets/no-avatar.png"
 
 const MessageContainer = () => {
   return (
-    <StateContext.Consumer>
-      {state => (
+    <StoreContext.Consumer>
+      {store => (
         <div className={c.message__container}>
-          {state.dialogsPage.dialogs[state.dialogsPage.getCheckedDialog()]?.messagesData.map(el => <Message key={"Message" + el.messageId} userPhoto={el.fromCurrentUser? el.userPhoto : noAvatar} fullName={el.fromCurrentUser? "Sailor Stat" : el.fullName}  fromCurrentUser={el.fromCurrentUser} message={el.message} date={el.date}/>)}
+          {store.getState().dialogsPage.dialogs[store.getCheckedDialog()]?.messagesData.map(el => <Message key={"Message" + el.messageId} userPhoto={el.fromCurrentUser? el.userPhoto : noAvatar} fullName={el.fromCurrentUser? "Sailor Stat" : el.fullName}  fromCurrentUser={el.fromCurrentUser} message={el.message} date={el.date}/>)}
         </div>
       )}
-    </StateContext.Consumer>
+    </StoreContext.Consumer>
   )
 }
 

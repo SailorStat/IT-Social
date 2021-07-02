@@ -1,6 +1,7 @@
 .message {
   margin: 5px 0;
   max-width: 80%;
+  height: max-content;
   overflow: hidden;
 }
 

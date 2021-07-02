@@ -1,14 +1,13 @@
 import PostWrapper from "./PostWrapper";
-import StateContext from "./../../StateContext";
-import { addPost } from "../../redux/state";
+import StoreContext from "./../../StoreContext";
 
 const PostWrapperContainer = () => {
   return (
-    <StateContext.Consumer>
-      {state => (
-        <PostWrapper addBlock={addPost} getText={state.profilePage.getPostValueText()} setText={state.profilePage.setPostValueText.bind(state)}/>
+    <StoreContext.Consumer>
+      {store => (
+        <PostWrapper addBlock={store.addPost.bind(store)} getText={store.getPostValueText()} setText={store.setPostValueText.bind(store)}/>
       )}
-    </StateContext.Consumer>
+    </StoreContext.Consumer>
   )
 }
 

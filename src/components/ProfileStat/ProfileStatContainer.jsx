@@ -1,10 +1,10 @@
 import ProfileStat from "./ProfileStat"
-import StateContext from "./../../StateContext";
+import StoreContext from "./../../StoreContext";
 
-function profileStatCreator(state, el, index) {
+function profileStatCreator(store, el, index) {
   if (["fullName", "userId"].includes(el)) return
   
-  const pages = state.profilePage
+  const pages = store.getState().profilePage
   if (!pages.users[17725].profileStats[el]) return
 
   if (typeof pages.users[17725].profileStats[el] !== "object") {
@@ -20,15 +20,15 @@ function profileStatCreator(state, el, index) {
 
 const ProfileStatContainer = () => {
   return (
-    <StateContext.Consumer>
-      {state => (
+    <StoreContext.Consumer>
+      {store => (
         <>
           {
-            Object.keys(state.profilePage.users[17725].profileStats).map((el, index) => profileStatCreator(state, el, index))
+            Object.keys(store.getState().profilePage.users[17725].profileStats).map((el, index) => profileStatCreator(store, el, index))
           }
         </>
       )}
-    </StateContext.Consumer>
+    </StoreContext.Consumer>
   )
 }
 

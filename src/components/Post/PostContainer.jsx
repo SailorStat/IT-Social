@@ -2,14 +2,14 @@ import NoAvatar from "./../../assets/no-avatar.png"
 // import Placeholder from "./../../assets/placeholder.jpg"
 import Post from "./Post";
 import userPhoto from "../../assets/userPhoto.jpg"
-import StateContext from "./../../StateContext";
+import StoreContext from "./../../StoreContext";
 
 const PostContainer = () => {
   return (
-    <StateContext.Consumer>
-      {state => (
+    <StoreContext.Consumer>
+      {store => (
         <>
-          {state.profilePage.posts["17725"]?.map(el => <Post key={"Post" + el.postId}
+          {store.getState().profilePage.posts["17725"]?.map(el => <Post key={"Post" + el.postId}
                                         userId={el.userId}
                                         authorFullName={el.authorFullName}
                                         postDate={el.postDate}
@@ -22,7 +22,7 @@ const PostContainer = () => {
           }
         </>
       )}
-    </StateContext.Consumer>
+    </StoreContext.Consumer>
   )
 }
 

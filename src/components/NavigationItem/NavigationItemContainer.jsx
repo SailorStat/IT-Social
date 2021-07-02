@@ -1,17 +1,17 @@
 import NavigationItem from "./NavigationItem"
-import StateContext from "./../../StateContext";
+import StoreContext from "./../../StoreContext";
 
 const NavigationItemContainer = () => {
   return (
-    <StateContext.Consumer>
-      {state => (
+    <StoreContext.Consumer>
+      {store => (
         <>
-          {Object.keys(state.pages).map((el) => 
-            <NavigationItem key={"NavigationItem" + el} essence={el} link={state.pages[el]}/>
+          {Object.keys(store.getState().pages).map((el) => 
+            <NavigationItem key={"NavigationItem" + el} essence={el} link={store.getState().pages[el]}/>
           )}
         </>
       )}
-    </StateContext.Consumer>
+    </StoreContext.Consumer>
   )
 }
 
