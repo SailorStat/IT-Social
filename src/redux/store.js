@@ -1,9 +1,15 @@
 import userPhoto from "../assets/userPhoto.jpg"
 import noAvatar from "../assets/no-avatar.png"
+import dialogsReducer from "./dialogs-reducer"
+import profileReducer from "./profile-reducer"
+import pagesReducer from "./pages-reduser"
 
 // Action types
 const ADD_MESSAGE = "ADD-MESSAGE"
 const SET_CHECKED_DIALOG = "SET-CHECKED-DIALOG"
+const SET_DIALOG_VALUE_TEXT = "SET-DIALOG-VALUE-TEXT"
+const ADD_POST = "ADD-POST"
+const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
 
 
 const store = {
@@ -98,7 +104,11 @@ const store = {
         }]
       },
 
-      _postValueText: ""
+      _postValueText: "",
+
+      getPostValueText() {
+        return this._postValueText
+      }
     },
 
     dialogsPage: {
@@ -154,7 +164,15 @@ const store = {
       },
       _checkedDialog: localStorage.getItem('_checkedDialog'),
 
-      _dialogValueText: ""
+      _dialogValueText: "",
+
+      getCheckedDialog() {
+        return this._checkedDialog
+      },
+    
+      getDialogValueText() {
+        return this._dialogValueText
+      }
     },
 
     pages: {
@@ -169,95 +187,17 @@ const store = {
     return this._state
   },
 
-  getCheckedDialog() {
-    return this.getState().dialogsPage._checkedDialog
-  },
-
-  getDialogValueText() {
-    return this.getState().dialogsPage._dialogValueText
-  },
-
-  getPostValueText() {
-    return this.getState()._postValueText
-  },
-
   rerenderEntireTree() { },
-
-
-
-  _addMessage() {
-    debugger
-    const pages = this.getState().dialogsPage
-    if (!this.getDialogValueText()) return
-
-    const newDate = new Date()
-    const currentMessagesList = pages.dialogs[this.getCheckedDialog()].messagesData
-
-    currentMessagesList.push({
-      fullName: this.getState().profilePage.users[this.getCheckedDialog()].profileStats.fullName,
-      userPhoto: this.getState().profilePage.users["17725"]?.avatar || noAvatar,
-      fromCurrentUser: true,
-      date: `${newDate.getHours()}:${newDate.getMinutes()} ${newDate.getDate()}.${newDate.getMonth()}.${newDate.getFullYear()}`,
-      message: this.getDialogValueText(),
-      messageId: (currentMessagesList[currentMessagesList.length - 1]?.messageId + 1) || 1
-    })
-
-    this.setDialogValueText()
-  },
-
-
-  addPost(userId) {
-    const newDate = new Date()
-    const pages = this.getState().profilePage
-
-    pages.posts["17725"].unshift({
-      userId,
-      postId: pages.posts["17725"].postId + 1,
-      authorFullName: pages.users["17725"].profileStats.fullName,
-      postDate: `${newDate.getDate()}.${newDate.getMonth()}.${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()}`,
-      postText: this.getPostValueText() || "Автор хотел сказать важную мысль, но его молчание оказалось многословнее всего",
-      likeCount: 0,
-      currentUserLiked: false,
-      repostCount: 0,
-      currentUserReposted: false,
-      avatar: pages.users["17725"].avatar
-    })
-
-    this.setPostValueText("")
-  },
-
-
-  _setCheckedDialog(userId) {
-    this.getState().dialogsPage._checkedDialog = userId
-    localStorage.setItem('_checkedDialog', userId)
-  },
-
-
-  setDialogValueText(event) {
-    this.getState().dialogsPage._dialogValueText = event?.target?.value || ""
-    this.rerenderEntireTree()
-  },
-
-
-  setPostValueText(event) {
-    this.getState()._postValueText = event?.target?.value || ""
-    this.rerenderEntireTree()
-  },
-
 
   subscribe(observer) {
     this.rerenderEntireTree = observer
   },
 
   dispatch(action) {
-    debugger
-    switch(action.type) {
-      case ADD_MESSAGE :
-        return this._addMessage()
-      case SET_CHECKED_DIALOG :
-        return this._setCheckedDialog(action.userId)
-      default: break
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this._state.pages = pagesReducer(this._state.pages, action)
+    this.rerenderEntireTree()
   }
 }
 
@@ -267,13 +207,36 @@ window.store = store
 
 export const addMessageActionCreator = () => {
   return {
-    type: ADD_MESSAGE
+    type: ADD_MESSAGE,
+    fullName: store.getState().profilePage.users[store.getState().dialogsPage.getCheckedDialog()].profileStats.fullName,
+    userPhoto: store.getState().profilePage.users["17725"]?.avatar || noAvatar
   }
 }
 
-export const setChekedDialogActionCreator = (userId) => {
+export const setCheckedDialogActionCreator = (userId) => {
   return {
     type: SET_CHECKED_DIALOG,
     userId
+  }
+}
+
+export const setDialogValueTextActionCreator = (event) => {
+  return {
+    type: SET_DIALOG_VALUE_TEXT,
+    value: event.target.value
+  }
+}
+
+export const addPostActionCreator = (userId) => {
+  return {
+    type: ADD_POST,
+    userId
+  }
+}
+
+export const setPostValueTextActionCreator = (event) => {
+  return {
+    type: SET_POST_VALUE_TEXT,
+    value: event.target.value
   }
 }
