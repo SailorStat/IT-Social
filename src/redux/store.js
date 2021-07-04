@@ -1,3 +1,5 @@
+// NOT USED
+
 import userPhoto from "../assets/userPhoto.jpg"
 import noAvatar from "../assets/no-avatar.png"
 import dialogsReducer from "./dialogs-reducer"
@@ -187,17 +189,17 @@ const store = {
     return this._state
   },
 
-  rerenderEntireTree() { },
+  _callSubscriber() { },
 
   subscribe(observer) {
-    this.rerenderEntireTree = observer
+    this._callSubscriber = observer
   },
 
   dispatch(action) {
     this._state.profilePage = profileReducer(this._state.profilePage, action)
     this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
     this._state.pages = pagesReducer(this._state.pages, action)
-    this.rerenderEntireTree()
+    this._callSubscriber()
   }
 }
 

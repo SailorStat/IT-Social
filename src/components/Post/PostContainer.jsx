@@ -1,7 +1,7 @@
-import NoAvatar from "./../../assets/no-avatar.png"
-// import Placeholder from "./../../assets/placeholder.jpg"
+import NoAvatar from "./../../assets/img/no-avatar.png"
+// import Placeholder from "./../../assets/img/placeholder.jpg"
 import Post from "./Post";
-import userPhoto from "../../assets/userPhoto.jpg"
+import userPhoto from "../../assets/img/userPhoto.jpg"
 import StoreContext from "./../../StoreContext";
 
 const PostContainer = () => {

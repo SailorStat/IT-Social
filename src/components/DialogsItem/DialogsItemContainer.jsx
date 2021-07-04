@@ -1,7 +1,7 @@
 import c from "./DialogsItemContainer.module.css"
 import DialogsItem from "./DialogsItem";
 import StoreContext from "../../StoreContext";
-import { setCheckedDialogActionCreator } from "../../redux/store";
+import { setCheckedDialogActionCreator } from "../../redux/redux-store";
 
 const DialogsItemContainer = () => {
   return (

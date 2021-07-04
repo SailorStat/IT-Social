@@ -1,5 +1,5 @@
 import c from "./Post.module.css"
-// import Placeholder from "./../../assets/placeholder.jpg"
+// import Placeholder from "./../../assets/img/placeholder.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShareSquare } from '@fortawesome/free-regular-svg-icons';
 

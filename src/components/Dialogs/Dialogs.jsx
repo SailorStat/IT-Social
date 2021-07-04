@@ -11,7 +11,7 @@ const Dialogs = (props) => {
       
       <div className={c.messages__inner}>
         <MessageContainer />
-        <TextCreator placeholderText="Enter your message.." getText={props.getText} setText={props.setText} addBlock={props.addBlock}/>
+        <TextCreator placeholderText="Enter your message.." getText={props.getText} setText={props.setText} addBlock={props.addBlock} userPhoto={props.userPhoto}/>
       </div>
     </div>
   )

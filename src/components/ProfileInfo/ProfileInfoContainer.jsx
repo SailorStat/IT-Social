@@ -1,5 +1,5 @@
-import noAvatar from "./../../assets/no-avatar.png"
-import userPhoto from "./../../assets/userPhoto.jpg"
+import noAvatar from "./../../assets/img/no-avatar.png"
+import userPhoto from "./../../assets/img/userPhoto.jpg"
 import ProfileInfo from "./ProfileInfo";
 import StoreContext from "./../../StoreContext";
 

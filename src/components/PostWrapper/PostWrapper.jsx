@@ -7,7 +7,7 @@ const PostWrapper = (props) => {
     <div>
       <div className="content__wrapper">
         <div className={c.mypost__title}>My posts</div>
-        <TextCreator placeholderText="Enter your text.." addBlock={props.addBlock} getText={props.getText} setText={props.setText}/>
+        <TextCreator placeholderText="Enter your text.." addBlock={props.addBlock} getText={props.getText} setText={props.setText} userPhoto={props.userPhoto}/>
       </div>
       <PostContainer />
     </div>

@@ -1,7 +1,7 @@
 import Message from './../Message/Message';
 import c from "./MessageContainer.module.css"
 import StoreContext from "../../StoreContext";
-import noAvatar from "../../assets/no-avatar.png"
+import noAvatar from "../../assets/img/no-avatar.png"
 
 const MessageContainer = () => {
   return (
