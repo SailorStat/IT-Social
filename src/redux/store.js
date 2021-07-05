@@ -1,7 +1,7 @@
 // NOT USED
 
-import userPhoto from "../assets/userPhoto.jpg"
-import noAvatar from "../assets/no-avatar.png"
+import userPhoto from "../assets/img/userPhoto.jpg"
+import noAvatar from "../assets/img/no-avatar.png"
 import dialogsReducer from "./dialogs-reducer"
 import profileReducer from "./profile-reducer"
 import pagesReducer from "./pages-reduser"
@@ -117,7 +117,7 @@ const store = {
       dialogs: {
         "1121": {
           messagesData: [{
-            fullName: "Петя",
+            fullName: "Sailor Stat",
             userPhoto: userPhoto,
             fromCurrentUser: true,
             date: "11:30 12.03.2021",
@@ -131,7 +131,7 @@ const store = {
             message: `Привет) Рад тебя видеть в сети. У меня всё отлично, как твои дела?)`,
             messageId: 547
           }, {
-            fullName: "Петя",
+            fullName: "Sailor Stat",
             userPhoto: userPhoto,
             fromCurrentUser: true,
             date: "11:32 12.03.2021",
@@ -141,7 +141,7 @@ const store = {
         },
         "1123": {
           messagesData: [{
-            fullName: "Ира",
+            fullName: "Sailor Stat",
             userPhoto: userPhoto,
             fromCurrentUser: true,
             date: "11:30 12.03.2021",
@@ -155,7 +155,7 @@ const store = {
             message: `Привет, даже не знала, куда себя деть)`,
             messageId: 547
           }, {
-            fullName: "Ира",
+            fullName: "Sailor Stat",
             userPhoto: userPhoto,
             fromCurrentUser: true,
             date: "11:32 12.03.2021",
@@ -215,10 +215,10 @@ export const addMessageActionCreator = () => {
   }
 }
 
-export const setCheckedDialogActionCreator = (userId) => {
+export const setCheckedDialogActionCreator = (event) => {
   return {
     type: SET_CHECKED_DIALOG,
-    userId
+    userId: event.target.attributes.userId.value
   }
 }
 

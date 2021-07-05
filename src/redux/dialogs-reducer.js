@@ -18,7 +18,7 @@ const initialState = {
         messageId: 546
       }, {
         fullName: "Петя",
-        userPhoto: userPhoto,
+        userPhoto: noAvatar,
         fromCurrentUser: false,
         date: "11:31 12.03.2021",
         message: `Привет) Рад тебя видеть в сети. У меня всё отлично, как твои дела?)`,
@@ -42,7 +42,7 @@ const initialState = {
         messageId: 546
       }, {
         fullName: "Ира",
-        userPhoto: userPhoto,
+        userPhoto: noAvatar,
         fromCurrentUser: false,
         date: "11:31 12.03.2021",
         message: `Привет, даже не знала, куда себя деть)`,
@@ -59,7 +59,7 @@ const initialState = {
     "1124": {
       messagesData: [{
         fullName: "Юра",
-        userPhoto: userPhoto,
+        userPhoto: noAvatar,
         fromCurrentUser: false,
         date: "15:28 14.04.2021",
         message: "Поставьсуп в холодильник, когда остынет",
@@ -123,15 +123,17 @@ const dialogsReducer = (state = initialState, action) => {
 
 
     case SET_CHECKED_DIALOG:
-      state._checkedDialog = action.userId || ""
       localStorage.setItem('_checkedDialog', action.userId)
-      return state
+      return {
+        ...state,
+        _checkedDialog: action.userId || ""
+      }
 
 
     case SET_DIALOG_VALUE_TEXT:
       return {
         ...state,
-        ...state._dialogValueText = action.value || ""
+        _dialogValueText: action.value || ""
       }
     
 

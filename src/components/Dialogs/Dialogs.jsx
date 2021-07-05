@@ -1,16 +1,15 @@
 import c from "./Dialogs.module.css"
 import TextCreator from '../TextCreator/TextCreator';
-import MessageContainer from "../Message/MessageContainer";
-import DialogsItemContainer from "../DialogsItem/DialogsItemContainer";
-import { Route } from "react-router-dom";
+import MessageListContainer from "../MessageList/MessageListContainer";
+import AddresseeListContainer from "./../AddresseeList/AddresseeListContainer";
 
 const Dialogs = (props) => {
   return (
     <div className={"content__wrapper " + c.dialogs}>
-      <DialogsItemContainer />
+      <AddresseeListContainer />
       
       <div className={c.messages__inner}>
-        <MessageContainer />
+        <MessageListContainer />
         <TextCreator placeholderText="Enter your message.." getText={props.getText} setText={props.setText} addBlock={props.addBlock} userPhoto={props.userPhoto}/>
       </div>
     </div>
