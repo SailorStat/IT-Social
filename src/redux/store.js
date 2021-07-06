@@ -110,6 +110,12 @@ const store = {
 
       getPostValueText() {
         return this._postValueText
+      },
+
+      _currentUserPage: "17725",
+    
+      getCurrentUserPage() {
+        return this._currentUserPage
       }
     },
 
@@ -223,6 +229,7 @@ export const setCheckedDialogActionCreator = (event) => {
 }
 
 export const setDialogValueTextActionCreator = (event) => {
+  console.log(event)
   return {
     type: SET_DIALOG_VALUE_TEXT,
     value: event.target.value

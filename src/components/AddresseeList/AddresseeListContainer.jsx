@@ -8,9 +8,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setCheckedDialog: (event) => {
-      dispatch(setCheckedDialogActionCreator(event))
-    }
+    setCheckedDialog: (event) => dispatch(setCheckedDialogActionCreator(event))
   }
 }
 

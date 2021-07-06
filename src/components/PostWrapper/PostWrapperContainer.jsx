@@ -1,17 +1,23 @@
 import PostWrapper from "./PostWrapper";
-import StoreContext from "./../../StoreContext";
 import { addPostActionCreator, setPostValueTextActionCreator } from "../../redux/redux-store";
-import noAvatar from "./../../assets/img/no-avatar.png"
-import userPhoto from "./../../assets/img/userPhoto.jpg"
+import { connect } from "react-redux";
 
-const PostWrapperContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {store => (
-        <PostWrapper addBlock={() => store.dispatch(addPostActionCreator())} getText={store.getState().profilePage.getPostValueText()} setText={(event) => store.dispatch(setPostValueTextActionCreator(event))} userPhoto={userPhoto}/>
-      )}
-    </StoreContext.Consumer>
-  )
+const mapStateToProps = (state) => {
+  const currentUserPage = state.profilePage.getCurrentUserPage()
+  return {
+    userPhoto: state.profilePage.users[currentUserPage].avatar,
+    getText: state.profilePage.getPostValueText()
+  }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addBlock: () => dispatch(addPostActionCreator()),
+    setText: (event) => dispatch(setPostValueTextActionCreator(event))
+  }
+}
+
+
+const PostWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(PostWrapper)
 
 export default PostWrapperContainer

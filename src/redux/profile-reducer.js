@@ -4,6 +4,7 @@ import { dateCreator } from "../assets/scripts/dateCreator"
 
 const ADD_POST = "ADD-POST"
 const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
+const SET_CURRENT_PAGE = "SET-CURRENT-PAGE"
 
 const initialState = {
   users: {
@@ -99,14 +100,20 @@ const initialState = {
 
   getPostValueText() {
     return this._postValueText
+  },
+
+  _currentUserPage: "17725",
+
+  getCurrentUserPage() {
+    return this._currentUserPage
   }
 }
 
 
 const profileReducer = (state = initialState, action) => {
   switch(action.type) {
-    case ADD_POST:
-      const userPage = "17725"
+    case ADD_POST: {
+      const userPage = state.getCurrentUserPage()
       const newPost = {
         userId: userPage, // action.userId - профиль для публикации
         postId: state.posts[userPage][0].postId + 1,
@@ -128,12 +135,21 @@ const profileReducer = (state = initialState, action) => {
           [userPage]: [newPost, ...state.posts[userPage]]
         }
       }
+    }
 
-
-    case SET_POST_VALUE_TEXT:
-      state._postValueText = action.value || ""
-      return state
-
+    case SET_POST_VALUE_TEXT: { 
+      return {
+        ...state,
+        _postValueText: action.value || ""
+      }
+    }
+    
+    case SET_CURRENT_PAGE: {
+      return {
+        ...state,
+        _currentUserPage: action.value || ""
+      }
+    }
 
     default:
       return state

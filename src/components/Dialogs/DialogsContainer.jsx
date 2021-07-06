@@ -11,12 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setText: (event) => {
-      dispatch(setDialogValueTextActionCreator(event))
-    },
-    addBlock: () => {
-      dispatch(addMessageActionCreator())
-    }
+    setText: (event) => dispatch(setDialogValueTextActionCreator(event)),
+    addBlock: () => dispatch(addMessageActionCreator())
   }
 }
 
