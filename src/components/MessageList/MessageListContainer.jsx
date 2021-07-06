@@ -12,6 +12,6 @@ const mapDispatchToProps = (dispatch) => {
   return {}
 }
 
-const MessageListContainer = connect(mapStateToProps, null)(MessageList)
+const MessageListContainer = connect(mapStateToProps, mapDispatchToProps)(MessageList)
 
 export default MessageListContainer

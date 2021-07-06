@@ -1,10 +1,12 @@
 import c from"./Navigation.module.css"
-import NavigationItemContainer from "./../NavigationItem/NavigationItemContainer";
+import NavigationItem from "../NavigationItem/NavigationItem"
 
-const Navigation = () => {
+const Navigation = (props) => {
   return (
     <div className={c.navigation}>
-      <NavigationItemContainer />
+      {Object.keys(props.pages).map((el) => 
+        <NavigationItem key={"NavigationItem" + el} essence={el} link={props.pages[el]}/>
+      )}
     </div>
   )
 }
