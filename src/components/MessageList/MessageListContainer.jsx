@@ -4,7 +4,7 @@ import MessageList from "./MessageList";
 
 const mapStateToProps = (state) => {
   return {
-    messagesData: [...(state.dialogsPage.dialogs[state.dialogsPage.getCheckedDialog()]?.messagesData || [])]
+    messagesData: state.dialogsPage.dialogs[state.dialogsPage.getCheckedDialog()]?.messagesData || []
   }
 }
 

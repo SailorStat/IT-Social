@@ -107,19 +107,27 @@ const dialogsReducer = (state = initialState, action) => {
       if (!dialogValueText) return state
 
       const checkedDialog = state.getCheckedDialog()
-      const currentMessagesList = state.dialogs[checkedDialog].messagesData
+      const currentMessagesList = [...state.dialogs[checkedDialog].messagesData]
 
-      currentMessagesList.push({
+      const newMessagesList = [...currentMessagesList, {
         fullName: action.fullName,
         userPhoto: action.userPhoto,
         fromCurrentUser: true,
         date: dateCreator(),
         message: dialogValueText,
         messageId: (currentMessagesList[currentMessagesList.length - 1]?.messageId + 1) || 1
-      })
+      }]
 
-      state._dialogValueText = ""
-      return state
+      return {
+        ...state,
+        _dialogValueText: "",
+        dialogs: {
+          ...state.dialogs,
+          [checkedDialog]: {
+            messagesData: newMessagesList
+          }
+        },
+      }
 
 
     case SET_CHECKED_DIALOG:

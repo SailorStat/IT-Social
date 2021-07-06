@@ -203,8 +203,8 @@ const store = {
   }
 }
 
+
 export default store
-window.store = store
 
 
 export const addMessageActionCreator = () => {
@@ -218,7 +218,7 @@ export const addMessageActionCreator = () => {
 export const setCheckedDialogActionCreator = (event) => {
   return {
     type: SET_CHECKED_DIALOG,
-    userId: event.target.attributes.userId.value
+    userId: event.target.attributes.userid.value
   }
 }
 
