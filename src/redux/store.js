@@ -1,10 +1,21 @@
-// NOT USED
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
+// NOT USED THIS STORE!!!!
 
 import userPhoto from "../assets/img/userPhoto.jpg"
 import noAvatar from "../assets/img/no-avatar.png"
 import dialogsReducer from "./dialogs-reducer"
 import profileReducer from "./profile-reducer"
-import pagesReducer from "./pages-reduser"
+import pagesReducer from "./pages-reducer"
+import loginReducer from "./login-reducer"
 
 // Action types
 const ADD_MESSAGE = "ADD-MESSAGE"
@@ -12,7 +23,7 @@ const SET_CHECKED_DIALOG = "SET-CHECKED-DIALOG"
 const SET_DIALOG_VALUE_TEXT = "SET-DIALOG-VALUE-TEXT"
 const ADD_POST = "ADD-POST"
 const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
-
+const SET_LOGIN_USER = "SET-LOGIN-USER"
 
 const store = {
   _state: {
@@ -188,6 +199,14 @@ const store = {
       "Dialogs": "/dialogs",
       "News": "/news",
       "Settings": "/settings"
+    },
+
+    loginPage: {
+      _loginUser: "17725",
+    
+      getLoginUser() {
+        return this._loginUser
+      },
     }
   },
 
@@ -204,6 +223,7 @@ const store = {
   dispatch(action) {
     this._state.profilePage = profileReducer(this._state.profilePage, action)
     this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this._state.loginPage = loginReducer(this._state.loginPage, action)
     this._state.pages = pagesReducer(this._state.pages, action)
     this._callSubscriber()
   }
@@ -247,5 +267,12 @@ export const setPostValueTextActionCreator = (event) => {
   return {
     type: SET_POST_VALUE_TEXT,
     value: event.target.value
+  }
+}
+
+export const setLoginUserActionCreator = (event) => {
+  return {
+    type: SET_LOGIN_USER,
+    userId: event.target.userid
   }
 }

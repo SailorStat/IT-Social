@@ -97,7 +97,13 @@ const initialState = {
 
   getDialogValueText() {
     return this._dialogValueText
-  }
+  },
+
+  _loginUser: "17725",
+
+  getLoginUser() {
+    return this._loginUser
+  },
 }
 
 const dialogsReducer = (state = initialState, action) => {

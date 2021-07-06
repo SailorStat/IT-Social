@@ -1,17 +1,20 @@
-import noAvatar from "./../../assets/img/no-avatar.png"
-import userPhoto from "./../../assets/img/userPhoto.jpg"
 import ProfileInfo from "./ProfileInfo";
-import StoreContext from "./../../StoreContext";
+import { connect } from "react-redux";
 
-
-const ProfileInfoContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {store => (
-        <ProfileInfo fullName={store.getState().profilePage.users[17725].profileStats.fullName} status={store.getState().profilePage.users[17725].status} avatar={store.getState().profilePage.users[17725].avatar || noAvatar}/>
-      )}
-    </StoreContext.Consumer>
-  )
+const mapStateToProps = (state) => {
+  const currentUserPage = state.loginPage.getLoginUser()
+  return {
+    fullName: state.profilePage.users[currentUserPage].profileStats.fullName,
+    status: state.profilePage.users[currentUserPage].status,
+    avatar: state.profilePage.users[currentUserPage].avatar
+  }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+const ProfileInfoContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileInfo)
 
 export default ProfileInfoContainer
