@@ -28,7 +28,7 @@ const Post = (props) => {
           </span>
           <span className={c.count}>{props.likeCount}</span>
         </span>
-        <span className={c.repost + " " + (props.currentUserReposted ? c.active : "")}>
+        <span className={c.repost + " " + props.currentUserReposted}>
           <span className={c.symbol}>
             <FontAwesomeIcon icon={faShareSquare} />
           </span>

@@ -1,6 +1,6 @@
 import c from "./PostWrapper.module.css"
 import TextCreator from '../TextCreator/TextCreator';
-import PostContainer from "../Post/PostContainer";
+import PostListContainer from "../PostList/PostListContainer";
 
 const PostWrapper = (props) => {
   return ( 
@@ -9,7 +9,7 @@ const PostWrapper = (props) => {
         <div className={c.mypost__title}>My posts</div>
         <TextCreator placeholderText="Enter your text.." addBlock={props.addBlock} getText={props.getText} setText={props.setText} userPhoto={props.userPhoto}/>
       </div>
-      <PostContainer />
+      <PostListContainer />
     </div>
   )
 }

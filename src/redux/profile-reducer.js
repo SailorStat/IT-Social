@@ -106,22 +106,28 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_POST:
-    
-      state.posts["17725"].unshift({
-        userId: "17725", // action.userId - профиль для публикации
-        postId: state.posts["17725"][0].postId + 1,
-        authorFullName: state.users["17725"].profileStats.fullName,
+      const userPage = "17725"
+      const newPost = {
+        userId: userPage, // action.userId - профиль для публикации
+        postId: state.posts[userPage][0].postId + 1,
+        authorFullName: state.users[userPage].profileStats.fullName,
         postDate: dateCreator("d t"),
         postText: state.getPostValueText() || "Автор хотел сказать важную мысль, но его молчание оказалось многословнее всего",
         likeCount: 0,
         currentUserLiked: false,
         repostCount: 0,
         currentUserReposted: false,
-        avatar: state.users["17725"].avatar || noAvatar
-      })
+        avatar: state.users[userPage].avatar || noAvatar
+      }
   
-      state._postValueText = ""
-      return state
+      return {
+        ...state,
+        _postValueText: "",
+        posts: {
+          ...state.posts,
+          [userPage]: [newPost, ...state.posts[userPage]]
+        }
+      }
 
 
     case SET_POST_VALUE_TEXT:
