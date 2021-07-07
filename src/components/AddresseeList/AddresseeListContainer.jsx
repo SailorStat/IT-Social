@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import AddresseeList from "./AddresseeList";
-import { setCheckedDialogActionCreator } from "./../../redux/store";
+import { setCheckedDialogActionCreator } from "../../redux/store";
 
 const mapStateToProps = (state) => {
   return {users: state.profilePage.users}

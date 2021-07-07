@@ -1,6 +1,6 @@
 import c from"./Profile.module.css"
 import ProfileInfoContainer from "../ProfileInfo/ProfileInfoContainer";
-import PostWrapperContainer from "./../PostWrapper/PostWrapperContainer";
+import PostWrapperContainer from "../PostWrapper/PostWrapperContainer";
 
 const Profile = () => {
   return (

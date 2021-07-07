@@ -2,7 +2,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 15px;
-  height: 170px;
+  height: max-content;
   padding: 5px 10px;
   color: #842691;
 

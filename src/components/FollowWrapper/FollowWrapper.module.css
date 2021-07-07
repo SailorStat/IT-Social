@@ -1,0 +1,4 @@
+.follow__wrapper {
+  display: grid;
+  grid-template-rows: repeat(1fr);
+}

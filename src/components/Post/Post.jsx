@@ -1,15 +1,14 @@
 import c from "./Post.module.css"
-// import Placeholder from "./../../assets/img/placeholder.jpg"
+// import Placeholder from "../../assets/img/placeholder.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShareSquare } from '@fortawesome/free-regular-svg-icons';
+import Avatar from "./../Avatar/Avatar";
 
 const Post = (props) => {
   return (
     <div className={"content__wrapper " + c.post}>
       <div className={c.post__header}>
-        <div className={c.user__smallphoto}>
-          <img src={props.avatar} alt="" />
-        </div>
+        <Avatar avatar={props.avatar}/>
         <div className={c.post__info}>
           <div className={c.user__name}>{props.authorFullName}</div>
           <div className={c.post__date}>{props.postDate}</div>

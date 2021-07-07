@@ -1,6 +1,6 @@
 import c from "./Body.module.css"
-import Base from './../Base/Base';
-import NavigationContainer from "./../Navigation/NavigationContainer";
+import Base from '../Base/Base';
+import NavigationContainer from "../Navigation/NavigationContainer";
 
 const Body = () => {
   return (

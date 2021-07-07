@@ -10,7 +10,7 @@ const initialState = {
   dialogs: {
     "1121": {
       messagesData: [{
-        fullName: "Петя",
+        fullName: "Sailor Stat",
         userPhoto: userPhoto,
         fromCurrentUser: true,
         date: "11:30 12.03.2021",
@@ -24,7 +24,7 @@ const initialState = {
         message: `Привет) Рад тебя видеть в сети. У меня всё отлично, как твои дела?)`,
         messageId: 547
       }, {
-        fullName: "Петя",
+        fullName: "Sailor Stat",
         userPhoto: userPhoto,
         fromCurrentUser: true,
         date: "11:32 12.03.2021",
@@ -34,7 +34,7 @@ const initialState = {
     },
     "1123": {
       messagesData: [{
-        fullName: "Ира",
+        fullName: "Sailor Stat",
         userPhoto: userPhoto,
         fromCurrentUser: true,
         date: "11:30 12.03.2021",
@@ -48,7 +48,7 @@ const initialState = {
         message: `Привет, даже не знала, куда себя деть)`,
         messageId: 547
       }, {
-        fullName: "Ира",
+        fullName: "Sailor Stat",
         userPhoto: userPhoto,
         fromCurrentUser: true,
         date: "11:32 12.03.2021",
@@ -62,13 +62,13 @@ const initialState = {
         userPhoto: noAvatar,
         fromCurrentUser: false,
         date: "15:28 14.04.2021",
-        message: "Поставьсуп в холодильник, когда остынет",
+        message: "Поставь суп в холодильник, когда остынет",
         messageId: 546
       }]
     },
     "1125": {
       messagesData: [{
-        fullName: "Ира",
+        fullName: "Sailor Stat",
         userPhoto: userPhoto,
         fromCurrentUser: true,
         date: "22:30 25.02.2021",
@@ -78,7 +78,7 @@ const initialState = {
     },
     "17725": {
       messagesData: [{
-        fullName: "Ира",
+        fullName: "Sailor Stat",
         userPhoto: userPhoto,
         fromCurrentUser: true,
         date: "09:30 23.02.2021",

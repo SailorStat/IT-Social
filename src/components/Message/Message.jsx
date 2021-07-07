@@ -1,4 +1,5 @@
 import c from "./Message.module.css"
+import Avatar from "./../Avatar/Avatar";
 
 const Message = (props) => {
   if (props.fromCurrentUser) {
@@ -12,7 +13,7 @@ const Message = (props) => {
           <div className={c.message__text + " " + c.outgoing}>{props.message}</div>
         </div>
         <div className={c.userPhoto + " " + c.outgoing}>
-          <img src={props.userPhoto} alt="" />
+          <Avatar avatar={props.userPhoto}/>
         </div>
       </div>
     )
@@ -21,7 +22,7 @@ const Message = (props) => {
   return (
     <div className={c.message}>
       <div className={c.userPhoto}>
-        <img src={props.userPhoto} alt="" />
+        <Avatar avatar={props.userPhoto}/>
       </div>
       <div className={c.message__data}>
         <div className={c.message__author}>{props.fullName}</div>

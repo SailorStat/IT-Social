@@ -1,7 +1,7 @@
 import c from "./Dialogs.module.css"
 import TextCreator from '../TextCreator/TextCreator';
 import MessageListContainer from "../MessageList/MessageListContainer";
-import AddresseeListContainer from "./../AddresseeList/AddresseeListContainer";
+import AddresseeListContainer from "../AddresseeList/AddresseeListContainer";
 
 const Dialogs = (props) => {
   return (

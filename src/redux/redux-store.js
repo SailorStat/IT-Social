@@ -1,5 +1,4 @@
 import { combineReducers, createStore } from "redux";
-import userPhoto from "../assets/img/userPhoto.jpg";
 import noAvatar from "../assets/img/no-avatar.png"
 import dialogsReducer from "./dialogs-reducer";
 import pagesReducer from "./pages-reducer";

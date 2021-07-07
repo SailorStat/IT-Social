@@ -1,6 +1,7 @@
 const initialState = {
   "Profile": "/",
   "Dialogs": "/dialogs",
+  "Follows": "/follows",
   "News": "/news",
   "Settings": "/settings"
 }

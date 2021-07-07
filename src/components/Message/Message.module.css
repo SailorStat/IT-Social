@@ -10,15 +10,11 @@
 }
 
 .userPhoto {
+  margin-top: 3px;
   display: inline-block;
   width: 50px;
   height: 50px;
   vertical-align: top;
-  
-  border: 2px #842691 solid;
-  background-color: rgb(196, 157, 190);
-  border-radius: 5px;
-  overflow: hidden;
 }
 
 .userPhoto img {

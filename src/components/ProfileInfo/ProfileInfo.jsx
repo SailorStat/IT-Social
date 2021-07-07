@@ -1,5 +1,5 @@
 import c from "./ProfileInfo.module.css"
-import ProfileStatListContainer from "./../ProfileStatList/ProfileStatListContainer";
+import ProfileStatListContainer from "../ProfileStatList/ProfileStatListContainer";
 
 
 const ProfileInfo = (props) => {
