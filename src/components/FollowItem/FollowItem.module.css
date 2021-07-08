@@ -2,4 +2,78 @@
   display: grid;
   grid-template-columns: 50px 1fr;
   grid-gap: 15px;
+  padding: 10px;
+  width: 100%;
+  height: min-content;
+
+  background-color: #f7c9ef;
+  border-radius: 6px;
+  border: 2px #842691 solid;
+}
+
+.user__info {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  grid-template-areas: "a b" "c c";
+}
+
+.user__condition {
+  grid-area: "a";
+}
+
+.user__name {
+  font-weight: 600;
+}
+
+.user__location {
+  padding-left: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.wanted {
+  display: none;
+  margin-left: 15px;
+  font-size: 15px;
+  color: green;
+}
+
+.wanted.displayed {
+  display: inline;
+}
+
+
+.follow__button {
+  grid-area: "b";
+  width: 100%;
+  height: 30px;
+
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(247, 201, 239);
+  background-color: rgb(132, 38, 145);
+  border-radius: 5px;
+  border: 2px #842691 solid;
+  cursor: pointer;
+}
+
+.follow__button:hover {
+  background-color: #be78c0;
+}
+
+.follow__button.active {
+  color: #842691;
+  background-color: #f7c9ef;
+}
+
+.follow__button.active:hover {
+  background-color: #d78bdb;
+}
+
+.user__status {
+  grid-area: "c";
+
+  font-style: italic;
 }

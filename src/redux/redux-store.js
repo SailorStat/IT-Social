@@ -4,11 +4,13 @@ import dialogsReducer from "./dialogs-reducer";
 import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
+import usersReducer from "./users-reducer";
 
 const reducers = combineReducers({
   dialogsPage: dialogsReducer,
   profilePage: profileReducer,
   loginPage: loginReducer,
+  usersPage: usersReducer,
   pages: pagesReducer,
 })
 
@@ -24,6 +26,8 @@ const SET_DIALOG_VALUE_TEXT = "SET-DIALOG-VALUE-TEXT"
 const ADD_POST = "ADD-POST"
 const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
+const SET_FOLLOW = "SET-FOLLOW"
+const SET_UNFOLLOW = "SET-UNFOLLOW"
 
 export const addMessageActionCreator = () => {
   const users = store.getState().profilePage.users
@@ -67,5 +71,19 @@ export const setLoginUserActionCreator = (event) => {
   return {
     type: SET_LOGIN_USER,
     userId: event.target.userid
+  }
+}
+
+export const setUnfollowActionCreator = (userId) => {
+  return {
+    type: SET_UNFOLLOW,
+    userId
+  }
+}
+
+export const setFollowActionCreator = (userId) => {
+  return {
+    type: SET_FOLLOW,
+    userId
   }
 }

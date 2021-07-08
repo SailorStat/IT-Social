@@ -3,10 +3,20 @@ import Avatar from "./../Avatar/Avatar";
 
 const FollowItem = (props) => {
   return (
-   <div className={c.follow__item}>
-     <Avatar avatar={props.avatar}/>
-     <div>user info</div>
-   </div> 
+    <div className={c.follow__item}>
+      <Avatar avatar={props.avatar} />
+      <div className={c.follow_info}>
+        <div className={c.user__info}>
+          <div className={c.user__condition}>
+            <span className={c.user__name}>{props.fullName}</span>
+            <span className={c.user__location}>{props.address}</span>
+            <span className={c.wanted + " " + props.styleCurrentUser}>This is how other users see you</span>
+          </div>
+          <button className={c.follow__button + " " + props.buttonStyle} userid={props.userId}>{props.buttonTitle}</button>
+          <div className={c.user__status}>{props.status}</div>
+        </div>
+      </div>
+    </div>
   )
 }
 
