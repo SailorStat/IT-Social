@@ -12,8 +12,14 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFollow: (event) => dispatch(setFollowActionCreator(event)),
-    setUnfollow: (event) => dispatch(setUnfollowActionCreator(event))
+    toggleFollow: (event) => {
+      const attributes = event.target.attributes
+      const isFollowed = attributes.followed.value === "true"
+      const userId = attributes.userid.value
+
+      if (isFollowed) return dispatch(setUnfollowActionCreator(userId))
+      return dispatch(setFollowActionCreator(userId))
+    }
   }
 }
 

@@ -28,6 +28,8 @@ const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
 const SET_FOLLOW = "SET-FOLLOW"
 const SET_UNFOLLOW = "SET-UNFOLLOW"
+const SET_TOTAL_COUNT = "SET-TOTAL-COUNT"
+const SET_USERS = "SET-USERS"
 
 export const addMessageActionCreator = () => {
   const users = store.getState().profilePage.users
@@ -85,5 +87,19 @@ export const setFollowActionCreator = (userId) => {
   return {
     type: SET_FOLLOW,
     userId
+  }
+}
+
+export const setTotalCountActionCreator = (totalCount) => {
+  return {
+    type: SET_TOTAL_COUNT,
+    totalCount
+  }
+}
+
+export const setUsersActionCreator = (users) => {
+  return {
+    type: SET_USERS,
+    users
   }
 }

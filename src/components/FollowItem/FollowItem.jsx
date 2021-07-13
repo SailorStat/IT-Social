@@ -9,10 +9,10 @@ const FollowItem = (props) => {
         <div className={c.user__info}>
           <div className={c.user__condition}>
             <span className={c.user__name}>{props.fullName}</span>
-            <span className={c.user__location}>{props.address}</span>
+            <span className={c.user__location}>{props.location}</span>
             <span className={c.wanted + " " + props.styleCurrentUser}>This is how other users see you</span>
           </div>
-          <button className={c.follow__button + " " + props.buttonStyle} userid={props.userId}>{props.buttonTitle}</button>
+          <button className={c.follow__button + " " + props.buttonStyle} onClick={props.toggleFollow} userid={props.userId} followed={props.followed.toString()}>{props.buttonTitle}</button>
           <div className={c.user__status}>{props.status}</div>
         </div>
       </div>

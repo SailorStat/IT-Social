@@ -8,10 +8,11 @@ const FollowList = (props) => {
                                                                fullName={props.users[el].fullName}
                                                                userId={el}
                                                                avatar={props.users[el].avatar}
-                                                               address={props.users[el].address}
+                                                               location={props.users[el].location}
                                                                status={props.users[el].status}
                                                                followed={props.users[el].followed}
                                                                loginUser={props.loginUser}
+                                                               toggleFollow={props.toggleFollow}
                                             />)}
     </div>
   )
