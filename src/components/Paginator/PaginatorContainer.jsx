@@ -1,35 +1,26 @@
-import React from "react";
-import * as axios from "axios"
 import { connect } from "react-redux";
-import { setTotalCountActionCreator } from "../../redux/redux-store";
-import { setUsersActionCreator } from "./../../redux/redux-store";
+import Paginator from "./Paginator";
+import { createUsersActionCreator, setTotalCountActionCreator, updateUsersActionCreator, upCurrentPageActionCreator  } from "../../redux/redux-store";
 
-class Paginator extends React.Component {
-  componentDidMount() {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users")
-      .then(response => {
-        console.log(response)
-        this.props.setResponse(response)
-      })
-  }
 
-  render() {
-    return <div>Я тут {this.props.totalCount}</div>
-  }
-}
 
 const mapStateToProps = (state) => {
+  const {totalCount, usersOnPage, currentPage} = state.usersPage.pagination
   return {
-    totalCount: state.usersPage.pagination.totalCount
+    totalCount,
+    usersOnPage,
+    currentPage
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setResponse: (response) => {
+    responseSet: (response) => {
       dispatch(setTotalCountActionCreator(response.data.totalCount))
-      dispatch(setUsersActionCreator(response.data.items))
-    }
+      dispatch(createUsersActionCreator(response.data.items))
+    },
+    responseUpdate: (response) => dispatch(updateUsersActionCreator(response.data.items)),
+    upCurrentPage: () => dispatch(upCurrentPageActionCreator())
   }
 }
 

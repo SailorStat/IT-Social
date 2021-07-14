@@ -29,7 +29,10 @@ const SET_LOGIN_USER = "SET-LOGIN-USER"
 const SET_FOLLOW = "SET-FOLLOW"
 const SET_UNFOLLOW = "SET-UNFOLLOW"
 const SET_TOTAL_COUNT = "SET-TOTAL-COUNT"
-const SET_USERS = "SET-USERS"
+const CREATE_USERS = "CREATE-USERS"
+const UPDATE_USERS = "UPDATE-USERS"
+const UP_CURRENT_PAGE = "UP-CURRENT-PAGE"
+
 
 export const addMessageActionCreator = () => {
   const users = store.getState().profilePage.users
@@ -97,9 +100,22 @@ export const setTotalCountActionCreator = (totalCount) => {
   }
 }
 
-export const setUsersActionCreator = (users) => {
+export const createUsersActionCreator = (users) => {
   return {
-    type: SET_USERS,
+    type: CREATE_USERS,
     users
+  }
+}
+
+export const updateUsersActionCreator = (users) => {
+  return {
+    type: UPDATE_USERS,
+    users
+  }
+}
+
+export const upCurrentPageActionCreator = () => {
+  return {
+    type: UP_CURRENT_PAGE
   }
 }
