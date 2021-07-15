@@ -32,6 +32,8 @@ const SET_TOTAL_COUNT = "SET-TOTAL-COUNT"
 const CREATE_USERS = "CREATE-USERS"
 const UPDATE_USERS = "UPDATE-USERS"
 const UP_CURRENT_PAGE = "UP-CURRENT-PAGE"
+const SET_FETCHING_TRUE = "SET-FETCHING-TRUE"
+const SET_FETCHING_FALSE = "SET-FETCHING-FALSE"
 
 
 export const addMessageActionCreator = () => {
@@ -117,5 +119,17 @@ export const updateUsersActionCreator = (users) => {
 export const upCurrentPageActionCreator = () => {
   return {
     type: UP_CURRENT_PAGE
+  }
+}
+
+export const setFetchingTrueActionCreator = () => {
+  return {
+    type: SET_FETCHING_TRUE
+  }
+}
+
+export const setFetchingFalseActionCreator = () => {
+  return {
+    type: SET_FETCHING_FALSE
   }
 }

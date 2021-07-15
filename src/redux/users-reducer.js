@@ -8,6 +8,8 @@ const SET_TOTAL_COUNT = "SET-TOTAL-COUNT"
 const CREATE_USERS = "CREATE-USERS"
 const UPDATE_USERS = "UPDATE-USERS"
 const UP_CURRENT_PAGE = "UP-CURRENT-PAGE"
+const SET_FETCHING_TRUE = "SET-FETCHING-TRUE"
+const SET_FETCHING_FALSE = "SET-FETCHING-FALSE"
 
 
 const initialState = {
@@ -56,7 +58,8 @@ const initialState = {
     totalCount: 10,
     usersOnPage: 5,
     currentPage: 1
-  }
+  },
+  isFetching: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -103,8 +106,9 @@ const usersReducer = (state = initialState, action) => {
     }
 
     case UPDATE_USERS: {
-      const newUsersArr = [
-        ...state.users,
+      const actionUsersId = action.users.map(el => el.id)
+      const users = [
+        ...state.users.filter(user => !actionUsersId.includes(user.id)),
         ...action.users.map(el => ({
           followed: el.followed,
           id: el.id,
@@ -113,8 +117,8 @@ const usersReducer = (state = initialState, action) => {
           avatar: el.photos.small || noAvatar
         }))
       ]
-      const stringUsers = newUsersArr.map(el => JSON.stringify(el))
-      const users = Array.from(new Set(stringUsers)).map(el => JSON.parse(el))
+      // const stringUsers = newUsersArr.map(el => JSON.stringify(el))
+      // const users = Array.from(new Set(stringUsers)).map(el => JSON.parse(el))
 
       return {
         ...state,
@@ -131,6 +135,21 @@ const usersReducer = (state = initialState, action) => {
         }
       }
     }
+
+    case SET_FETCHING_TRUE: {
+      return {
+        ...state,
+        isFetching: true
+      }
+    }
+    
+    case SET_FETCHING_FALSE: {
+      return {
+        ...state,
+        isFetching: false
+      }
+    }
+
     default: return state
   }
 }

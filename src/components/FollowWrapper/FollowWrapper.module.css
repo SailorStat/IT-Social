@@ -4,3 +4,25 @@
   grid-gap: 15px;
   height: calc(100vh - 105px);
 }
+
+.follow__wrapper.loading {
+  grid-template-rows: 40px 1fr 50px;
+  height: calc(100vh - 105px);
+}
+
+
+.follow__preloader {
+  display: none;
+  height: 40px;
+  text-align: center;
+}
+
+.follow__preloader.loading {
+  display: block;
+}
+
+.follow__preloader img {
+  margin-top: -5px;
+  width: 60px;
+  height: 60px;
+}

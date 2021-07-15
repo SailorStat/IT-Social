@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import Paginator from "./Paginator";
-import { createUsersActionCreator, setTotalCountActionCreator, updateUsersActionCreator, upCurrentPageActionCreator  } from "../../redux/redux-store";
-
+import { createUsersActionCreator, setTotalCountActionCreator, updateUsersActionCreator, upCurrentPageActionCreator, setFetchingTrueActionCreator, setFetchingFalseActionCreator } from "../../redux/redux-store";
 
 
 const mapStateToProps = (state) => {
@@ -20,7 +19,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(createUsersActionCreator(response.data.items))
     },
     responseUpdate: (response) => dispatch(updateUsersActionCreator(response.data.items)),
-    upCurrentPage: () => dispatch(upCurrentPageActionCreator())
+    upCurrentPage: () => dispatch(upCurrentPageActionCreator()),
+    setFetchingTrue: () => dispatch(setFetchingTrueActionCreator()),
+    setFetchingFalse: () => dispatch(setFetchingFalseActionCreator())
   }
 }
 
