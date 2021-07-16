@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { setFollowActionCreator, setUnfollowActionCreator } from "../../redux/redux-store";
+import { setFollow, setUnfollow } from "../../redux/redux-store";
 import FollowList from "./FollowList";
 
 
@@ -17,8 +17,8 @@ const mapDispatchToProps = (dispatch) => {
       const isFollowed = attributes.followed.value === "true"
       const userId = attributes.userid.value
 
-      if (isFollowed) return dispatch(setUnfollowActionCreator(userId))
-      return dispatch(setFollowActionCreator(userId))
+      if (isFollowed) return dispatch(setUnfollow(userId))
+      return dispatch(setFollow(userId))
     }
   }
 }

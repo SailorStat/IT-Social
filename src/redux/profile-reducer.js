@@ -106,7 +106,9 @@ const initialState = {
 
   getCurrentUserPage() {
     return this._currentUserPage
-  }
+  },
+
+  currentUserPage: 17725
 }
 
 

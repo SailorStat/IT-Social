@@ -3,15 +3,11 @@ import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.profilePage.posts["17725"] || []
+    posts: state.profilePage.posts[state.profilePage.currentUserPage] || []
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    
-  }
-}
+const mapDispatchToProps = {}
 
 const PostListContainer = connect(mapStateToProps, mapDispatchToProps)(PostList)
 

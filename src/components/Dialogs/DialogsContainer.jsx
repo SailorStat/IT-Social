@@ -1,20 +1,15 @@
 import Dialogs from "./Dialogs";
-import { addMessageActionCreator, setDialogValueTextActionCreator } from "../../redux/redux-store";
+import { addMessage, setDialogValueText } from "../../redux/redux-store";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
   return {
     getText: state.dialogsPage.getDialogValueText(),
-    userPhoto: state.dialogsPage.dialogs["17725"].messagesData[0].userPhoto
+    userPhoto: state.loginPage.currentUser.avatar
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setText: (event) => dispatch(setDialogValueTextActionCreator(event)),
-    addBlock: () => dispatch(addMessageActionCreator())
-  }
-}
+const mapDispatchToProps = { setDialogValueText, addMessage }
 
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 

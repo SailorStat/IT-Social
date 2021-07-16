@@ -1,16 +1,12 @@
 import { connect } from "react-redux";
 import AddresseeList from "./AddresseeList";
-import { setCheckedDialogActionCreator } from "../../redux/store";
+import { setCheckedDialog } from "../../redux/redux-store";
 
 const mapStateToProps = (state) => {
   return {users: state.profilePage.users}
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setCheckedDialog: (userId) => dispatch(setCheckedDialogActionCreator(userId))
-  }
-}
+const mapDispatchToProps = { setCheckedDialog }
 
 const AddresseeListContainer = connect(mapStateToProps, mapDispatchToProps)(AddresseeList)
 

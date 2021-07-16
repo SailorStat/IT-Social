@@ -8,9 +8,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
-}
+const mapDispatchToProps = {}
 
 const FollowWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(FollowWrapper)
 

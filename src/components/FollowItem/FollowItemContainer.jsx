@@ -1,6 +1,6 @@
 import FollowItem from "./FollowItem";
 import c from "./FollowItem.module.css"
-// current user sylle
+// current user stylle
 // follow style
 
 const FollowItemContainer = (props) => {

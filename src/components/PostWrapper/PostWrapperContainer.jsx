@@ -1,5 +1,5 @@
 import PostWrapper from "./PostWrapper";
-import { addPostActionCreator, setPostValueTextActionCreator } from "../../redux/redux-store";
+import { addPost, setPostValueText } from "../../redux/redux-store";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
@@ -10,13 +10,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addBlock: () => dispatch(addPostActionCreator()),
-    setText: (event) => dispatch(setPostValueTextActionCreator(event))
-  }
-}
-
+const mapDispatchToProps = { addPost, setPostValueText }
 
 const PostWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(PostWrapper)
 

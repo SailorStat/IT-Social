@@ -9,11 +9,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    
-  }
-}
+const mapDispatchToProps = {}
 
 const ProfileStatListContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileStatList)
 

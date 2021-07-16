@@ -233,7 +233,7 @@ const store = {
 export default store
 
 
-export const addMessageActionCreator = () => {
+export const addMessage = () => {
   return {
     type: ADD_MESSAGE,
     fullName: store.getState().profilePage.users[store.getState().dialogsPage.getCheckedDialog()].profileStats.fullName,
@@ -241,35 +241,35 @@ export const addMessageActionCreator = () => {
   }
 }
 
-export const setCheckedDialogActionCreator = (event) => {
+export const setCheckedDialog = (event) => {
   return {
     type: SET_CHECKED_DIALOG,
     userId: event.target.attributes.userid.value
   }
 }
 
-export const setDialogValueTextActionCreator = (event) => {
+export const setDialogValueText = (event) => {
   return {
     type: SET_DIALOG_VALUE_TEXT,
     value: event.target.value
   }
 }
 
-export const addPostActionCreator = (userId) => {
+export const addPost = (userId) => {
   return {
     type: ADD_POST,
     userId
   }
 }
 
-export const setPostValueTextActionCreator = (event) => {
+export const setPostValueText = (event) => {
   return {
     type: SET_POST_VALUE_TEXT,
     value: event.target.value
   }
 }
 
-export const setLoginUserActionCreator = (event) => {
+export const setLoginUser = (event) => {
   return {
     type: SET_LOGIN_USER,
     userId: event.target.userid

@@ -28,7 +28,6 @@ const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
 const SET_FOLLOW = "SET-FOLLOW"
 const SET_UNFOLLOW = "SET-UNFOLLOW"
-const SET_TOTAL_COUNT = "SET-TOTAL-COUNT"
 const CREATE_USERS = "CREATE-USERS"
 const UPDATE_USERS = "UPDATE-USERS"
 const UP_CURRENT_PAGE = "UP-CURRENT-PAGE"
@@ -36,7 +35,7 @@ const SET_FETCHING_TRUE = "SET-FETCHING-TRUE"
 const SET_FETCHING_FALSE = "SET-FETCHING-FALSE"
 
 
-export const addMessageActionCreator = () => {
+export const addMessage = () => {
   const users = store.getState().profilePage.users
   const loginUser = store.getState().loginPage.getLoginUser()
   return {
@@ -46,89 +45,84 @@ export const addMessageActionCreator = () => {
   }
 }
 
-export const setCheckedDialogActionCreator = (userId) => {
+export const setCheckedDialog = (event) => {
   return {
     type: SET_CHECKED_DIALOG,
-    userId
+    userId: event.target.attributes.userId.value
   }
 }
 
-export const setDialogValueTextActionCreator = (event) => {
+export const setDialogValueText = (event) => {
   return {
     type: SET_DIALOG_VALUE_TEXT,
     value: event.target.value
   }
 }
 
-export const addPostActionCreator = (userId) => {
+export const addPost = (userId) => {
   return {
     type: ADD_POST,
     userId
   }
 }
 
-export const setPostValueTextActionCreator = (event) => {
+export const setPostValueText = (event) => {
   return {
     type: SET_POST_VALUE_TEXT,
     value: event.target.value
   }
 }
 
-export const setLoginUserActionCreator = (event) => {
+export const setLoginUser = (event) => {
   return {
     type: SET_LOGIN_USER,
     userId: event.target.userid
   }
 }
 
-export const setUnfollowActionCreator = (userId) => {
+export const setUnfollow = (userId) => {
   return {
     type: SET_UNFOLLOW,
     userId
   }
 }
 
-export const setFollowActionCreator = (userId) => {
+export const setFollow = (userId) => {
   return {
     type: SET_FOLLOW,
     userId
   }
 }
 
-export const setTotalCountActionCreator = (totalCount) => {
-  return {
-    type: SET_TOTAL_COUNT,
-    totalCount
-  }
-}
-
-export const createUsersActionCreator = (users) => {
+export const createUsers = (response) => {
   return {
     type: CREATE_USERS,
-    users
+    users: response.data.items,
+    totalCount: response.data.totalCount
   }
 }
 
-export const updateUsersActionCreator = (users) => {
+export const updateUsers = (response) => {
   return {
     type: UPDATE_USERS,
-    users
+    users: response.data.items,
+    totalCount: response.data.totalCount
   }
 }
 
-export const upCurrentPageActionCreator = () => {
+export const upCurrentPage = () => {
   return {
     type: UP_CURRENT_PAGE
   }
 }
 
-export const setFetchingTrueActionCreator = () => {
+export const setFetchingTrue = () => {
   return {
     type: SET_FETCHING_TRUE
   }
 }
 
-export const setFetchingFalseActionCreator = () => {
+export const setFetchingFalse = () => {
   return {
     type: SET_FETCHING_FALSE
   }

@@ -10,7 +10,7 @@ const Dialogs = (props) => {
       
       <div className={c.messages__inner}>
         <MessageListContainer />
-        <TextCreator placeholderText="Enter your message.." getText={props.getText} setText={props.setText} addBlock={props.addBlock} userPhoto={props.userPhoto}/>
+        <TextCreator placeholderText="Enter your message.." getText={props.getText} setText={props.setDialogValueText} addBlock={props.addMessage} userPhoto={props.userPhoto}/>
       </div>
     </div>
   )

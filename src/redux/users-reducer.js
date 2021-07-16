@@ -4,7 +4,6 @@ import noAvatar from "../assets/img/no-avatar.png"
 
 const SET_FOLLOW = "SET-FOLLOW"
 const SET_UNFOLLOW = "SET-UNFOLLOW"
-const SET_TOTAL_COUNT = "SET-TOTAL-COUNT"
 const CREATE_USERS = "CREATE-USERS"
 const UPDATE_USERS = "UPDATE-USERS"
 const UP_CURRENT_PAGE = "UP-CURRENT-PAGE"
@@ -82,19 +81,13 @@ const usersReducer = (state = initialState, action) => {
       }
     }
 
-    case SET_TOTAL_COUNT: {
+    case CREATE_USERS: {
       return {
         ...state,
         pagination: {
           ...state.pagination,
           totalCount: action.totalCount
-        }
-      }
-    }
-
-    case CREATE_USERS: {
-      return {
-        ...state,
+        },
         users: action.users.map(el => ({
           followed: el.followed,
           id: el.id,
@@ -122,6 +115,10 @@ const usersReducer = (state = initialState, action) => {
 
       return {
         ...state,
+        pagination: {
+          ...state.pagination,
+          totalCount: action.totalCount
+        },
         users
       }
     }
