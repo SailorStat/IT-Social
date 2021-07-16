@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 const Avatar = (props) => {
   return (
-    <NavLink to={"/profile/" + props.userid} onClick={props.setCurrentUserPage}> 
+    <NavLink to={"/profile/" + props.userid} > 
       <div className={c.avatar}>
-        <img src={props.avatar} alt="" userid={props.userid}/>
+        <img src={props.avatar} alt="" userid={props.userid + ""} onClick={props.setCurrentUserPage}/>
       </div>
     </NavLink>
   )

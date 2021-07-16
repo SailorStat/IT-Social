@@ -3,14 +3,13 @@ import Avatar from "./../Avatar/Avatar";
 import { NavLink } from "react-router-dom";
 
 const FollowItem = (props) => {
-  
   return (
     <div className={c.follow__item}>
       <Avatar avatar={props.avatar} userid={props.userId} setCurrentUserPage={props.setCurrentUserPage}/>
       <div className={c.follow_info}>
         <div className={c.user__info}>
           <div className={c.user__condition}>
-            <NavLink to={"/profile/" + props.loginUser} onClick={props.setCurrentUserPage} userid={props.loginUser} className={c.user__name}>{props.fullName}</NavLink>
+            <NavLink to={"/profile/" + props.userId} onClick={props.setCurrentUserPage} userid={props.userId} className={c.user__name}>{props.fullName}</NavLink>
             <span className={c.user__location}>{props.location}</span>
             <span className={c.wanted + " " + props.styleCurrentUser}>This is how other users see you</span>
           </div>

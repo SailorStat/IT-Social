@@ -4,7 +4,7 @@ import ProfileStatList from "./ProfileStatList";
 const mapStateToProps = (state) => {
   const currentUserPage = state.profilePage.currentUserPage
   return {
-    profileStats: state.profilePage.users[currentUserPage].profileStats,
+    profileStats: state.profilePage.users[currentUserPage],
     userStats: state.profilePage.userStats
   }
 }

@@ -6,7 +6,7 @@ import { setCurrentUserPage } from "./../../redux/redux-store";
 const mapStateToProps = (state) => {
   const currentUserPage = state.profilePage.currentUserPage
   return {
-    userPhoto: state.profilePage.users[currentUserPage].avatar,
+    userPhoto: state.profilePage.users[currentUserPage]?.avatar || "",
     getText: state.profilePage.postValueText,
     currentUserPage
   }

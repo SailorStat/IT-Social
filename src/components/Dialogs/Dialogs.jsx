@@ -16,7 +16,9 @@ const Dialogs = (props) => {
                      addBlock={props.addMessage}
                      userPhoto={props.userPhoto}
                      setCurrentUserPage={props.setCurrentUserPage}
-                     userid={props.loginUser}/>
+                     userid={props.loginUser}
+                     fullName={props.fullName}
+        />
       </div>
     </div>
   )

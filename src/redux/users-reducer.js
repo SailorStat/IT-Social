@@ -15,7 +15,7 @@ const initialState = {
   users: [{
       followed: false,
       id: 1121,
-      name: "Петя",
+      full: "Петя",
       status: "Самый быстрый кодер на диком западе",
       avatar: userPhoto,
       location: "Смоленск, Россия"
@@ -51,7 +51,7 @@ const initialState = {
       avatar: userPhoto,
       followed: true,
       location: "Ростов-на-Дону, Россия"
-    }
+    },
   ],
   pagination: {
     totalCount: 10,

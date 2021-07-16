@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     getText: state.dialogsPage.dialogValueText,
     userPhoto: state.loginPage.currentUser.avatar,
-    loginUser: state.loginPage.currentUser.id
+    loginUser: state.loginPage.currentUser.id,
+    fullName: state.loginPage.currentUser.name
   }
 }
 

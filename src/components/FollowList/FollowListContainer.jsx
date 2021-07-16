@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
       if (isFollowed) return dispatch(setUnfollow(userId))
       return dispatch(setFollow(userId))
     },
-    setCurrentUserPage
+    setCurrentUserPage: (event) => {dispatch(setCurrentUserPage(event))}
   }
 }
 

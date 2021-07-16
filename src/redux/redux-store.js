@@ -34,15 +34,14 @@ const UP_CURRENT_PAGE = "UP-CURRENT-PAGE"
 const SET_FETCHING_TRUE = "SET-FETCHING-TRUE"
 const SET_FETCHING_FALSE = "SET-FETCHING-FALSE"
 const SET_CURRENT_USER_PAGE = "SET-CURRENT-USER-PAGE"
+const SET_USER = "SET-USER"
 
 
-export const addMessage = () => {
-  const users = store.getState().profilePage.users
-  const loginUser = store.getState().loginPage.getLoginUser()
+export const addMessage = (event) => {
   return {
     type: ADD_MESSAGE,
-    fullName: users[store.getState().dialogsPage.getCheckedDialog()].profileStats.fullName,
-    userPhoto: users[loginUser]?.avatar || noAvatar
+    userPhoto: event.target.attributes.avatar.value || noAvatar,
+    fullName: event.target.attributes.fullname.value,
   }
 }
 
@@ -133,5 +132,13 @@ export const setCurrentUserPage = (event) => {
   return {
     type: SET_CURRENT_USER_PAGE,
     currentUserPage: event.target.attributes.userid.value
+  }
+}
+
+export const setUser = (response) => {
+  console.log(response.data)
+  return {
+    type: SET_USER,
+    user: response.data
   }
 }

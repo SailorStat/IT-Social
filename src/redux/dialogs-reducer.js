@@ -95,18 +95,21 @@ const initialState = {
 const dialogsReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_MESSAGE:
-      const dialogValueText = state.getDialogValueText()
-      if (!dialogValueText) return state
+      console.log(state)
+      if (!state.dialogValueText) return state
 
-      const checkedDialog = state.getCheckedDialog()
-      const currentMessagesList = [...state.dialogs[checkedDialog].messagesData]
+      if (!state.dialogs[state.checkedDialog]) {
+        state.dialogs[state.checkedDialog] = {}
+        state.dialogs[state.checkedDialog].messagesData = []
+      }
+      const currentMessagesList = [...state.dialogs[state.checkedDialog].messagesData]
 
       const newMessagesList = [...currentMessagesList, {
         fullName: action.fullName,
         userPhoto: action.userPhoto,
         fromCurrentUser: true,
         date: dateCreator(),
-        message: dialogValueText,
+        message: state.dialogValueText,
         messageId: (currentMessagesList[currentMessagesList.length - 1]?.messageId + 1) || 1
       }]
 
@@ -115,7 +118,7 @@ const dialogsReducer = (state = initialState, action) => {
         dialogValueText: "",
         dialogs: {
           ...state.dialogs,
-          [checkedDialog]: {
+          [state.checkedDialog]: {
             messagesData: newMessagesList
           }
         },
@@ -133,7 +136,7 @@ const dialogsReducer = (state = initialState, action) => {
     case SET_DIALOG_VALUE_TEXT:
       return {
         ...state,
-        _dialogValueText: action.value || ""
+        dialogValueText: action.value || ""
       }
     
 
