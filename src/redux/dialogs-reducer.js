@@ -87,23 +87,9 @@ const initialState = {
       }]
     }
   },
-  _checkedDialog: localStorage.getItem('_checkedDialog'),
+  checkedDialog: localStorage.getItem('_checkedDialog'),
 
-  _dialogValueText: "",
-
-  getCheckedDialog() {
-    return this._checkedDialog
-  },
-
-  getDialogValueText() {
-    return this._dialogValueText
-  },
-
-  _loginUser: "17725",
-
-  getLoginUser() {
-    return this._loginUser
-  },
+  dialogValueText: ""
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -126,7 +112,7 @@ const dialogsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        _dialogValueText: "",
+        dialogValueText: "",
         dialogs: {
           ...state.dialogs,
           [checkedDialog]: {
@@ -140,7 +126,7 @@ const dialogsReducer = (state = initialState, action) => {
       localStorage.setItem('_checkedDialog', action.userId)
       return {
         ...state,
-        _checkedDialog: action.userId || ""
+        checkedDialog: action.userId || ""
       }
 
 

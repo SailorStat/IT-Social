@@ -1,5 +1,6 @@
 import PostList from "./PostList";
 import { connect } from "react-redux";
+import { setCurrentUserPage } from "./../../redux/redux-store";
 
 const mapStateToProps = (state) => {
   return {
@@ -7,7 +8,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = { setCurrentUserPage }
 
 const PostListContainer = connect(mapStateToProps, mapDispatchToProps)(PostList)
 

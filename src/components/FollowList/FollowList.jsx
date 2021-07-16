@@ -13,6 +13,7 @@ const FollowList = (props) => {
                                                    followed={el.followed}
                                                    loginUser={props.loginUser}
                                                    toggleFollow={props.toggleFollow}
+                                                   setCurrentUserPage={props.setCurrentUserPage}
                               />
       ))}
     </div>

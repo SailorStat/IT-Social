@@ -12,19 +12,16 @@ const initialState = {
     followed: true,
     location: "Ростов-на-Дону, Россия"
   },
-  _loginUser: "17725",
-
-  getLoginUser() {
-    return this._loginUser
-  }
+  loginUser: "17725",
 }
+
 
 const loginReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_LOGIN_USER: {
       return {
         ...state,
-        _loginUser: action.userId
+        loginUser: action.userId
       }
     }
     

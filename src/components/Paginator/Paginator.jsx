@@ -4,7 +4,6 @@ import PaginatorButton from "../PaginatorButton/PaginatorButton";
 
 class Paginator extends React.Component {
   componentDidMount() {
-    console.log(this.props)
     this.props.setFetchingTrue()
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=1&count=${this.props.userOnPage}`)
       .then(response => {

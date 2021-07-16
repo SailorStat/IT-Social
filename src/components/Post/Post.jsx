@@ -3,14 +3,15 @@ import c from "./Post.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShareSquare } from '@fortawesome/free-regular-svg-icons';
 import Avatar from "./../Avatar/Avatar";
+import { NavLink } from "react-router-dom";
 
 const Post = (props) => {
   return (
     <div className={"content__wrapper " + c.post}>
       <div className={c.post__header}>
-        <Avatar avatar={props.avatar}/>
+        <Avatar avatar={props.avatar} userid={props.userId} setCurrentUserPage={props.setCurrentUserPage}/>
         <div className={c.post__info}>
-          <div className={c.user__name}>{props.authorFullName}</div>
+          <NavLink to={"/profile/" + props.userId} onClick={props.setCurrentUserPage} userid={props.userId}className={c.user__name}>{props.authorFullName}</NavLink>
           <div className={c.post__date}>{props.postDate}</div>
         </div>
       </div>

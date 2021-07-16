@@ -15,6 +15,7 @@ const FollowItemContainer = (props) => {
                 status={props.status}
                 followed={props.followed}
                 toggleFollow={props.toggleFollow}
+                setCurrentUserPage={props.setCurrentUserPage}
     />
   )
 }

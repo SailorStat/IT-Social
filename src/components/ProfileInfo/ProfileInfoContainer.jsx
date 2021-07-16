@@ -2,9 +2,9 @@ import ProfileInfo from "./ProfileInfo";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
-  const currentUserPage = state.loginPage.getLoginUser()
+  const currentUserPage = state.profilePage.currentUserPage
   return {
-    fullName: state.profilePage.users[currentUserPage].profileStats.name,
+    fullName: state.profilePage.users[currentUserPage].profileStats.fullName,
     status: state.profilePage.users[currentUserPage].status,
     avatar: state.profilePage.users[currentUserPage].avatar
   }

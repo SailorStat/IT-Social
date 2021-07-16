@@ -33,6 +33,7 @@ const UPDATE_USERS = "UPDATE-USERS"
 const UP_CURRENT_PAGE = "UP-CURRENT-PAGE"
 const SET_FETCHING_TRUE = "SET-FETCHING-TRUE"
 const SET_FETCHING_FALSE = "SET-FETCHING-FALSE"
+const SET_CURRENT_USER_PAGE = "SET-CURRENT-USER-PAGE"
 
 
 export const addMessage = () => {
@@ -125,5 +126,12 @@ export const setFetchingTrue = () => {
 export const setFetchingFalse = () => {
   return {
     type: SET_FETCHING_FALSE
+  }
+}
+
+export const setCurrentUserPage = (event) => {
+  return {
+    type: SET_CURRENT_USER_PAGE,
+    currentUserPage: event.target.attributes.userid.value
   }
 }
