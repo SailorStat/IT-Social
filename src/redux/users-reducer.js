@@ -17,14 +17,14 @@ const initialState = {
       id: 1121,
       full: "Петя",
       status: "Самый быстрый кодер на диком западе",
-      avatar: userPhoto,
+      photo: userPhoto,
       location: "Смоленск, Россия"
     }, {
       online: true,
       id: 1123,
       name: "Ира",
       status: "Не кресло красит человека, а человек кресло",
-      avatar: noAvatar,
+      photo: noAvatar,
       followed: true,
       location: "Киев, Украина"
     }, {
@@ -32,7 +32,7 @@ const initialState = {
       id: 1124,
       name: "Юра",
       status: "Хорошо структуророванного кода много не бывает",
-      avatar: noAvatar,
+      photo: noAvatar,
       followed: false,
       location: "Минск, Беларусь"
     }, {
@@ -40,7 +40,7 @@ const initialState = {
       id: 1125,
       name: "Света",
       status: "Отличное настроение :)",
-      avatar: noAvatar,
+      photo: noAvatar,
       followed: true,
       location: "Саратов, Россия"
     }, {
@@ -48,7 +48,7 @@ const initialState = {
       id: 17725,
       name: "Sailor Stat",
       status: "Live is perfect",
-      avatar: userPhoto,
+      photo: userPhoto,
       followed: true,
       location: "Ростов-на-Дону, Россия"
     },
@@ -93,7 +93,7 @@ const usersReducer = (state = initialState, action) => {
           id: el.id,
           fullName: el.name || "lal",
           status: el.status || "нет статуса",
-          avatar: el.photos.small || noAvatar
+          photo: el.photos.small || noAvatar
         }))
       }
     }
@@ -107,7 +107,7 @@ const usersReducer = (state = initialState, action) => {
           id: el.id,
           fullName: el.name || "lal",
           status: el.status || "нет статуса",
-          avatar: el.photos.small || noAvatar
+          photo: el.photos.small || noAvatar
         }))
       ]
       // const stringUsers = newUsersArr.map(el => JSON.stringify(el))

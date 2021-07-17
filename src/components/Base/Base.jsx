@@ -11,7 +11,7 @@ const Base = () => {
   return (
     <div className={c.base}>
       <Route exact key="profile" path="/" component={ProfileContainer} />
-      <Route key="guestProfile" path="/profile" component={ProfileContainer} />
+      <Route key="guestProfile" path="/profile/:userId" component={ProfileContainer} />
       <Route key="dialogs" path="/dialogs" component={DialogsContainer} />
       <Route key="follows" path="/follows" component={FollowWrapperContainer} />
       <Route key="news" path="/news" component={News} />

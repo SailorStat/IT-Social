@@ -1,15 +1,18 @@
 import PostList from "./PostList";
 import { connect } from "react-redux";
-import { setCurrentUserPage } from "./../../redux/redux-store";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state) => {
+  const currentUserPage = state.profilePage.currentUserPage
   return {
-    posts: state.profilePage.posts[state.profilePage.currentUserPage] || []
+    posts: state.profilePage.posts[currentUserPage] || []
   }
 }
 
-const mapDispatchToProps = { setCurrentUserPage }
+const mapDispatchToProps = {}
 
 const PostListContainer = connect(mapStateToProps, mapDispatchToProps)(PostList)
 
-export default PostListContainer
+const PostListContainerWithRouter = withRouter(PostListContainer)
+
+export default PostListContainerWithRouter

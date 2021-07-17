@@ -10,11 +10,11 @@ const Message = (props) => {
           {props.date}
         </div>
         <div className={c.message__data + " " + c.outgoing}>
-          <NavLink to={"/profile/" + props.loginUser} onClick={props.setCurrentUserPage} userid={props.loginUser} className={c.message__author + " " + c.outgoing}>{props.fullName}</NavLink>
+          <NavLink to={"/profile/" + props.loginUser} className={c.message__author + " " + c.outgoing}>{props.fullName}</NavLink>
           <div className={c.message__text + " " + c.outgoing}>{props.message}</div>
         </div>
         <div className={c.userPhoto + " " + c.outgoing}>
-          <Avatar avatar={props.userPhoto} userid={props.loginUser} setCurrentUserPage={props.setCurrentUserPage}/>
+          <Avatar avatar={props.userPhoto} userid={props.loginUser}/>
         </div>
       </div>
     )
@@ -23,10 +23,10 @@ const Message = (props) => {
   return (
     <div className={c.message}>
       <div className={c.userPhoto}>
-          <Avatar avatar={props.userPhoto} userid={props.checkedDialog} setCurrentUserPage={props.setCurrentUserPage}/>
+          <Avatar avatar={props.userPhoto} userid={props.checkedDialog}/>
       </div>
       <div className={c.message__data}>
-        <NavLink to={"/profile/" + props.checkedDialog} onClick={props.setCurrentUserPage} userid={props.checkedDialog} className={c.message__author + " " + c.outgoing}>{props.fullName}</NavLink>
+        <NavLink to={"/profile/" + props.checkedDialog} className={c.message__author + " " + c.outgoing}>{props.fullName}</NavLink>
         <div className={c.message__text}>{props.message}</div>
       </div>
       <div className={c.message__date}>

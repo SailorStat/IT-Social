@@ -1,13 +1,12 @@
 import { connect } from "react-redux";
 import { setFollow, setUnfollow } from "../../redux/redux-store";
 import FollowList from "./FollowList";
-import { setCurrentUserPage } from "./../../redux/redux-store";
 
 
 const mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
-    loginUser: state.loginPage.loginUser
+    loginUser: state.loginPage.loginUser.id
   }
 }
 
@@ -20,8 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 
       if (isFollowed) return dispatch(setUnfollow(userId))
       return dispatch(setFollow(userId))
-    },
-    setCurrentUserPage: (event) => {dispatch(setCurrentUserPage(event))}
+    }
   }
 }
 

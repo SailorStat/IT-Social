@@ -1,17 +1,20 @@
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import { setUser } from "../../redux/redux-store";
+import { withRouter } from "react-router-dom";
+import { setCurrentUserPage } from "./../../redux/redux-store";
 
 const mapStateToProps = (state) => {
-  const currentUserPage = state.profilePage.currentUserPage
   return {
-    currentUserPage,
-    hasData: state.profilePage.users[currentUserPage]
+    loginUser: state.loginPage.loginUser,
+    hasUser: state.profilePage.users[state.profilePage.currentUserPage]
   }
 }
 
-const mapDispatchToProps = { setUser }
+const mapDispatchToProps = { setUser, setCurrentUserPage }
 
 const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile)
 
-export default ProfileContainer
+const ProfileContainerWithRouter = withRouter(ProfileContainer)
+
+export default ProfileContainerWithRouter

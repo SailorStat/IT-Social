@@ -9,9 +9,9 @@ const Post = (props) => {
   return (
     <div className={"content__wrapper " + c.post}>
       <div className={c.post__header}>
-        <Avatar avatar={props.avatar} userid={props.userId} setCurrentUserPage={props.setCurrentUserPage}/>
+        <Avatar avatar={props.photo} userid={props.userId}/>
         <div className={c.post__info}>
-          <NavLink to={"/profile/" + props.userId} onClick={props.setCurrentUserPage} userid={props.userId}className={c.user__name}>{props.authorFullName}</NavLink>
+          <NavLink to={"/profile/" + props.userId} className={c.user__name}>{props.authorFullName}</NavLink>
           <div className={c.post__date}>{props.postDate}</div>
         </div>
       </div>

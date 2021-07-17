@@ -5,6 +5,7 @@ import { dateCreator } from "../assets/scripts/dateCreator"
 const ADD_MESSAGE = "ADD-MESSAGE"
 const SET_CHECKED_DIALOG = "SET-CHECKED-DIALOG"
 const SET_DIALOG_VALUE_TEXT = "SET-DIALOG-VALUE-TEXT"
+const SET_LOGIN_USER = "SET-LOGIN-USER"
 
 const initialState = {
   dialogs: {
@@ -89,7 +90,17 @@ const initialState = {
   },
   checkedDialog: localStorage.getItem('_checkedDialog'),
 
-  dialogValueText: ""
+  dialogValueText: "",
+
+  loginUser: {
+    online: true,
+    id: 17725,
+    name: "Sailor Stat",
+    status: "Live is perfect",
+    photo: userPhoto,
+    followed: true,
+    location: "Ростов-на-Дону, Россия"
+  }
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -139,6 +150,12 @@ const dialogsReducer = (state = initialState, action) => {
         dialogValueText: action.value || ""
       }
     
+    case SET_LOGIN_USER: {
+      return {
+        ...state,
+        loginUser: action.user
+      }
+    }
 
     default:
       return state

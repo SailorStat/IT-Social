@@ -10,12 +10,11 @@ const FollowItemContainer = (props) => {
                 buttonStyle={props.followed ? c.active : ""}
                 fullName={props.fullName}
                 userId={props.userId}
-                avatar={props.avatar}
+                photo={props.photo}
                 location={props.location}
                 status={props.status}
                 followed={props.followed}
                 toggleFollow={props.toggleFollow}
-                setCurrentUserPage={props.setCurrentUserPage}
     />
   )
 }

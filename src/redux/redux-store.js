@@ -128,17 +128,16 @@ export const setFetchingFalse = () => {
   }
 }
 
-export const setCurrentUserPage = (event) => {
+export const setCurrentUserPage = (currentUserPage) => {
   return {
     type: SET_CURRENT_USER_PAGE,
-    currentUserPage: event.target.attributes.userid.value
+    currentUserPage
   }
 }
 
 export const setUser = (response) => {
-  console.log(response.data)
   return {
     type: SET_USER,
-    user: response.data
+    user: {...response[0].data, status: response[1].data}
   }
 }

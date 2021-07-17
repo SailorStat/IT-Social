@@ -11,8 +11,7 @@ const MessageList = (props) => {
                                              message={el.message}
                                              date={el.date}
                                              loginUser={props.loginUser}
-                                             checkedDialog={props.checkedDialog}
-                                             setCurrentUserPage={props.setCurrentUserPage}/>)}
+                                             checkedDialog={props.checkedDialog}/>)}
     </div>
   )
 }

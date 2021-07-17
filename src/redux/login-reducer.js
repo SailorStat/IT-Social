@@ -3,16 +3,15 @@ import userPhoto from "../assets/img/userPhoto.jpg"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
 
 const initialState = {
-  currentUser: {
+  loginUser: {
     online: true,
     id: 17725,
     name: "Sailor Stat",
     status: "Live is perfect",
-    avatar: userPhoto,
+    photo: userPhoto,
     followed: true,
     location: "Ростов-на-Дону, Россия"
-  },
-  loginUser: "17725",
+  }
 }
 
 
@@ -21,7 +20,7 @@ const loginReducer = (state = initialState, action) => {
     case SET_LOGIN_USER: {
       return {
         ...state,
-        loginUser: action.userId
+        loginUser: action.user
       }
     }
     

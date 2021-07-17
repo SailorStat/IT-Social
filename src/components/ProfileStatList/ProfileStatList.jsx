@@ -1,17 +1,17 @@
 import ProfileStat from "../ProfileStat/ProfileStat"
 
 function profileStatCreator(el, index, profileStats, userStats) {
-  if (["fullName", "userId"].includes(el)) return
+  if (["fullName", "userId", "photos", "status"].includes(el)) return
   
   if (!profileStats[el]) return
 
   if (typeof profileStats[el] !== "object") {
-    return <ProfileStat key={"ProfileStat" + el} property={userStats[index]} subProfileStat={false} value={profileStats[el]}/>
+    return <ProfileStat key={"ProfileStat" + el} property={userStats[index]} subProfileStat={false} value={`${profileStats[el]}`}/>
   }
   
   return [
     <ProfileStat key={"ProfileStat" + el} property={userStats[index]} value={""} />, 
-    Object.keys(profileStats[el]).map(elm => <ProfileStat key={"ProfileStat" + elm} property={elm} subProfileStat={true} value={profileStats[el][elm]}/>)
+    Object.keys(profileStats[el]).map(elm => profileStats[el][elm] ? <ProfileStat key={"ProfileStat" + elm} property={elm} subProfileStat={true} value={profileStats[el][elm]}/> : false )
   ]
 }
 

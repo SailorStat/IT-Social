@@ -3,9 +3,9 @@ import NavigationItem from "../NavigationItem/NavigationItem"
 
 const Navigation = (props) => {
   return (
-    <div className={c.navigation} onClick={props.setCurrentUserPage}>
+    <div className={c.navigation}>
       {Object.keys(props.pages).map((el) => 
-        <NavigationItem key={"NavigationItem" + el} essence={el} link={props.pages[el]} userid={props.userid}/>
+        <NavigationItem key={"NavigationItem" + el} essence={el} link={props.pages[el]}/>
       )}
     </div>
   )

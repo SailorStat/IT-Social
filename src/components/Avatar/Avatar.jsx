@@ -5,7 +5,7 @@ const Avatar = (props) => {
   return (
     <NavLink to={"/profile/" + props.userid} > 
       <div className={c.avatar}>
-        <img src={props.avatar} alt="" userid={props.userid + ""} onClick={props.setCurrentUserPage}/>
+        <img src={props.avatar} alt=""/>
       </div>
     </NavLink>
   )

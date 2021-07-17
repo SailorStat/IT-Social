@@ -18,8 +18,10 @@ const PostList = (props) => {
                                         currentUserLiked={giveActive(el.currentUserLiked)}
                                         repostCount={el.repostCount}
                                         currentUserReposted={giveActive(el.currentUserReposted)}
-                                        avatar={el.avatar}
-                                        setCurrentUserPage={props.setCurrentUserPage}/>)}
+                                        photo={el.photo}
+                              />
+                      )
+      }
     </>
   )
 }

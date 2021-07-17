@@ -56,7 +56,7 @@ const store = {
         "17725": {
           online: true,
           status: "Live is perfect",
-          avatar: userPhoto,
+          photo: userPhoto,
           profileStats: {
             "aboutMe": "я крутой чувак",
             "contacts": {
@@ -91,7 +91,7 @@ const store = {
           currentUserLiked: false,
           repostCount: 15,
           currentUserReposted: false,
-          avatar: userPhoto
+          photo: userPhoto
         }, {
           userId: 17725,
           postId: 1234,
@@ -102,7 +102,7 @@ const store = {
           currentUserLiked: true,
           repostCount: 9,
           currentUserReposted: true,
-          avatar: userPhoto
+          photo: userPhoto
         }, {
           userId: 17725,
           postId: 1233,
@@ -113,7 +113,7 @@ const store = {
           currentUserLiked: true,
           repostCount: 11,
           currentUserReposted: false,
-          avatar: userPhoto
+          photo: userPhoto
         }]
       },
 

@@ -129,7 +129,7 @@ const initialState = {
       currentUserLiked: false,
       repostCount: 15,
       currentUserReposted: false,
-      avatar: userPhoto
+      photo: userPhoto
     }, {
       userId: 17725,
       postId: 1234,
@@ -140,7 +140,7 @@ const initialState = {
       currentUserLiked: true,
       repostCount: 9,
       currentUserReposted: true,
-      avatar: userPhoto
+      photo: userPhoto
     }, {
       userId: 17725,
       postId: 1233,
@@ -151,13 +151,23 @@ const initialState = {
       currentUserLiked: true,
       repostCount: 11,
       currentUserReposted: false,
-      avatar: userPhoto
+      photo: userPhoto
     }]
   },
 
   postValueText: "",
 
-  currentUserPage: 17725
+  currentUserPage: 17725,
+
+  loginUser: {
+    online: true,
+    id: 17725,
+    name: "Sailor Stat",
+    status: "Live is perfect",
+    photo: userPhoto,
+    followed: true,
+    location: "Ростов-на-Дону, Россия"
+  }
 }
 
 
@@ -165,17 +175,18 @@ const profileReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_POST: {
       const userPage = state.currentUserPage
+      const loginUser = state.loginUser
       const newPost = {
-        userId: userPage, // action.userId - профиль для публикации
+        userId: loginUser.id,
         postId: state.posts[userPage] ? state.posts[userPage][0].postId + 1 : 1,
-        authorFullName: state.users[userPage].fullName,
+        authorFullName: loginUser.name,
         postDate: dateCreator("d t"),
         postText: state.postValueText || "Автор хотел сказать важную мысль, но его молчание оказалось многословнее всего",
         likeCount: 0,
         currentUserLiked: false,
         repostCount: 0,
         currentUserReposted: false,
-        avatar: state.users[userPage].avatar || noAvatar
+        photo: loginUser.photo
       }
       return {
         ...state,
@@ -202,15 +213,13 @@ const profileReducer = (state = initialState, action) => {
     }
 
     case SET_USER: {
-      console.log(state.users[1123])
-      console.log(action.user)
-      debugger
       return {
         ...state,
         users: {
           ...state.users,
           [`${action.user.userId}`]: {
-            ...action.user
+            ...action.user,
+            photos: action.user.photos.large || action.user.photos.small || noAvatar
           }
         }
       }

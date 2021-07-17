@@ -1,15 +1,13 @@
 import Navigation from "./Navigation";
 import { connect } from "react-redux";
-import { setCurrentUserPage } from "./../../redux/redux-store";
 
 const mapStateToProps = (state) => {
   return {
-    pages: state.pages,
-    userid: state.loginPage.currentUser.id
+    pages: state.pages
   }
 }
 
-const mapDispatchToProps = { setCurrentUserPage }
+const mapDispatchToProps = {}
 
 const NavigationContainer = connect(mapStateToProps, mapDispatchToProps)(Navigation)
 

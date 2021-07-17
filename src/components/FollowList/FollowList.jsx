@@ -7,13 +7,11 @@ const FollowList = (props) => {
       {props.users.map(el => (<FollowItemContainer key={el.id}
                                                    fullName={el.fullName}
                                                    userId={el.id}
-                                                   avatar={el.avatar}
+                                                   photo={el.photo}
                                                    location={el.location}
                                                    status={el.status}
                                                    followed={el.followed}
-                                                   loginUser={props.loginUser}
                                                    toggleFollow={props.toggleFollow}
-                                                   setCurrentUserPage={props.setCurrentUserPage}
                               />
       ))}
     </div>

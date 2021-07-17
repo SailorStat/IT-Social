@@ -7,14 +7,17 @@ import Preloader from "../../assets/img/Preloader.svg"
 
 class Profile extends React.Component {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.currentUserPage}`)
+    const userId = this.props.match.params.userId || this.props.loginUser.id
+    this.props.setCurrentUserPage(userId)
+    Promise.all([axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`),
+                axios.get(`https://social-network.samuraijs.com/api/1.0/profile/status/${userId}`)])
       .then(response => {
         this.props.setUser(response)
       })
   }
 
   render() {
-    if (!this.props.hasData) {
+    if (!this.props.hasUser) {
       return (
         <img src={Preloader} alt="" />
       )

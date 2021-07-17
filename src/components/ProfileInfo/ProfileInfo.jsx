@@ -11,7 +11,7 @@ const ProfileInfo = (props) => {
         <ProfileStatListContainer />
       </div>
       <div className={c.profile__photo}>
-        <img src={props.avatar} alt="" />
+        <img src={props.photo} alt="" />
       </div>
     </div>
   )
