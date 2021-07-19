@@ -55,12 +55,13 @@
   opacity: 1;
 
   background-color: #f7c9ef;
-  border-radius: 10px;
+  border-radius: 0px 10px 20px 10px;
   word-wrap: break-word;
   white-space: pre-wrap;
 }
 
 .message__text.outgoing {
+  border-radius: 10px 0 10px 15px;
   background-color: #c49dbe;
 }
 

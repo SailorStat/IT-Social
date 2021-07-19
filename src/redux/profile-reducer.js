@@ -6,10 +6,11 @@ const ADD_POST = "ADD-POST"
 const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
 const SET_CURRENT_USER_PAGE = "SET-CURRENT-USER-PAGE"
 const SET_USER = "SET-USER"
+const SET_LOGIN_USER = "SET-LOGIN-USER"
 
 const initialState = {
   users: {
-    "1121": {
+    "11211121": {
       "aboutMe": null,
       "contacts": {
         "facebook": null,
@@ -24,13 +25,13 @@ const initialState = {
       "lookingForAJob": false,
       "lookingForAJobDescription": null,
       "fullName": "Петя",
-      "userId": 17725,
+      "userId": 11211121,
       "photos": {
         "small": null,
         "large": null
       }
     },
-    "1123": {
+    "11231123": {
       "aboutMe": null,
       "contacts": {
         "facebook": null,
@@ -45,13 +46,13 @@ const initialState = {
       "lookingForAJob": false,
       "lookingForAJobDescription": null,
       "fullName": "Ира",
-      "userId": 17725,
+      "userId": 11211121,
       "photos": {
         "small": null,
         "large": null
       }
     },
-    "1124": {
+    "11241124": {
       "aboutMe": null,
       "contacts": {
         "facebook": null,
@@ -66,13 +67,13 @@ const initialState = {
       "lookingForAJob": false,
       "lookingForAJobDescription": null,
       "fullName": "Юра",
-      "userId": 17725,
+      "userId": 11241124,
       "photos": {
         "small": null,
         "large": null
       }
     },
-    "1125": {
+    "11251125": {
       "aboutMe": null,
       "contacts": {
         "facebook": null,
@@ -87,7 +88,7 @@ const initialState = {
       "lookingForAJob": false,
       "lookingForAJobDescription": null,
       "fullName": "Саша",
-      "userId": 17725,
+      "userId": 11251125,
       "photos": {
         "small": null,
         "large": null
@@ -221,6 +222,21 @@ const profileReducer = (state = initialState, action) => {
             ...action.user,
             photos: action.user.photos.large || action.user.photos.small || noAvatar
           }
+        }
+      }
+    }
+
+    case SET_LOGIN_USER: {
+      const userData = action.userData
+      return {
+        ...state,
+        loginUser: {
+          online: true,
+          id: userData.id,
+          name: userData.fullName,
+          status: userData.status,
+          photo: userData.photos.large || userData.photos.small || noAvatar,
+          followed: true
         }
       }
     }

@@ -9,7 +9,7 @@ const SET_LOGIN_USER = "SET-LOGIN-USER"
 
 const initialState = {
   dialogs: {
-    "1121": {
+    "11211121": {
       messagesData: [{
         fullName: "Sailor Stat",
         userPhoto: userPhoto,
@@ -33,7 +33,7 @@ const initialState = {
         messageId: 548
       }]
     },
-    "1123": {
+    "11231123": {
       messagesData: [{
         fullName: "Sailor Stat",
         userPhoto: userPhoto,
@@ -57,7 +57,7 @@ const initialState = {
         messageId: 548
       }]
     },
-    "1124": {
+    "11241124": {
       messagesData: [{
         fullName: "Юра",
         userPhoto: noAvatar,
@@ -67,7 +67,7 @@ const initialState = {
         messageId: 546
       }]
     },
-    "1125": {
+    "11251125": {
       messagesData: [{
         fullName: "Sailor Stat",
         userPhoto: userPhoto,
@@ -151,9 +151,17 @@ const dialogsReducer = (state = initialState, action) => {
       }
     
     case SET_LOGIN_USER: {
+      const userData = action.userData
       return {
         ...state,
-        loginUser: action.user
+        loginUser: {
+          online: true,
+          id: userData.id,
+          name: userData.fullName,
+          status: userData.status,
+          photo: userData.photos.large || userData.photos.small || noAvatar,
+          followed: true
+        }
       }
     }
 

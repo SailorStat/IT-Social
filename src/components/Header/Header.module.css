@@ -17,8 +17,5 @@
 }
 
 .header__menu {
-  display: flex;
-  width: 50%;
-  justify-content: space-around;
-  align-items: center;
+  width: min-content;
 }

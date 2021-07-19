@@ -25,7 +25,6 @@ const SET_CHECKED_DIALOG = "SET-CHECKED-DIALOG"
 const SET_DIALOG_VALUE_TEXT = "SET-DIALOG-VALUE-TEXT"
 const ADD_POST = "ADD-POST"
 const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
-const SET_LOGIN_USER = "SET-LOGIN-USER"
 const SET_FOLLOW = "SET-FOLLOW"
 const SET_UNFOLLOW = "SET-UNFOLLOW"
 const CREATE_USERS = "CREATE-USERS"
@@ -35,6 +34,8 @@ const SET_FETCHING_TRUE = "SET-FETCHING-TRUE"
 const SET_FETCHING_FALSE = "SET-FETCHING-FALSE"
 const SET_CURRENT_USER_PAGE = "SET-CURRENT-USER-PAGE"
 const SET_USER = "SET-USER"
+const SET_LOGOUT_USER = "SET-LOGOUT-USER"
+const SET_LOGIN_USER = "SET-LOGIN-USER"
 
 
 export const addMessage = (event) => {
@@ -73,10 +74,16 @@ export const setPostValueText = (event) => {
   }
 }
 
-export const setLoginUser = (event) => {
+export const setLoginUser = (userData) => {
   return {
     type: SET_LOGIN_USER,
-    userId: event.target.userid
+    userData
+  }
+}
+
+export const setLogoutUser = () => {
+  return {
+    type: SET_LOGOUT_USER
   }
 }
 

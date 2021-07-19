@@ -1,0 +1,30 @@
+.header__wrapper {
+  display: grid;
+  grid-auto-columns: min-content;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+}
+
+.header__button {
+  display: block;
+  margin-left: auto;
+  width: 120px;
+  height: 35px;
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 20px;
+
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  border-radius: 10px 0 10px 15px;
+  transition: background-color .3s linear;
+}
+
+.header__button:hover {
+  cursor: pointer;
+  background-color: #b66ec0;
+}
+
+.header__button:active {
+  background-color: #b83dc9;
+}

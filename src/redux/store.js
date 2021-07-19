@@ -269,7 +269,7 @@ export const setPostValueTextActionCreator = (event) => {
   }
 }
 
-export const setLoginUserActionCreator = (event) => {
+export const setLogoutUserActionCreator = (event) => {
   return {
     type: SET_LOGIN_USER,
     userId: event.target.userid
