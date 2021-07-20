@@ -106,7 +106,6 @@ const initialState = {
 const dialogsReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_MESSAGE:
-      console.log(state)
       if (!state.dialogValueText) return state
 
       if (!state.dialogs[state.checkedDialog]) {

@@ -3,22 +3,28 @@ import * as axios from "axios"
 import PaginatorButton from "../PaginatorButton/PaginatorButton";
 
 class Paginator extends React.Component {
-  componentDidMount() {
+  addUser(func) {
+    this.endPoint = "https://social-network.samuraijs.com/api/1.0/"
+    this.options = {
+      withCredentials: true,
+      headers: {
+        "API-KEY": "529b037a-4944-4887-8582-929139b7810c"
+      }
+    }
     this.props.setFetchingTrue()
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=1&count=${this.props.usersOnPage}`)
-      .then(response => {
-        this.props.createUsers(response)
-        this.props.setFetchingFalse()
-      })
+    axios.get(`${this.endPoint}users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`, this.options)
+         .then(response => {
+            func(response)
+            this.props.setFetchingFalse()
+          })
+  }
+
+  componentDidMount() {
+   this.addUser(this.props.createUsers)
   }
 
   componentDidUpdate() {
-    this.props.setFetchingTrue()
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`)
-      .then(response => {
-        this.props.updateUsers(response)
-        this.props.setFetchingFalse()
-      })
+    this.addUser(this.props.updateUsers)
   }
 
   render() {

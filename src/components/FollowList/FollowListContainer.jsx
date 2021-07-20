@@ -12,12 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleFollow: (event) => {
-      const attributes = event.target.attributes
-      const isFollowed = attributes.followed.value === "true"
-      const userId = attributes.userid.value
-
-      if (isFollowed) return dispatch(setUnfollow(userId))
+    toggleFollow: (userId, followed) => {
+      if (followed) return dispatch(setUnfollow(userId))
       return dispatch(setFollow(userId))
     }
   }

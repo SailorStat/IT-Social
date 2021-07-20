@@ -88,13 +88,15 @@ const usersReducer = (state = initialState, action) => {
           ...state.pagination,
           totalCount: action.totalCount
         },
-        users: action.users.map(el => ({
+        users: action.users.map(el => {
+          // console.log(el, el.name, el.followed)
+          return {
           followed: el.followed,
           id: el.id,
-          fullName: el.name || "lal",
+          fullName: el.name,
           status: el.status || "нет статуса",
           photo: el.photos.small || noAvatar
-        }))
+        }})
       }
     }
 
