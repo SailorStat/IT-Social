@@ -9,6 +9,8 @@ const UPDATE_USERS = "UPDATE-USERS"
 const UP_CURRENT_PAGE = "UP-CURRENT-PAGE"
 const SET_FETCHING_TRUE = "SET-FETCHING-TRUE"
 const SET_FETCHING_FALSE = "SET-FETCHING-FALSE"
+const ADD_IN_FOLLOW_TOGGLE = "ADD-IN-FOLLOW-TOGGLE"
+const REMOVE_IN_FOLLOW_TOGGLE = "REMOVE-IN-FOLLOW-TOGGLE"
 
 
 const initialState = {
@@ -58,7 +60,8 @@ const initialState = {
     usersOnPage: 5,
     currentPage: 1
   },
-  isFetching: false
+  isFetching: false,
+  inFollowToggle: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -123,6 +126,26 @@ const usersReducer = (state = initialState, action) => {
         users
       }
     }
+
+    case ADD_IN_FOLLOW_TOGGLE: {
+      return {
+        ...state,
+        inFollowToggle: [
+          ...state.inFollowToggle,
+          action.id
+        ]
+      }
+    }
+
+    case REMOVE_IN_FOLLOW_TOGGLE: {
+      return {
+        ...state,
+        inFollowToggle: [
+          ...state.inFollowToggle.filter(el => el !== action.id)
+        ]
+      }
+    }
+
 
     case UP_CURRENT_PAGE: {
       return {

@@ -5,8 +5,12 @@ import { toggleFollowAPI } from "../../API";
 
 const FollowItem = (props) => {
   const onToggleFollow = () => {
+    props.followToggled(props.userId, true)
     toggleFollowAPI(props.userId, props.followed)
-      .then(resultCode => resultCode === 0 && props.toggleFollow(props.userId, props.followed))
+      .then(resultCode => {
+        resultCode === 0 && props.toggleFollow(props.userId, props.followed)
+        props.followToggled(props.userId, false)
+      })
   }
 
   return (
@@ -19,7 +23,7 @@ const FollowItem = (props) => {
             <span className={c.user__location}>{props.location}</span>
             <span className={c.wanted + " " + props.styleCurrentUser}>This is how other users see you</span>
           </div>
-          <button className={c.follow__button + " " + props.buttonStyle} onClick={onToggleFollow}>{props.buttonTitle}</button>
+          <button className={c.follow__button + " " + props.buttonStyle} onClick={onToggleFollow} disabled={props.isDisabled}>{props.buttonTitle}</button>
           <div className={c.user__status}>{props.status}</div>
         </div>
       </div>

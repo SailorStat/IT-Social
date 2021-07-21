@@ -12,6 +12,10 @@ const FollowList = (props) => {
                                                    status={el.status}
                                                    followed={el.followed}
                                                    toggleFollow={props.toggleFollow}
+                                                   loginUser={props.loginUser}
+                                                   followToggled={props.followToggled}
+                                                   toggleFollow={props.toggleFollow}
+                                                   inFollowToggle={props.inFollowToggle}
                               />
       ))}
     </div>

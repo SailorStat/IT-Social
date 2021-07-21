@@ -36,6 +36,8 @@ const SET_CURRENT_USER_PAGE = "SET-CURRENT-USER-PAGE"
 const SET_USER = "SET-USER"
 const SET_LOGOUT_USER = "SET-LOGOUT-USER"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
+const ADD_IN_FOLLOW_TOGGLE = "ADD-IN-FOLLOW-TOGGLE"
+const REMOVE_IN_FOLLOW_TOGGLE = "REMOVE-IN-FOLLOW-TOGGLE"
 
 
 export const addMessage = (event) => {
@@ -146,5 +148,19 @@ export const setUser = ([profile, status]) => {
   return {
     type: SET_USER,
     user: {...profile, status}
+  }
+}
+
+export const addInFollowToggle = (id) => {
+  return {
+    type: ADD_IN_FOLLOW_TOGGLE,
+    id
+  }
+}
+
+export const removeInFollowToggle = (id) => {
+  return {
+    type: REMOVE_IN_FOLLOW_TOGGLE,
+    id
   }
 }

@@ -76,8 +76,12 @@
   background-color: #d78bdb;
 }
 
+.follow__button:disabled {
+  color: #85558d;
+  background-color: #b996b9;
+}
+
 .user__status {
   grid-area: "c";
-
   font-style: italic;
 }
