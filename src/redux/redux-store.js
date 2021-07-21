@@ -101,19 +101,19 @@ export const setFollow = (userId) => {
   }
 }
 
-export const createUsers = (response) => {
+export const createUsers = (data) => {
   return {
     type: CREATE_USERS,
-    users: response.data.items,
-    totalCount: response.data.totalCount
+    users: data.items,
+    totalCount: data.totalCount
   }
 }
 
-export const updateUsers = (response) => {
+export const updateUsers = (data) => {
   return {
     type: UPDATE_USERS,
-    users: response.data.items,
-    totalCount: response.data.totalCount
+    users: data.items,
+    totalCount: data.totalCount
   }
 }
 
@@ -142,9 +142,9 @@ export const setCurrentUserPage = (currentUserPage) => {
   }
 }
 
-export const setUser = (response) => {
+export const setUser = ([profile, status]) => {
   return {
     type: SET_USER,
-    user: {...response[0].data, status: response[1].data}
+    user: {...profile, status}
   }
 }

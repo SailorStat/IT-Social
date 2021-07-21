@@ -89,7 +89,6 @@ const usersReducer = (state = initialState, action) => {
           totalCount: action.totalCount
         },
         users: action.users.map(el => {
-          // console.log(el, el.name, el.followed)
           return {
           followed: el.followed,
           id: el.id,

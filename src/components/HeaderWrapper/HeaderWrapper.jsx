@@ -1,30 +1,26 @@
 import c from "./HeaderWrapper.module.css"
 import React from "react";
-import axios from "axios";
+import { authAPI, userAPI } from "./../../API";
 
 class HeaderWrapper extends React.Component {
   componentDidMount() {
     const endPoint = "https://social-network.samuraijs.com/api/1.0/"
     let loginUserData = {}
 
-    axios.get(`${endPoint}auth/me`, {
-      withCredentials: true
-    })
-      .then(response => {
-        if (response.data.resultCode === 0) {
-          loginUserData = {
-            ...response.data.data
-          }
+    authAPI().then(data => {
+      if (data.resultCode === 0) {
+        loginUserData = {
+          ...data.data
         }
-        axios.get(`${endPoint}profile/${loginUserData.id}`)
-          .then(response => {
-            loginUserData = {
-              ...loginUserData,
-              ...response.data
-            }
-            this.props.setLoginUser(loginUserData)
-          })
+      }
+      userAPI(loginUserData.id).then(data => {
+        loginUserData = {
+          ...loginUserData,
+          ...data
+        }
+        this.props.setLoginUser(loginUserData)
       })
+    })
   }
 
   render() {
