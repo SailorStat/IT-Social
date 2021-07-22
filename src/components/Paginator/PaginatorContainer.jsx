@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Paginator from "./Paginator";
-import { createUsers, updateUsers, upCurrentPage, setFetchingTrue, setFetchingFalse } from "../../redux/redux-store";
+import { createUsers, updateUsers, setUsers } from "../../redux/redux-store";
 
 
 const mapStateToProps = (state) => {
@@ -15,9 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   createUsers,
   updateUsers,
-  upCurrentPage,
-  setFetchingTrue,
-  setFetchingFalse
+  setUsers
 }
 
 const PaginatorContainer = connect(mapStateToProps, mapDispatchToProps)(Paginator)

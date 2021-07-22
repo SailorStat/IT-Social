@@ -1,10 +1,12 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import noAvatar from "../assets/img/no-avatar.png"
 import dialogsReducer from "./dialogs-reducer";
 import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
+import { getUsersAPI } from "./../API";
+import thunkMiddleware from "redux-thunk";
 
 const reducers = combineReducers({
   dialogsPage: dialogsReducer,
@@ -14,7 +16,7 @@ const reducers = combineReducers({
   pages: pagesReducer,
 })
 
-const store = createStore(reducers)
+const store = createStore(reducers, applyMiddleware(thunkMiddleware))
 
 export default store
 window.store = store
@@ -163,4 +165,12 @@ export const removeInFollowToggle = (id) => {
     type: REMOVE_IN_FOLLOW_TOGGLE,
     id
   }
+}
+
+export const setUsers = (currentPage, usersOnPage, func) => (dispatch) => {
+  dispatch(setFetchingTrue())
+  getUsersAPI(currentPage, usersOnPage).then(response => {
+    func(response)
+    dispatch(setFetchingFalse())
+  })
 }

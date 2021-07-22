@@ -1,27 +1,18 @@
 import React from "react";
-import PaginatorButton from "../PaginatorButton/PaginatorButton";
-import { getUsersAPI } from "./../../API";
-
+import PaginatorButtonContainer from "../PaginatorButton/PaginatorButtonContainer";
 class Paginator extends React.Component {
-  addUser(func) {
-    this.props.setFetchingTrue()
-    getUsersAPI(this.props.currentPage, this.props.usersOnPage).then(response => {
-      func(response)
-      this.props.setFetchingFalse()
-    })
-  }
 
   componentDidMount() {
-   this.addUser(this.props.createUsers)
+    this.props.setUsers(this.props.currentPage, this.props.usersOnPage, this.props.createUsers)
   }
 
   componentDidUpdate() {
-    this.addUser(this.props.updateUsers)
+    this.props.setUsers(this.props.currentPage, this.props.usersOnPage, this.props.updateUsers)
   }
 
   render() {
     return (
-      <PaginatorButton upCurrentPage={this.props.upCurrentPage}/>
+      <PaginatorButtonContainer />
     )
   }
 }

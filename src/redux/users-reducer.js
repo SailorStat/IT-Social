@@ -146,7 +146,6 @@ const usersReducer = (state = initialState, action) => {
       }
     }
 
-
     case UP_CURRENT_PAGE: {
       return {
         ...state,

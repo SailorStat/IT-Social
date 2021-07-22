@@ -6,7 +6,8 @@
   font-size: 20px;
 
   border: 2px #842691 solid;
-  background-color: #c49dbe;
+  color: #842691;
+  background-color: #c78ebe;
   border-radius: 5px;
   transition: background-color .3s linear;
 }
@@ -18,4 +19,9 @@
 
 .paginator__button:active {
   background-color: #b83dc9;
+}
+
+.paginator__button:disabled {
+  color: #85558d;
+  background-color: #8f7b8f;
 }
