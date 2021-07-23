@@ -13,7 +13,6 @@ const FollowList = (props) => {
                                                    followed={el.followed}
                                                    toggleFollow={props.toggleFollow}
                                                    loginUser={props.loginUser}
-                                                   followToggled={props.followToggled}
                                                    toggleFollow={props.toggleFollow}
                                                    inFollowToggle={props.inFollowToggle}
                               />

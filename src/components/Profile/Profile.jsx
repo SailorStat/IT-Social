@@ -3,14 +3,11 @@ import ProfileInfoContainer from "../ProfileInfo/ProfileInfoContainer";
 import PostWrapperContainer from "../PostWrapper/PostWrapperContainer";
 import React from "react";
 import Preloader from "../../assets/img/Preloader.svg"
-import { profileAPI } from "./../../API";
 
 class Profile extends React.Component {
   componentDidMount() {
     const userId = this.props.match.params.userId || this.props.loginUser.id
-    this.props.setCurrentUserPage(userId)
-
-    profileAPI(userId).then(response => this.props.setUser(response))
+    this.props.getProfileUser(userId)
   }
 
   render() {

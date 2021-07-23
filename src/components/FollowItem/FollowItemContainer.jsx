@@ -16,7 +16,6 @@ const FollowItemContainer = (props) => {
                 status={props.status}
                 followed={props.followed}
                 toggleFollow={props.toggleFollow}
-                followToggled={props.followToggled}
     />
   )
 }

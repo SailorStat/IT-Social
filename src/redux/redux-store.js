@@ -5,7 +5,7 @@ import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
-import { getUsersAPI } from "./../API";
+import { getUsersAPI, toggleFollowAPI, userAPI, authAPI, profileAPI } from "./../API";
 import thunkMiddleware from "redux-thunk";
 
 const reducers = combineReducers({
@@ -173,4 +173,37 @@ export const setUsers = (currentPage, usersOnPage, func) => (dispatch) => {
     func(response)
     dispatch(setFetchingFalse())
   })
+}
+
+export const toggleFollow = (userId, followed) => (dispatch) => {
+  dispatch(addInFollowToggle(userId))
+    toggleFollowAPI(userId, followed)
+      .then(resultCode => {
+        resultCode === 0 && followed && dispatch(setUnfollow(userId)) || dispatch(setFollow(userId))
+        dispatch(removeInFollowToggle(userId))
+      })
+}
+
+export const userAuth = () => (dispatch) => {
+  let loginUserData = {}
+
+  authAPI().then(data => {
+    if (data.resultCode === 0) {
+      loginUserData = {
+        ...data.data
+      }
+    }
+    userAPI(loginUserData.id).then(data => {
+      loginUserData = {
+        ...loginUserData,
+        ...data
+      }
+      dispatch(setLoginUser(loginUserData))
+    })
+  })
+}
+
+export const getProfileUser = (userId) => (dispatch) => {
+  dispatch(setCurrentUserPage(userId))
+  profileAPI(userId).then(response => dispatch(setUser(response)))
 }

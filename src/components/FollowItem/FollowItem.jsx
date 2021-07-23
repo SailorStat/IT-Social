@@ -1,16 +1,10 @@
 import c from "./FollowItem.module.css"
 import Avatar from "./../Avatar/Avatar";
 import { NavLink } from "react-router-dom";
-import { toggleFollowAPI } from "../../API";
 
 const FollowItem = (props) => {
   const onToggleFollow = () => {
-    props.followToggled(props.userId, true)
-    toggleFollowAPI(props.userId, props.followed)
-      .then(resultCode => {
-        resultCode === 0 && props.toggleFollow(props.userId, props.followed)
-        props.followToggled(props.userId, false)
-      })
+    props.toggleFollow(props.userId, props.followed)
   }
 
   return (

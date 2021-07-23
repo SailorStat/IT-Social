@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { addInFollowToggle, removeInFollowToggle, setFollow, setUnfollow } from "../../redux/redux-store";
 import FollowList from "./FollowList";
+import { toggleFollow } from "./../../redux/redux-store";
 
 
 const mapStateToProps = (state) => {
@@ -11,18 +11,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleFollow: (userId, followed) => {
-      if (followed) return dispatch(setUnfollow(userId))
-      return dispatch(setFollow(userId))
-    },
-    followToggled: (userId, toggled) => {
-      if (toggled) return dispatch(addInFollowToggle(userId))
-      return dispatch(removeInFollowToggle(userId))
-    }
-  }
-}
+const mapDispatchToProps = { toggleFollow }
 
 const FollowListContainer = connect(mapStateToProps, mapDispatchToProps)(FollowList)
 
