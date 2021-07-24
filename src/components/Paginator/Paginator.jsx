@@ -1,7 +1,6 @@
 import React from "react";
 import PaginatorButtonContainer from "../PaginatorButton/PaginatorButtonContainer";
 class Paginator extends React.Component {
-
   componentDidMount() {
     this.props.setUsers(this.props.currentPage, this.props.usersOnPage, this.props.createUsers)
   }
