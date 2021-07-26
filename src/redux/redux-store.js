@@ -40,6 +40,10 @@ const SET_LOGOUT_USER = "SET-LOGOUT-USER"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
 const ADD_IN_FOLLOW_TOGGLE = "ADD-IN-FOLLOW-TOGGLE"
 const REMOVE_IN_FOLLOW_TOGGLE = "REMOVE-IN-FOLLOW-TOGGLE"
+const SET_EDIT_MODE = "SET-EDIT-MODE"
+const UNSET_EDIT_MODE = "UNSET-EDIT-MODE"
+const SET_STATUS = "SET-STATUS"
+const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
 
 
 export const addMessage = (event) => {
@@ -167,6 +171,33 @@ export const removeInFollowToggle = (id) => {
   }
 }
 
+
+export const setEditMode = () => {
+  return {
+    type: SET_EDIT_MODE
+  }
+}
+
+export const unsetEditMode = () => {
+  return {
+    type: UNSET_EDIT_MODE
+  }
+}
+
+export const setStatus = () => {
+  return {
+    type: SET_STATUS
+  }
+}
+
+export const setStatusEditText = (event) => {
+  return {
+    type: SET_STATUS_EDIT_TEXT,
+    status: event.target.value
+  }
+}
+
+
 export const setUsers = (currentPage, usersOnPage, func) => (dispatch) => {
   dispatch(setFetchingTrue())
   getUsersAPI(currentPage, usersOnPage).then(response => {
@@ -179,7 +210,7 @@ export const toggleFollow = (userId, followed) => (dispatch) => {
   dispatch(addInFollowToggle(userId))
     toggleFollowAPI(userId, followed)
       .then(resultCode => {
-        resultCode === 0 && followed && dispatch(setUnfollow(userId)) || dispatch(setFollow(userId))
+        resultCode && followed && dispatch(setUnfollow(userId)) || dispatch(setFollow(userId))
         dispatch(removeInFollowToggle(userId))
       })
 }

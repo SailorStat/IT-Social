@@ -3,6 +3,10 @@ import noAvatar from "../assets/img/no-avatar.png"
 
 const SET_LOGIN_USER = "SET-LOGIN-USER"
 const SET_LOGOUT_USER = "SET-LOGOUT-USER"
+const SET_EDIT_MODE = "SET-EDIT-MODE"
+const UNSET_EDIT_MODE = "UNSET-EDIT-MODE"
+const SET_STATUS = "SET-STATUS"
+const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
 
 const initialState = {
   loginUser: {
@@ -15,9 +19,11 @@ const initialState = {
     location: "Ростов-на-Дону, Россия"
   },
 
-  isLoggedIn: false
-}
+  isLoggedIn: true,
 
+  statusEditMode: false,
+  statusEditText: ""
+}
 
 const loginReducer = (state = initialState, action) => {
 
@@ -31,7 +37,7 @@ const loginReducer = (state = initialState, action) => {
           online: true,
           id: userData.id,
           name: userData.fullName,
-          status: userData.status,
+          status: userData.status || "no status",
           photo: userData.photos.large || userData.photos.small || noAvatar,
           followed: true
         }
@@ -43,6 +49,40 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         loginUser: {}
+      }
+    }
+
+    case SET_EDIT_MODE: {
+      return {
+        ...state,
+        statusEditMode: true
+      }
+    }
+
+    case UNSET_EDIT_MODE: {
+      return {
+        ...state,
+        statusEditMode: false,
+        statusEditText: ""
+      }
+    }
+
+    case SET_STATUS_EDIT_TEXT: {
+      return {
+        ...state,
+        statusEditText: action.status
+      }
+    }
+
+    case SET_STATUS: {
+      return {
+        ...state,
+        loginUser: {
+          ...state.loginUser,
+          status: state.statusEditText
+        },
+        statusEditText: "",
+        statusEditMode: false,
       }
     }
 

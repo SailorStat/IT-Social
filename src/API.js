@@ -16,7 +16,7 @@ export const getUsersAPI = (currentPage, usersOnPage) => {
 export const toggleFollowAPI = (userId, followed) => {
   const followEndPoint = `follow/${userId}`
   const request = followed ? instance.delete(followEndPoint) : instance.post(followEndPoint, {})
-  return request.then(r => r.data.resultCode)
+  return request.then(r => r.data.resultCode == 0)
 }
 
 export const authAPI = () => {
@@ -34,4 +34,9 @@ export const profileAPI = (id) => {
   const statusEndPoint = `profile/status/${id}`
   return Promise.all([instance.get(profileEndPoint).then(r => r.data),
                       instance.get(statusEndPoint).then(r => r.data)])
+}
+
+export const setStatusAPI = (status) => {
+  const statusEndPoint = `profile/status`
+  return instance.put(statusEndPoint, {status}).then(r => r.data.resultCode === 0)
 }

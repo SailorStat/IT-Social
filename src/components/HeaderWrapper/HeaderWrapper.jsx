@@ -1,5 +1,6 @@
 import c from "./HeaderWrapper.module.css"
 import React from "react";
+
 class HeaderWrapper extends React.Component {
   componentDidMount() {
     this.props.userAuth()

@@ -96,7 +96,7 @@ const usersReducer = (state = initialState, action) => {
           followed: el.followed,
           id: el.id,
           fullName: el.name,
-          status: el.status || "нет статуса",
+          status: el.status || "no status",
           photo: el.photos.small || noAvatar
         }})
       }
@@ -110,7 +110,7 @@ const usersReducer = (state = initialState, action) => {
           followed: el.followed,
           id: el.id,
           fullName: el.name || "lal",
-          status: el.status || "нет статуса",
+          status: el.status || "no status",
           photo: el.photos.small || noAvatar
         }))
       ]

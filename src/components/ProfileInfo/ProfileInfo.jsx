@@ -1,5 +1,6 @@
 import c from "./ProfileInfo.module.css"
 import ProfileStatListContainer from "../ProfileStatList/ProfileStatListContainer";
+import StatusContainer from "./../Status/StatusContainer";
 
 
 const ProfileInfo = (props) => {
@@ -7,7 +8,7 @@ const ProfileInfo = (props) => {
     <div className={c.profile__info}>
       <div className={c.profile__description}>
         <div className={c.profile__name}>{props.fullName}</div>
-        <div className={c.profile__status}>{props.status}</div>
+        <StatusContainer />
         <ProfileStatListContainer />
       </div>
       <div className={c.profile__photo}>

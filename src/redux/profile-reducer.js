@@ -7,6 +7,9 @@ const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
 const SET_CURRENT_USER_PAGE = "SET-CURRENT-USER-PAGE"
 const SET_USER = "SET-USER"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
+const SET_STATUS = "SET-STATUS"
+const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
+
 
 const initialState = {
   users: {
@@ -168,7 +171,9 @@ const initialState = {
     photo: userPhoto,
     followed: true,
     location: "Ростов-на-Дону, Россия"
-  }
+  },
+
+  statusEditText: ""
 }
 
 
@@ -220,7 +225,8 @@ const profileReducer = (state = initialState, action) => {
           ...state.users,
           [`${action.user.userId}`]: {
             ...action.user,
-            photos: action.user.photos.large || action.user.photos.small || noAvatar
+            photos: action.user.photos.large || action.user.photos.small || noAvatar,
+            status: action.user.status|| "no status"
           }
         }
       }
@@ -234,10 +240,36 @@ const profileReducer = (state = initialState, action) => {
           online: true,
           id: userData.id,
           name: userData.fullName,
-          status: userData.status,
+          status: userData.status || "no status",
           photo: userData.photos.large || userData.photos.small || noAvatar,
           followed: true
         }
+      }
+    }
+
+    case SET_STATUS_EDIT_TEXT: {
+      return {
+        ...state,
+        statusEditText: action.status
+      }
+    }
+
+    case SET_STATUS: {
+      return {
+        ...state,
+        users: {
+          ...state.users,
+          [state.loginUser.id]: {
+            ...state.users[state.loginUser.id],
+            status: state.statusEditText
+          }
+        },
+        loginUser: {
+          ...state.loginUser,
+          status: state.statusEditText
+        },
+
+        statusEditText: ""
       }
     }
 

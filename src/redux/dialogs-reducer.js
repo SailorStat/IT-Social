@@ -157,7 +157,7 @@ const dialogsReducer = (state = initialState, action) => {
           online: true,
           id: userData.id,
           name: userData.fullName,
-          status: userData.status,
+          status: userData.status || "no status",
           photo: userData.photos.large || userData.photos.small || noAvatar,
           followed: true
         }
