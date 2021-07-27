@@ -40,3 +40,8 @@ export const setStatusAPI = (status) => {
   const statusEndPoint = `profile/status`
   return instance.put(statusEndPoint, {status}).then(r => r.data.resultCode === 0)
 }
+
+export const setStatsAPI = (stats) => {
+  const statsEndPoint = `profile`
+  return instance.put(statsEndPoint, stats).then(r => r.data.resultCode === 0)
+}

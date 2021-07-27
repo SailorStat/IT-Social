@@ -5,7 +5,7 @@ import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
-import { getUsersAPI, toggleFollowAPI, userAPI, authAPI, profileAPI } from "./../API";
+import { getUsersAPI, toggleFollowAPI, userAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI } from "./../API";
 import thunkMiddleware from "redux-thunk";
 
 const reducers = combineReducers({
@@ -44,6 +44,9 @@ const SET_EDIT_MODE = "SET-EDIT-MODE"
 const UNSET_EDIT_MODE = "UNSET-EDIT-MODE"
 const SET_STATUS = "SET-STATUS"
 const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
+const SET_NEW_STATS = "SET_NEW_STATS"
+const SET_EDIT_STATS = "SET_EDIT_STATS"
+const UNSET_EDIT_STATS = "UNSET_EDIT_STATS"
 
 
 export const addMessage = (event) => {
@@ -197,7 +200,28 @@ export const setStatusEditText = (event) => {
   }
 }
 
+export const setNewStats = (stats, id) => {
+  return {
+    type: SET_NEW_STATS,
+    stats,
+    id
+  }
+}
 
+export const setEditStats = () => {
+  return {
+    type: SET_EDIT_STATS
+  }
+}
+
+export const unsetEditStats = () => {
+  return {
+    type: UNSET_EDIT_STATS
+  }
+}
+
+
+// With API
 export const setUsers = (currentPage, usersOnPage, func) => (dispatch) => {
   dispatch(setFetchingTrue())
   getUsersAPI(currentPage, usersOnPage).then(response => {
@@ -237,4 +261,21 @@ export const userAuth = () => (dispatch) => {
 export const getProfileUser = (userId) => (dispatch) => {
   dispatch(setCurrentUserPage(userId))
   profileAPI(userId).then(response => dispatch(setUser(response)))
+}
+
+export const pullStatus = (text) => (dispatch) => {
+  setStatusAPI(text)
+    .then(response => response && dispatch(setStatus()))
+}
+
+export const pullNewStats = (stats, id) => (dispatch) => {
+  const newStats = {
+    aboutMe: stats.aboutMe,
+    contacts: stats.contacts,
+    fullName: stats.fullName,
+    lookingForAJob: stats.lookingForAJob,
+    lookingForAJobDescription: stats.lookingForAJobDescription,
+  }
+  setStatsAPI(newStats)
+    .then(response => response && dispatch(setNewStats(newStats, id)))
 }

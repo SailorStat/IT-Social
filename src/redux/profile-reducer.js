@@ -9,6 +9,9 @@ const SET_USER = "SET-USER"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
 const SET_STATUS = "SET-STATUS"
 const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
+const SET_NEW_STATS = "SET_NEW_STATS"
+const SET_EDIT_STATS = "SET_EDIT_STATS"
+const UNSET_EDIT_STATS = "UNSET_EDIT_STATS"
 
 
 const initialState = {
@@ -173,7 +176,9 @@ const initialState = {
     location: "Ростов-на-Дону, Россия"
   },
 
-  statusEditText: ""
+  statusEditText: "",
+
+  isEditMode: false
 }
 
 
@@ -270,6 +275,34 @@ const profileReducer = (state = initialState, action) => {
         },
 
         statusEditText: ""
+      }
+    }
+    
+    case SET_EDIT_STATS: {
+      return {
+        ...state,
+        isEditMode: true
+      }
+    }
+
+    case UNSET_EDIT_STATS: {
+      return {
+        ...state,
+        isEditMode: false
+      }
+    }
+
+    case SET_NEW_STATS: {
+      return {
+        ...state,
+        isEditMode: false,
+        users: {
+          ...state.users,
+          [action.id]: {
+            ...state.users[action.id],
+            ...action.stats
+          }
+        }
       }
     }
 

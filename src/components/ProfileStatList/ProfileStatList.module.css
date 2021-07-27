@@ -1,0 +1,54 @@
+.edit__button {
+  width: min-content;
+  padding: 1px 6px;
+  font-size: 15px;
+  color: #842691;
+  cursor: pointer;
+  border: 1px #842691 solid;
+  border-radius: 3px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.edit__button:hover {
+  background-color: #eee;
+}
+
+.edit__button:active {
+  background-color: #ddd;
+}
+
+.button__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.button {
+  display: block;
+  margin-left: auto;
+  width: 80px;
+  height: 30px;
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 20px;
+
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  border-radius: 5px 0 5px 8px;
+  transition: background-color .3s linear;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #b66ec0;
+}
+
+.button:active {
+  background-color: #b83dc9;
+}
+
+.button__cancel {
+  background-color: #fff;
+}

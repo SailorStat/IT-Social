@@ -1,3 +1,7 @@
+.profile__stat {
+
+}
+
 .subprofile__stat {
   margin-left: 15px;
 }
@@ -5,4 +9,34 @@
 .stat__property {
   font-weight: 500;
   opacity: 1;
+}
+
+.stat__input {
+  width: 100%;
+  padding: 5px 10px;
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 20px;
+
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  border-radius: 5px;
+  resize: none;
+}
+
+.stat__input:focus,
+.stat__input:hover {
+
+}
+
+.stat__select {
+  width: 100%;
+  padding: 5px 10px;
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 20px;
+
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  border-radius: 5px;
 }

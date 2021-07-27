@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Status from "./Status";
 import { withRouter } from "react-router-dom";
-import { setStatus, setStatusEditText, unsetEditMode, setEditMode } from "./../../redux/redux-store";
+import { setStatus, setStatusEditText, unsetEditMode, setEditMode, pullStatus } from "./../../redux/redux-store";
 
 const mapStateToProps = state => {
   const currentUserPage = state.profilePage.currentUserPage
@@ -17,7 +17,8 @@ const mapDispatchToProps = {
   setStatus,
   setStatusEditText,
   unsetEditMode,
-  setEditMode
+  setEditMode,
+  pullStatus
 }
 
 const StatusContainer = connect(mapStateToProps, mapDispatchToProps)(Status)

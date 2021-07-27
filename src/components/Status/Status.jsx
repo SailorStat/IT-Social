@@ -9,13 +9,12 @@ class Status extends React.Component {
     }
   }
 
-  pullStatus = () => {
-    setStatusAPI(this.props.editText)
-      .then(response => response && this.props.setStatus())
+  sendNewStatus = () => {
+    this.props.pullStatus(this.props.editText)
   }
 
   componentWillUnmount() {
-    this.props.unsetEditMode()
+    this.props.unsetEditMode(this.pullStatus)
   }
 
   render() {
@@ -25,8 +24,8 @@ class Status extends React.Component {
           <input className={c.status__input} maxLength="300" value={this.props.editText} onChange={this.props.setStatusEditText} autoFocus={true}/>
         </div>
         <div className={c.button__wrapper}>
-          <button className={c.button + " " + c.button__clear} onClick={this.props.unsetEditMode}>Clear</button>
-          <button className={c.button} onClick={this.pullStatus}>Save</button>
+          <button className={c.button + " " + c.button__cancel} onClick={this.props.unsetEditMode}>Cancel</button>
+          <button className={c.button} onClick={this.sendNewStatus}>Save</button>
         </div>
       </div>
     ) || (

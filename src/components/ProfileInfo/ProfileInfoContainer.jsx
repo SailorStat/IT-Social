@@ -1,6 +1,6 @@
 import ProfileInfo from "./ProfileInfo";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+
 
 const mapStateToProps = (state) => {
   const currentUserPage = state.profilePage.currentUserPage
