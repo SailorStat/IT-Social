@@ -4,6 +4,7 @@ const ProfileStat = (props) => {
   return (
     <div className={c.profile__stat + (props.subProfileStat ? " " + c.subprofile__stat : "")}>
       <span className={c.stat__name}>{props.property + ": "}</span>
+      {props.subProfileStat && props.isEditMode && <span className={c.link__warning}>the field accepts only links</span>}
       {
         !props.isEditMode 
           ? <span className={c.stat__property}>{props.value}</span>
