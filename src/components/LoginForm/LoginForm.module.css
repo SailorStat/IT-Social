@@ -1,0 +1,69 @@
+.form__wrapper {
+  margin-top: 20px;
+}
+
+.form__item {
+  margin: 0 auto;
+  max-width: 400px;
+  text-align: center;
+}
+
+.input__text {
+  margin-top: 5px;
+  width: 100%;
+  height: 35px;
+  padding: 5px 10px;
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 20px;
+
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  border-radius: 5px;
+}
+
+.input__text:focus,
+.input__text:hover {
+  margin-top: 5px;
+  padding-left: 9px;
+
+  outline: 0;
+  border: 3px #842691 solid;
+}
+
+.input__checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  vertical-align: middle;
+}
+
+.input__description {
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.button {
+  display: block;
+  margin: 15px auto 0;
+  width: 120px;
+  height: 35px;
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 20px;
+
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  border-radius: 10px 0 10px 15px;
+  transition: background-color .3s linear;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #b66ec0;
+}
+
+.button:active {
+  background-color: #b83dc9;
+}

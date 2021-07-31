@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import HeaderWrapper from "./HeaderWrapper";
-import { userAuth } from "./../../redux/redux-store";
+import { userAuth, deleteLoginUser } from "./../../redux/redux-store";
 
 const mapStateToProps = (state) => {
   return {
@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = { userAuth }
+const mapDispatchToProps = { userAuth, deleteLoginUser }
 
 const HeaderWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderWrapper)
 

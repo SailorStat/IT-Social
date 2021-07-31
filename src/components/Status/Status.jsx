@@ -1,4 +1,4 @@
-import c from "./Status.module.css"
+import s from "./Status.module.css"
 import React from "react";
 import { setStatusAPI } from "../../API";
 
@@ -19,17 +19,17 @@ class Status extends React.Component {
 
   render() {
     return (this.props.editMode && 
-      <div className={c.status__editor}>
-        <div className={c.status__input__wrapper}>
-          <input className={c.status__input} maxLength="300" value={this.props.editText} onChange={this.props.setStatusEditText} autoFocus={true}/>
+      <div className={s.status__editor}>
+        <div className={s.status__input__wrapper}>
+          <input className={s.status__input} maxLength="300" value={this.props.editText} onChange={this.props.setStatusEditText} autoFocus={true}/>
         </div>
-        <div className={c.button__wrapper}>
-          <button className={c.button + " " + c.button__cancel} onClick={this.props.unsetEditMode}>Cancel</button>
-          <button className={c.button} onClick={this.sendNewStatus}>Save</button>
+        <div className={s.button__wrapper}>
+          <button className={s.button + " " + s.button__cancel} onClick={this.props.unsetEditMode}>Cancel</button>
+          <button className={s.button} onClick={this.sendNewStatus}>Save</button>
         </div>
       </div>
     ) || (
-      <div className={c.status} onDoubleClick={this.editModeActivator}>{this.props.status}</div>
+      <div className={s.status} onDoubleClick={this.editModeActivator}>{this.props.status}</div>
     )
   }
 }

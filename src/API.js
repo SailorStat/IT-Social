@@ -16,7 +16,7 @@ export const getUsersAPI = (currentPage, usersOnPage) => {
 export const toggleFollowAPI = (userId, followed) => {
   const followEndPoint = `follow/${userId}`
   const request = followed ? instance.delete(followEndPoint) : instance.post(followEndPoint, {})
-  return request.then(r => r.data.resultCode == 0)
+  return request.then(r => r.data.resultCode === 0)
 }
 
 export const authAPI = () => {
@@ -45,3 +45,14 @@ export const setStatsAPI = (stats) => {
   const statsEndPoint = `profile`
   return instance.put(statsEndPoint, stats).then(r => r.data.resultCode === 0)
 }
+
+export const setLoginAPI = (payload) => {
+  const statsEndPoint = `auth/login`
+  return instance.post(statsEndPoint, payload).then(r => r.data.resultCode === 0)
+}
+
+export const setLogoutAPI = () => {
+  const statsEndPoint = `auth/login`
+  return instance.delete(statsEndPoint).then(r => r.data.resultCode === 0)
+}
+

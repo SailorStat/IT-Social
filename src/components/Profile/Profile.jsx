@@ -6,8 +6,8 @@ import Preloader from "../../assets/img/Preloader.svg"
 
 class Profile extends React.Component {
   componentDidMount() {
-    const userId = this.props.match.params.userId || this.props.loginUser.id
-    this.props.getProfileUser(userId)
+    const userId = this.props.match.params.userId || this.props.loginUser
+    userId ? this.props.getProfileUser(userId) : this.props.getIdCurrentUser()
   }
 
   render() {

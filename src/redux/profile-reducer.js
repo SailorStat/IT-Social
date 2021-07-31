@@ -100,27 +100,6 @@ const initialState = {
         "large": null
       }
     },
-    "17725": {
-      "aboutMe": null,
-      "contacts": {
-        "facebook": null,
-        "website": null,
-        "vk": null,
-        "twitter": null,
-        "instagram": null,
-        "youtube": null,
-        "github": null,
-        "mainLink": null
-      },
-      "lookingForAJob": false,
-      "lookingForAJobDescription": null,
-      "fullName": "Sailor Stat",
-      "userId": 17725,
-      "photos": {
-        "small": userPhoto,
-        "large": null
-      }
-    }
   },
 
   userStats: ["About Me", "Contacts", "Looking for a job", "Looking for a job description"],
@@ -164,16 +143,16 @@ const initialState = {
 
   postValueText: "",
 
-  currentUserPage: 17725,
+  currentUserPage: undefined,
 
   loginUser: {
-    online: true,
-    id: 17725,
-    name: "Sailor Stat",
-    status: "Live is perfect",
-    photo: userPhoto,
-    followed: true,
-    location: "Ростов-на-Дону, Россия"
+  //   online: true,
+  //   id: 17725,
+  //   name: "Sailor Stat",
+  //   status: "Live is perfect",
+  //   photo: userPhoto,
+  //   followed: true,
+  //   location: "Ростов-на-Дону, Россия"
   },
 
   statusEditText: "",

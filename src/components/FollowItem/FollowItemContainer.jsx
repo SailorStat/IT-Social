@@ -1,13 +1,13 @@
 import FollowItem from "./FollowItem";
-import c from "./FollowItem.module.css"
+import s from "./FollowItem.module.css"
 // current user stylle
 // follow style
 
 const FollowItemContainer = (props) => {
   return (
-    <FollowItem styleCurrentUser={props.userId === props.loginUser ? c.displayed : ""}
+    <FollowItem styleCurrentUser={props.userId === props.loginUser ? s.displayed : ""}
                 buttonTitle={props.followed ? "followed" : "follow"}
-                buttonStyle={props.followed ? c.active : ""}
+                buttonStyle={props.followed ? s.active : ""}
                 isDisabled={props.inFollowToggle.some(el => el === props.userId)}
                 fullName={props.fullName}
                 userId={props.userId}

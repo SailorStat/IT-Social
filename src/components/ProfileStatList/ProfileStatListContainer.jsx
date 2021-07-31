@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import ProfileStatList from "./ProfileStatList";
 import { withRouter } from "react-router-dom";
 import { unsetEditStats, setEditStats, pullNewStats } from "./../../redux/redux-store";
+import { compose } from "redux";
 
 const mapStateToProps = (state) => {
   const currentUserPage = state.profilePage.currentUserPage
@@ -19,7 +20,7 @@ const mapDispatchToProps = {
   pullNewStats
 }
 
-const ProfileStatListContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileStatList)
-const ProfileStatListContainerWithRouter = withRouter(ProfileStatListContainer)
-
-export default ProfileStatListContainerWithRouter
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+)(ProfileStatList)

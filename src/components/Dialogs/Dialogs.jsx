@@ -1,14 +1,14 @@
-import c from "./Dialogs.module.css"
-import TextCreator from '../TextCreator/TextCreator';
+import s from "./Dialogs.module.css"
+import TextCreator from "../../loc/TextCreator/TextCreator";
 import MessageListContainer from "../MessageList/MessageListContainer";
 import AddresseeListContainer from "../AddresseeList/AddresseeListContainer";
 
 const Dialogs = (props) => {
   return (
-    <div className={"content__wrapper " + c.dialogs}>
+    <div className={"content__wrapper " + s.dialogs}>
       <AddresseeListContainer />
       
-      <div className={c.messages__inner}>
+      <div className={s.messages__inner}>
         <MessageListContainer />
         <TextCreator placeholderText="Enter your message.."
                      getText={props.getText}

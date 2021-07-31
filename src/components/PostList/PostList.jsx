@@ -1,10 +1,10 @@
-import c from "../Post/Post.module.css"
+import s from "../Post/Post.module.css"
 import Post from "../Post/Post";
 
 
 const PostList = (props) => {
   const giveActive = (arg) => {
-    if (arg) return c.active
+    if (arg) return s.active
     return ""
   }
   return (

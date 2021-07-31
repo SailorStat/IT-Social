@@ -1,6 +1,7 @@
 import PostList from "./PostList";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
 const mapStateToProps = (state) => {
   const currentUserPage = state.profilePage.currentUserPage
@@ -11,8 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {}
 
-const PostListContainer = connect(mapStateToProps, mapDispatchToProps)(PostList)
-
-const PostListContainerWithRouter = withRouter(PostListContainer)
-
-export default PostListContainerWithRouter
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+)(PostList)

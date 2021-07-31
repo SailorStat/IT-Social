@@ -5,8 +5,9 @@ import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
-import { getUsersAPI, toggleFollowAPI, userAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI } from "./../API";
+import { getUsersAPI, toggleFollowAPI, userAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI } from "./../API";
 import thunkMiddleware from "redux-thunk";
+import { reducer as formReducer } from "redux-form"
 
 const reducers = combineReducers({
   dialogsPage: dialogsReducer,
@@ -14,6 +15,7 @@ const reducers = combineReducers({
   loginPage: loginReducer,
   usersPage: usersReducer,
   pages: pagesReducer,
+  form: formReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware))
@@ -263,6 +265,10 @@ export const getProfileUser = (userId) => (dispatch) => {
   profileAPI(userId).then(response => dispatch(setUser(response)))
 }
 
+export const getIdCurrentUser = () => (dispatch) => {
+  authAPI().then(data => getProfileUser(data.data.id)(dispatch))
+}
+
 export const pullStatus = (text) => (dispatch) => {
   setStatusAPI(text)
     .then(response => response && dispatch(setStatus()))
@@ -278,4 +284,14 @@ export const pullNewStats = (stats, id) => (dispatch) => {
   }
   setStatsAPI(newStats)
     .then(response => response && dispatch(setNewStats(newStats, id)))
+}
+
+export const postLoginUser = (formData) => (dispatch) => {
+  setLoginAPI(formData)
+    .then(response => response && userAuth()(dispatch))
+}
+
+export const deleteLoginUser = () => (dispatch) => {
+  setLogoutAPI()
+    .then(response => response && dispatch(setLogoutUser()))
 }

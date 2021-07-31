@@ -1,9 +1,9 @@
 import Message from '../Message/Message';
-import c from "./MessageList.module.css"
+import s from "./MessageList.module.css"
 
 const MessageList = (props) => {
   return (
-    <div className={c.message__container}>
+    <div className={s.message__container}>
       {props.messagesData.map(el => <Message key={"Message" + el.messageId}
                                              userPhoto={el.userPhoto}
                                              fullName={el.fullName} 

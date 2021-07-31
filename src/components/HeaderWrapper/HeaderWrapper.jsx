@@ -1,4 +1,4 @@
-import c from "./HeaderWrapper.module.css"
+import s from "./HeaderWrapper.module.css"
 import React from "react";
 
 class HeaderWrapper extends React.Component {
@@ -8,13 +8,13 @@ class HeaderWrapper extends React.Component {
 
   render() {
     return ( this.props.isLoggedIn &&
-      <div className={c.header__wrapper}>
-        <div className={c.header__button} onClick={this.props.setLogoutUser}>Exit</div>
+      <div className={s.header__wrapper}>
+        <div className={s.header__button} onClick={this.props.deleteLoginUser}>Exit</div>
       </div>
     ) || (
-      <div className={c.header__wrapper}>
-        <div className={c.header__button}>Registration</div>
-        <div className={c.header__button}>Login</div>
+      <div className={s.header__wrapper}>
+        <div className={s.header__button}>Registration</div>
+        <div className={s.header__button}>Login</div>
       </div>
     )
   }

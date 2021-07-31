@@ -1,19 +1,19 @@
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import { withRouter } from "react-router-dom";
-import { getProfileUser } from "./../../redux/redux-store";
+import { getProfileUser, getIdCurrentUser } from "./../../redux/redux-store";
+import { compose } from "redux";
 
 const mapStateToProps = (state) => {
   return {
-    loginUser: state.loginPage.loginUser,
+    loginUser: state.loginPage.loginUser.id,
     hasUser: state.profilePage.users[state.profilePage.currentUserPage]
   }
 }
 
-const mapDispatchToProps = { getProfileUser }
+const mapDispatchToProps = { getProfileUser, getIdCurrentUser }
 
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile)
-
-const ProfileContainerWithRouter = withRouter(ProfileContainer)
-
-export default ProfileContainerWithRouter
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+)(Profile)

@@ -6,6 +6,7 @@ const ADD_MESSAGE = "ADD-MESSAGE"
 const SET_CHECKED_DIALOG = "SET-CHECKED-DIALOG"
 const SET_DIALOG_VALUE_TEXT = "SET-DIALOG-VALUE-TEXT"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
+const SET_LOGOUT_USER = "SET-LOGOUT-USER"
 
 const initialState = {
   dialogs: {
@@ -93,13 +94,6 @@ const initialState = {
   dialogValueText: "",
 
   loginUser: {
-    online: true,
-    id: 17725,
-    name: "Sailor Stat",
-    status: "Live is perfect",
-    photo: userPhoto,
-    followed: true,
-    location: "Ростов-на-Дону, Россия"
   }
 }
 
@@ -160,6 +154,20 @@ const dialogsReducer = (state = initialState, action) => {
           status: userData.status || "no status",
           photo: userData.photos.large || userData.photos.small || noAvatar,
           followed: true
+        }
+      }
+    }
+    
+    case SET_LOGOUT_USER: {
+      return {
+        ...state,
+        loginUser: {
+          online: false,
+          id: undefined,
+          name: undefined,
+          status: undefined,
+          photo: undefined,
+          followed: undefined
         }
       }
     }

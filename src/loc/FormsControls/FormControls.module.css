@@ -1,0 +1,37 @@
+.form__controls {
+  position: relative;
+}
+
+.form__controls.error input,
+.form__controls.error textarea {
+  border-color: red;
+}
+
+.error__message {
+  display: none;
+  position: absolute;
+  min-width: 50%;
+  max-width: min-content;
+  height: 35px;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  padding: 0 10px;
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 20px;
+  white-space: nowrap;
+
+  border: 2px #26912b solid;
+  background-color: #a5c49d;
+  border-radius: 5px;
+
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 80, 37, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 80, 37, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 80, 37, 0.2);
+}
+
+.form__controls.error .error__message {
+  display: block;
+}

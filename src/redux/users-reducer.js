@@ -45,15 +45,7 @@ const initialState = {
       photo: noAvatar,
       followed: true,
       location: "Саратов, Россия"
-    }, {
-      online: true,
-      id: 17725,
-      name: "Sailor Stat",
-      status: "Live is perfect",
-      photo: userPhoto,
-      followed: true,
-      location: "Ростов-на-Дону, Россия"
-    },
+    }
   ],
   pagination: {
     totalCount: 10,

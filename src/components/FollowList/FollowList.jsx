@@ -1,9 +1,9 @@
-import c from "./FollowList.module.css"
+import s from "./FollowList.module.css"
 import FollowItemContainer from "./../FollowItem/FollowItemContainer";
 
 const FollowList = (props) => {
   return (
-    <div className={c.follow__list}>
+    <div className={s.follow__list}>
       {props.users.map(el => (<FollowItemContainer key={el.id}
                                                    fullName={el.fullName}
                                                    userId={el.id}

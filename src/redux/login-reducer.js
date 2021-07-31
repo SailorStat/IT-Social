@@ -10,16 +10,9 @@ const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
 
 const initialState = {
   loginUser: {
-    online: true,
-    id: 17725,
-    name: "Sailor Stat",
-    status: "Live is perfect",
-    photo: userPhoto,
-    followed: true,
-    location: "Ростов-на-Дону, Россия"
   },
 
-  isLoggedIn: true,
+  isLoggedIn: false,
 
   statusEditMode: false,
   statusEditText: ""
@@ -44,11 +37,19 @@ const loginReducer = (state = initialState, action) => {
       }
     }
 
+    
     case SET_LOGOUT_USER: {
       return {
         ...state,
         isLoggedIn: false,
-        loginUser: {}
+        loginUser: {
+          online: false,
+          id: undefined,
+          name: undefined,
+          status: undefined,
+          photo: undefined,
+          followed: undefined
+        }
       }
     }
 

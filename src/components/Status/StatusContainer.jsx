@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import Status from "./Status";
 import { withRouter } from "react-router-dom";
 import { setStatus, setStatusEditText, unsetEditMode, setEditMode, pullStatus } from "./../../redux/redux-store";
+import { compose } from "redux";
 
 const mapStateToProps = state => {
   const currentUserPage = state.profilePage.currentUserPage
@@ -21,8 +22,7 @@ const mapDispatchToProps = {
   pullStatus
 }
 
-const StatusContainer = connect(mapStateToProps, mapDispatchToProps)(Status)
-const StatusContainerRouter = withRouter(StatusContainer)
-
-
-export default StatusContainerRouter
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+)(Status)

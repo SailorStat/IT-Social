@@ -1,5 +1,5 @@
-import c from "./FollowItem.module.css"
-import Avatar from "./../Avatar/Avatar";
+import s from "./FollowItem.module.css"
+import Avatar from "../../loc/Avatar/Avatar";
 import { NavLink } from "react-router-dom";
 
 const FollowItem = (props) => {
@@ -8,17 +8,17 @@ const FollowItem = (props) => {
   }
 
   return (
-    <div className={c.follow__item}>
+    <div className={s.follow__item}>
       <Avatar avatar={props.photo} userid={props.userId}/>
-      <div className={c.follow_info}>
-        <div className={c.user__info}>
-          <div className={c.user__condition}>
-            <NavLink to={"/profile/" + props.userId} className={c.user__name}>{props.fullName}</NavLink>
-            <span className={c.user__location}>{props.location}</span>
-            <span className={c.wanted + " " + props.styleCurrentUser}>This is how other users see you</span>
+      <div className={s.follow_info}>
+        <div className={s.user__info}>
+          <div className={s.user__condition}>
+            <NavLink to={"/profile/" + props.userId} className={s.user__name}>{props.fullName}</NavLink>
+            <span className={s.user__location}>{props.location}</span>
+            <span className={s.wanted + " " + props.styleCurrentUser}>This is how other users see you</span>
           </div>
-          <button className={c.follow__button + " " + props.buttonStyle} onClick={onToggleFollow} disabled={props.isDisabled}>{props.buttonTitle}</button>
-          <div className={c.user__status}>{props.status}</div>
+          <button className={s.follow__button + " " + props.buttonStyle} onClick={onToggleFollow} disabled={props.isDisabled}>{props.buttonTitle}</button>
+          <div className={s.user__status}>{props.status}</div>
         </div>
       </div>
     </div>

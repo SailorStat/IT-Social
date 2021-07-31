@@ -1,19 +1,19 @@
-import c from "./Message.module.css"
-import Avatar from "./../Avatar/Avatar";
+import s from "./Message.module.css"
+import Avatar from "../../loc/Avatar/Avatar";
 import { NavLink } from "react-router-dom";
 
 const Message = (props) => {
   if (props.fromCurrentUser) {
     return (
-      <div className={c.message + " " + c.outgoing}>
-        <div className={c.message__date + " " + c.outgoing}>
+      <div className={s.message + " " + s.outgoing}>
+        <div className={s.message__date + " " + s.outgoing}>
           {props.date}
         </div>
-        <div className={c.message__data + " " + c.outgoing}>
-          <NavLink to={"/profile/" + props.loginUser} className={c.message__author + " " + c.outgoing}>{props.fullName}</NavLink>
-          <div className={c.message__text + " " + c.outgoing}>{props.message}</div>
+        <div className={s.message__data + " " + s.outgoing}>
+          <NavLink to={"/profile/" + props.loginUser} className={s.message__author + " " + s.outgoing}>{props.fullName}</NavLink>
+          <div className={s.message__text + " " + s.outgoing}>{props.message}</div>
         </div>
-        <div className={c.userPhoto + " " + c.outgoing}>
+        <div className={s.userPhoto + " " + s.outgoing}>
           <Avatar avatar={props.userPhoto} userid={props.loginUser}/>
         </div>
       </div>
@@ -21,15 +21,15 @@ const Message = (props) => {
   }
   
   return (
-    <div className={c.message}>
-      <div className={c.userPhoto}>
+    <div className={s.message}>
+      <div className={s.userPhoto}>
           <Avatar avatar={props.userPhoto} userid={props.checkedDialog}/>
       </div>
-      <div className={c.message__data}>
-        <NavLink to={"/profile/" + props.checkedDialog} className={c.message__author + " " + c.outgoing}>{props.fullName}</NavLink>
-        <div className={c.message__text}>{props.message}</div>
+      <div className={s.message__data}>
+        <NavLink to={"/profile/" + props.checkedDialog} className={s.message__author + " " + s.outgoing}>{props.fullName}</NavLink>
+        <div className={s.message__text}>{props.message}</div>
       </div>
-      <div className={c.message__date}>
+      <div className={s.message__date}>
         {props.date}
       </div>
     </div>

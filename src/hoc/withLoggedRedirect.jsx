@@ -8,13 +8,17 @@ const mapStateToPropsForRedirect = state => {
   }
 }
 
+const mapDispatchToProps = {
+
+}
+
 const withLoggedRedirect = (Component) => {
   const RedirectComponent = (props) => {
-    if (props.isLoggedIn) return <Component />
+    if (props.isLoggedIn) return <Component {...props}/>
     return <Redirect to={"/login"}/>
   }
 
-  return connect(mapStateToPropsForRedirect)(RedirectComponent)
+  return connect(mapStateToPropsForRedirect, mapDispatchToProps)(RedirectComponent)
 }
   
 
