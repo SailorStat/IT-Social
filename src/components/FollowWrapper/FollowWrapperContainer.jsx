@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { compose } from "redux";
-import withLoggedRedirect from "../../hoc/withLoggedRedirect";
+import withLoginRedirect from "../../hoc/withLoginRedirect";
 import FollowWrapper from "./FollowWrapper";
 import s from "./FollowWrapper.module.css"
 
@@ -15,5 +15,5 @@ const mapDispatchToProps = {}
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withLoggedRedirect
+  withLoginRedirect
 )(FollowWrapper)

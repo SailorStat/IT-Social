@@ -59,7 +59,7 @@ const ProfileStatList = (props) => {
   return (
     <>
       {
-        !props.match.params.userId && !props.isEditMode && <div className={c.edit__button} onClick={props.setEditStats}>edit info</div>
+        props.isLoggedIn && !props.match.params.userId && !props.isEditMode && <div className={c.edit__button} onClick={props.setEditStats}>edit info</div>
       }
       {
         Object.keys(props.profileStats).map((el, index) => profileStatCreator(el, index, props.profileStats, props.userStats, props.isEditMode))

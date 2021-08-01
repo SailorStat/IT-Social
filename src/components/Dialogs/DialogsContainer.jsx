@@ -1,7 +1,7 @@
 import Dialogs from "./Dialogs";
 import { addMessage, setDialogValueText } from "../../redux/redux-store";
 import { connect } from "react-redux";
-import withLoggedRedirect from "../../hoc/withLoggedRedirect";
+import withLoginRedirect from "../../hoc/withLoginRedirect";
 import { compose } from "redux";
 
 const mapStateToProps = (state) => {
@@ -17,5 +17,5 @@ const mapDispatchToProps = { setDialogValueText, addMessage}
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withLoggedRedirect
+  withLoginRedirect
 )(Dialogs)

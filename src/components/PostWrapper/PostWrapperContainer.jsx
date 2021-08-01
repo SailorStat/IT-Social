@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
   const currentUserPage = state.profilePage.currentUserPage
   return {
     userPhoto: state.loginPage.loginUser.photo,
-    getText: state.profilePage.postValueText
+    getText: state.profilePage.postValueText,
+    isLoggedIn: state.loginPage.isLoggedIn
   }
 }
 

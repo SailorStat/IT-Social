@@ -6,7 +6,7 @@ import { compose } from "redux";
 
 const mapStateToProps = (state) => {
   return {
-    loginUser: state.loginPage.loginUser.id,
+    idCurrentUser: state.loginPage.loginUser.id,
     hasUser: state.profilePage.users[state.profilePage.currentUserPage]
   }
 }

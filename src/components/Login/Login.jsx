@@ -1,5 +1,6 @@
 import s from "./Login.module.css"
 import LoginFormWrapperContainer from "../LoginFormWrapper/LoginFormWrapperContainer";
+import withProfileRedirect from "../../hoc/withProfileRedirect";
 
 const Login = () => {
   return (
@@ -10,4 +11,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withProfileRedirect(Login)

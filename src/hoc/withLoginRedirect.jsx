@@ -12,7 +12,7 @@ const mapDispatchToProps = {
 
 }
 
-const withLoggedRedirect = (Component) => {
+const withLoginRedirect = (Component) => {
   const RedirectComponent = (props) => {
     if (props.isLoggedIn) return <Component {...props}/>
     return <Redirect to={"/login"}/>
@@ -22,4 +22,4 @@ const withLoggedRedirect = (Component) => {
 }
   
 
-export default withLoggedRedirect
+export default withLoginRedirect

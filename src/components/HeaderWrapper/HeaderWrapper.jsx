@@ -1,5 +1,6 @@
 import s from "./HeaderWrapper.module.css"
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 class HeaderWrapper extends React.Component {
   componentDidMount() {
@@ -14,7 +15,7 @@ class HeaderWrapper extends React.Component {
     ) || (
       <div className={s.header__wrapper}>
         <div className={s.header__button}>Registration</div>
-        <div className={s.header__button}>Login</div>
+        <NavLink key="login" to="/login" className={s.header__button}>Login</NavLink>
       </div>
     )
   }

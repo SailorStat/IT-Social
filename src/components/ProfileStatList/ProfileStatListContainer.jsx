@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
     profileStats: state.profilePage.users[currentUserPage],
     userStats: state.profilePage.userStats,
     isEditMode: state.profilePage.isEditMode,
-    loginUserId: state.profilePage.loginUser.id
+    loginUserId: state.profilePage.loginUser.id,
+    isLoggedIn: state.loginPage.isLoggedIn
   }
 }
 

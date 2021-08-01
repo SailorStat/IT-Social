@@ -48,7 +48,7 @@ export const setStatsAPI = (stats) => {
 
 export const setLoginAPI = (payload) => {
   const statsEndPoint = `auth/login`
-  return instance.post(statsEndPoint, payload).then(r => r.data.resultCode === 0)
+  return instance.post(statsEndPoint, payload).then(r => r.data)
 }
 
 export const setLogoutAPI = () => {

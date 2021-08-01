@@ -7,7 +7,7 @@ import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
 import { getUsersAPI, toggleFollowAPI, userAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI } from "./../API";
 import thunkMiddleware from "redux-thunk";
-import { reducer as formReducer } from "redux-form"
+import { reducer as formReducer, stopSubmit } from "redux-form"
 
 const reducers = combineReducers({
   dialogsPage: dialogsReducer,
@@ -288,7 +288,10 @@ export const pullNewStats = (stats, id) => (dispatch) => {
 
 export const postLoginUser = (formData) => (dispatch) => {
   setLoginAPI(formData)
-    .then(response => response && userAuth()(dispatch))
+    .then(response => {
+      if (response.resultCode === 0) return userAuth()(dispatch)
+      if (response.resultCode === 1) return dispatch(stopSubmit("loginForm", {_error: response.messages[0]}))
+    })
 }
 
 export const deleteLoginUser = () => (dispatch) => {
