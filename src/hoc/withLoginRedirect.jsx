@@ -1,10 +1,11 @@
 import React from 'react';
 import { Redirect } from "react-router-dom"
 import { connect } from "react-redux";
+import { getIsLoggedIn } from '../redux/selectors/user-selector';
 
 const mapStateToPropsForRedirect = state => {
   return {
-    isLoggedIn: state.loginPage.isLoggedIn
+    isLoggedIn: getIsLoggedIn(state)
   }
 }
 

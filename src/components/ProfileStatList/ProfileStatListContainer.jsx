@@ -3,6 +3,7 @@ import ProfileStatList from "./ProfileStatList";
 import { withRouter } from "react-router-dom";
 import { unsetEditStats, setEditStats, pullNewStats } from "./../../redux/redux-store";
 import { compose } from "redux";
+import { getIsLoggedIn } from "../../redux/selectors/user-selector";
 
 const mapStateToProps = (state) => {
   const currentUserPage = state.profilePage.currentUserPage
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => {
     userStats: state.profilePage.userStats,
     isEditMode: state.profilePage.isEditMode,
     loginUserId: state.profilePage.loginUser.id,
-    isLoggedIn: state.loginPage.isLoggedIn
+    isLoggedIn: getIsLoggedIn(state)
   }
 }
 

@@ -1,14 +1,15 @@
 import { connect } from "react-redux";
 import HeaderWrapper from "./HeaderWrapper";
-import { userAuth, deleteLoginUser } from "./../../redux/redux-store";
+import { deleteLoginUser } from "./../../redux/redux-store";
+import { getIsLoggedIn } from "../../redux/selectors/user-selector";
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.loginPage.isLoggedIn
+    isLoggedIn: getIsLoggedIn(state)
   }
 }
 
-const mapDispatchToProps = { userAuth, deleteLoginUser }
+const mapDispatchToProps = { deleteLoginUser }
 
 const HeaderWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderWrapper)
 

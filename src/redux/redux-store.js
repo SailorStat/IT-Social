@@ -49,6 +49,8 @@ const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
 const SET_NEW_STATS = "SET_NEW_STATS"
 const SET_EDIT_STATS = "SET_EDIT_STATS"
 const UNSET_EDIT_STATS = "UNSET_EDIT_STATS"
+const SET_INITIALIZE = "SET-INITIALIZE"
+const SET_UNINITIALIZE = "SET-UNINITIALIZE"
 
 
 export const addMessage = (event) => {
@@ -222,6 +224,18 @@ export const unsetEditStats = () => {
   }
 }
 
+export const setInitialize = () => {
+  return {
+    type: SET_INITIALIZE
+  }
+}
+
+export const setUninitialize = () => {
+  return {
+    type: SET_UNINITIALIZE
+  }
+}
+
 
 // With API
 export const setUsers = (currentPage, usersOnPage, func) => (dispatch) => {
@@ -242,20 +256,22 @@ export const toggleFollow = (userId, followed) => (dispatch) => {
 }
 
 export const userAuth = () => (dispatch) => {
-  let loginUserData = {}
+  dispatch(setUninitialize())
 
+  let loginUserData = {}
   authAPI().then(data => {
     if (data.resultCode === 0) {
       loginUserData = {
         ...data.data
       }
-    }
+    } else dispatch(setInitialize())
     userAPI(loginUserData.id).then(data => {
       loginUserData = {
         ...loginUserData,
         ...data
       }
       dispatch(setLoginUser(loginUserData))
+      dispatch(setInitialize())
     })
   })
 }

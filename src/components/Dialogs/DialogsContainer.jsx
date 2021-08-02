@@ -3,12 +3,14 @@ import { addMessage, setDialogValueText } from "../../redux/redux-store";
 import { connect } from "react-redux";
 import withLoginRedirect from "../../hoc/withLoginRedirect";
 import { compose } from "redux";
+import { getCurrentUserId, getCurrentUserPhoto } from "../../redux/selectors/user-selector";
+import { getDialogValueText } from "./../../redux/selectors/dialogs-selector";
 
 const mapStateToProps = (state) => {
   return {
-    getText: state.dialogsPage.dialogValueText,
-    userPhoto: state.loginPage.loginUser.photo,
-    userId: state.loginPage.loginUser.id,
+    getText: getDialogValueText(state),
+    userPhoto: getCurrentUserPhoto(state),
+    userId: getCurrentUserId(state),
     fullName: state.loginPage.loginUser.name
   }
 }

@@ -2,20 +2,37 @@ import React from 'react';
 import './App.css';
 import Body from './components/Body/Body';
 import Header from './components/Header/Header';
+import { userAuth } from "./redux/redux-store";
+import { connect } from "react-redux";
 
-const App = () => {
-  return (
-    <>
-      <section className="section">
-        <div className="container container__header">
-          <Header />
-        </div>
 
-        <div className="container">
-          <Body />
-        </div>
-      </section>
-    </>
-  )
+const mapStateToProps = (state) => {
+  return {
+  }
 }
-export default App
+
+const mapDispatchToProps = { userAuth }
+
+
+class App extends React.Component {
+  componentDidMount() {
+    this.props.userAuth()
+  }
+
+  render() {
+    return (
+      <>
+        <section className="section">
+          <div className="container container__header">
+            <Header />
+          </div>
+          <div className="container">
+            <Body />
+          </div>
+        </section>
+      </>
+    )
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

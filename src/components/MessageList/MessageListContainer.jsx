@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { getCurrentUserId } from "../../redux/selectors/user-selector";
 import MessageList from "./MessageList";
 
 
@@ -6,7 +7,7 @@ const mapStateToProps = (state) => {
   return {
     messagesData: state.dialogsPage.dialogs[state.dialogsPage.checkedDialog]?.messagesData || [],
     checkedDialog: state.dialogsPage.checkedDialog,
-    loginUser: state.loginPage.loginUser.id
+    loginUser: getCurrentUserId(state)
   }
 }
 
