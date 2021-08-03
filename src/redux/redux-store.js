@@ -5,7 +5,7 @@ import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
-import { getUsersAPI, toggleFollowAPI, userAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI } from "./../API";
+import { getUsersAPI, toggleFollowAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI } from "./../API";
 import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer, stopSubmit } from "redux-form"
 
@@ -257,22 +257,23 @@ export const toggleFollow = (userId, followed) => (dispatch) => {
 
 export const userAuth = () => (dispatch) => {
   dispatch(setUninitialize())
-
   let loginUserData = {}
   authAPI().then(data => {
     if (data.resultCode === 0) {
       loginUserData = {
         ...data.data
       }
+      profileAPI(loginUserData.id).then(data => {
+        loginUserData = {
+          ...loginUserData,
+          ...data[0],
+          ...data[1]
+        }
+        dispatch(getProfileUser(loginUserData.id))
+        dispatch(setLoginUser(loginUserData))
+        dispatch(setInitialize())
+      })
     } else dispatch(setInitialize())
-    userAPI(loginUserData.id).then(data => {
-      loginUserData = {
-        ...loginUserData,
-        ...data
-      }
-      dispatch(setLoginUser(loginUserData))
-      dispatch(setInitialize())
-    })
   })
 }
 

@@ -5,6 +5,7 @@ import { getProfileUser, getIdCurrentUser } from "./../../redux/redux-store";
 import { compose } from "redux";
 import { getInitialize, getCurrentUserId, hasUserSuper } from "./../../redux/selectors/user-selector";
 
+
 const mapStateToProps = (state) => {
   return {
     idCurrentUser: getCurrentUserId(state),
