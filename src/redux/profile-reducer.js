@@ -220,6 +220,7 @@ const profileReducer = (state = initialState, action) => {
       const userData = action.userData
       return {
         ...state,
+        statusEditText: userData.status,
         loginUser: {
           online: true,
           id: userData.id,
@@ -245,15 +246,13 @@ const profileReducer = (state = initialState, action) => {
           ...state.users,
           [state.loginUser.id]: {
             ...state.users[state.loginUser.id],
-            status: state.statusEditText
+            status: state.statusEditText || "no status"
           }
         },
         loginUser: {
           ...state.loginUser,
-          status: state.statusEditText
-        },
-
-        statusEditText: ""
+          status: state.statusEditText || "no status"
+        }
       }
     }
     

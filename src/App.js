@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import Body from './components/Body/Body';
 import Header from './components/Header/Header';
@@ -14,25 +13,21 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = { userAuth }
 
 
-class App extends React.Component {
-  componentDidMount() {
-    this.props.userAuth()
-  }
+const App = (props) => {
+  props.userAuth()
 
-  render() {
-    return (
-      <>
-        <section className="section">
-          <div className="container container__header">
-            <Header />
-          </div>
-          <div className="container">
-            <Body />
-          </div>
-        </section>
-      </>
-    )
-  }
+  return (
+    <>
+      <section className="section">
+        <div className="container container__header">
+          <Header />
+        </div>
+        <div className="container">
+          <Body />
+        </div>
+      </section>
+    </>
+  )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

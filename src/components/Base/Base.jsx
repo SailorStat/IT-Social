@@ -19,13 +19,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = { }
 
 const Base = (props) => {
-  if (!props.initialize) return (
-    <div className={s.base}>
-      <img src={Preloader} alt="" />
-    </div>
-  )
-
-  return (
+  return (props.initialize &&
     <div className={s.base}>
           <Route exact key="profile" path="/" component={ProfileContainer} />
           <Route key="guestProfile" path="/profile/:userId" component={ProfileContainer} />
@@ -34,6 +28,10 @@ const Base = (props) => {
           <Route key="news" path="/news" component={News} />
           <Route key="settings" path="/settings" component={Settings} />
           <Route key="login" path="/login" component={Login} />
+    </div>
+  ) || (
+    <div className={s.base}>
+      <img src={Preloader} alt="" />
     </div>
   )
 }

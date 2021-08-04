@@ -1,4 +1,3 @@
-import userPhoto from "../assets/img/userPhoto.jpg"
 import noAvatar from "../assets/img/no-avatar.png"
 
 const SET_LOGIN_USER = "SET-LOGIN-USER"
@@ -27,6 +26,7 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+        statusEditText: userData.status,
         loginUser: {
           online: true,
           id: userData.id,
@@ -43,6 +43,7 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: false,
+        statusEditText: "",
         loginUser: {
           online: false,
           id: undefined,
@@ -81,9 +82,8 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         loginUser: {
           ...state.loginUser,
-          status: state.statusEditText
+          status: state.statusEditText || "no status"
         },
-        statusEditText: "",
         statusEditMode: false,
       }
     }

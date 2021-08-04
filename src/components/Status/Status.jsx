@@ -1,6 +1,5 @@
 import s from "./Status.module.css"
 import React from "react";
-import { setStatusAPI } from "../../API";
 
 class Status extends React.Component {
   editModeActivator = () => {

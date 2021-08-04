@@ -250,7 +250,9 @@ export const toggleFollow = (userId, followed) => (dispatch) => {
   dispatch(addInFollowToggle(userId))
     toggleFollowAPI(userId, followed)
       .then(resultCode => {
-        resultCode && followed && dispatch(setUnfollow(userId)) || dispatch(setFollow(userId))
+        if (resultCode && followed) {
+          dispatch(setUnfollow(userId))
+        } else dispatch(setFollow(userId))
         dispatch(removeInFollowToggle(userId))
       })
 }
@@ -263,13 +265,12 @@ export const userAuth = () => (dispatch) => {
       loginUserData = {
         ...data.data
       }
-      profileAPI(loginUserData.id).then(data => {
+      profileAPI(loginUserData.id).then(([data, status]) => {
         loginUserData = {
           ...loginUserData,
-          ...data[0],
-          ...data[1]
+          ...data,
+          status
         }
-        dispatch(getProfileUser(loginUserData.id))
         dispatch(setLoginUser(loginUserData))
         dispatch(setInitialize())
       })

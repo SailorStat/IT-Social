@@ -60,7 +60,7 @@ const usersReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_FOLLOW: {
       const newUsersState = [...state.users]
-      newUsersState[newUsersState.findIndex(el => el.id == action.userId)].followed = true
+      newUsersState[newUsersState.findIndex(el => el.id === action.userId)].followed = true
       return {
         ...state,
         users: newUsersState
@@ -69,7 +69,7 @@ const usersReducer = (state = initialState, action) => {
 
     case SET_UNFOLLOW: {
       const newUsersState = [...state.users]
-      newUsersState[newUsersState.findIndex(el => el.id == action.userId)].followed = false
+      newUsersState[newUsersState.findIndex(el => el.id === action.userId)].followed = false
       return {
         ...state,
         users: newUsersState
