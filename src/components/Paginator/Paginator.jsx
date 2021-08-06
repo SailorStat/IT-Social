@@ -1,20 +1,13 @@
-import React from "react";
+import { useEffect } from "react";
 import PaginatorButtonContainer from "../PaginatorButton/PaginatorButtonContainer";
 
-class Paginator extends React.Component {
-  componentDidMount() {
-    this.props.setUsers(this.props.currentPage, this.props.usersOnPage, this.props.createUsers)
-  }
+const Paginator = ({currentPage, usersOnPage, createUsers, updateUsers, setUsers}) => {
+  useEffect(() => { setUsers(currentPage, usersOnPage, currentPage === 1 ? createUsers : updateUsers)
+}, [currentPage, usersOnPage, createUsers, updateUsers, setUsers])
 
-  componentDidUpdate() {
-    this.props.setUsers(this.props.currentPage, this.props.usersOnPage, this.props.updateUsers)
-  }
-
-  render() {
-    return (
-      <PaginatorButtonContainer />
-    )
-  }
+  return (
+    <PaginatorButtonContainer />
+  )
 }
 
 export default Paginator

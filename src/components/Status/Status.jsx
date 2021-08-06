@@ -1,36 +1,29 @@
 import s from "./Status.module.css"
-import React from "react";
+import { useEffect } from "react";
 
-class Status extends React.Component {
-  editModeActivator = () => {
-    if (!this.props.match.params.userId) {
-      this.props.setEditMode()
-    }
+const Status = ({pullStatus, unsetEditMode, ...props}) => {
+  const matchId = props.match.params.userId
+  const editModeActivator = () => {
+    (!matchId || +matchId === props.currentUserId) && props.setEditMode()
   }
 
-  sendNewStatus = () => {
-    this.props.pullStatus(this.props.editText)
-  }
+  const sendNewStatus = () => { pullStatus(props.editText) }
 
-  componentWillUnmount() {
-    this.props.unsetEditMode(this.pullStatus)
-  }
+  useEffect(() => unsetEditMode(pullStatus), [unsetEditMode, pullStatus])
 
-  render() {
-    return (this.props.editMode && 
-      <div className={s.status__editor}>
-        <div className={s.status__input__wrapper}>
-          <input className={s.status__input} maxLength="300" value={this.props.editText} onChange={this.props.setStatusEditText} autoFocus={true}/>
-        </div>
-        <div className={s.button__wrapper}>
-          <button className={s.button + " " + s.button__cancel} onClick={this.props.unsetEditMode}>Cancel</button>
-          <button className={s.button} onClick={this.sendNewStatus}>Save</button>
-        </div>
+  return (props.editMode && 
+    <div className={s.status__editor}>
+      <div className={s.status__input__wrapper}>
+        <input className={s.status__input} maxLength="300" value={props.editText} onChange={props.setStatusEditText} autoFocus={true}/>
       </div>
-    ) || (
-      <div className={s.status} onDoubleClick={this.editModeActivator}>{this.props.status}</div>
-    )
-  }
+      <div className={s.button__wrapper}>
+        <button className={s.button + " " + s.button__cancel} onClick={unsetEditMode}>Cancel</button>
+        <button className={s.button} onClick={sendNewStatus}>Save</button>
+      </div>
+    </div>
+  ) || (
+    <div className={s.status} onDoubleClick={editModeActivator}>{props.status}</div>
+  )
 }
 
 export default Status

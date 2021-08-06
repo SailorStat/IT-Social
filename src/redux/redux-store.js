@@ -50,7 +50,7 @@ const SET_NEW_STATS = "SET_NEW_STATS"
 const SET_EDIT_STATS = "SET_EDIT_STATS"
 const UNSET_EDIT_STATS = "UNSET_EDIT_STATS"
 const SET_INITIALIZE = "SET-INITIALIZE"
-const SET_UNINITIALIZE = "SET-UNINITIALIZE"
+const SET_UNINITIALIZED = "SET-UNINITIALIZED"
 
 
 export const addMessage = (event) => {
@@ -230,69 +230,60 @@ export const setInitialize = () => {
   }
 }
 
-export const setUninitialize = () => {
+export const setUninitialized = () => {
   return {
-    type: SET_UNINITIALIZE
+    type: SET_UNINITIALIZED
   }
 }
 
 
 // With API
-export const setUsers = (currentPage, usersOnPage, func) => (dispatch) => {
+export const setUsers = (currentPage, usersOnPage, func) => async (dispatch) => {
   dispatch(setFetchingTrue())
-  getUsersAPI(currentPage, usersOnPage).then(response => {
-    func(response)
-    dispatch(setFetchingFalse())
-  })
+  const response = await getUsersAPI(currentPage, usersOnPage)
+  func(response)
+  response && dispatch(setFetchingFalse())
 }
 
-export const toggleFollow = (userId, followed) => (dispatch) => {
+export const toggleFollow = (userId, followed) => async (dispatch) => {
   dispatch(addInFollowToggle(userId))
-    toggleFollowAPI(userId, followed)
-      .then(resultCode => {
-        if (resultCode && followed) {
-          dispatch(setUnfollow(userId))
-        } else dispatch(setFollow(userId))
-        dispatch(removeInFollowToggle(userId))
-      })
+  const response = await toggleFollowAPI(userId, followed)
+  response && followed ? dispatch(setUnfollow(userId)) : dispatch(setFollow(userId))
+  response && dispatch(removeInFollowToggle(userId))
 }
 
-export const userAuth = () => (dispatch) => {
-  dispatch(setUninitialize())
+export const userAuth = () => async (dispatch) => {
+  dispatch(setUninitialized())
   let loginUserData = {}
-  authAPI().then(data => {
-    if (data.resultCode === 0) {
-      loginUserData = {
-        ...data.data
-      }
-      profileAPI(loginUserData.id).then(([data, status]) => {
-        loginUserData = {
-          ...loginUserData,
-          ...data,
-          status
-        }
-        dispatch(setLoginUser(loginUserData))
-        dispatch(setInitialize())
-      })
-    } else dispatch(setInitialize())
-  })
+  const authResponse = await authAPI()
+  if (authResponse.resultCode === 0) {
+    loginUserData = {
+      ...authResponse.data
+    }
+    const response = await profileAPI(loginUserData.id)
+    const [data, status] = response
+    loginUserData = {
+      ...loginUserData,
+      ...data,
+      status
+    }
+    response && dispatch(setLoginUser(loginUserData))
+    response && dispatch(setInitialize())
+  } else dispatch(setInitialize())
 }
 
-export const getProfileUser = (userId) => (dispatch) => {
+export const getProfileUser = (userId) => async (dispatch) => {
   dispatch(setCurrentUserPage(userId))
-  profileAPI(userId).then(response => dispatch(setUser(response)))
+  const response = await profileAPI(userId)
+  dispatch(setUser(response))
 }
 
-export const getIdCurrentUser = () => (dispatch) => {
-  authAPI().then(data => getProfileUser(data.data.id)(dispatch))
+export const pullStatus = (text) => async (dispatch) => {
+  const response = await setStatusAPI(text)
+  response && dispatch(setStatus())
 }
 
-export const pullStatus = (text) => (dispatch) => {
-  setStatusAPI(text)
-    .then(response => response && dispatch(setStatus()))
-}
-
-export const pullNewStats = (stats, id) => (dispatch) => {
+export const pullNewStats = (stats, id) => async (dispatch) => {
   const newStats = {
     aboutMe: stats.aboutMe,
     contacts: stats.contacts,
@@ -300,19 +291,20 @@ export const pullNewStats = (stats, id) => (dispatch) => {
     lookingForAJob: stats.lookingForAJob,
     lookingForAJobDescription: stats.lookingForAJobDescription,
   }
-  setStatsAPI(newStats)
-    .then(response => response && dispatch(setNewStats(newStats, id)))
+  const response = await setStatsAPI(newStats)
+  response && dispatch(setNewStats(newStats, id))
 }
 
-export const postLoginUser = (formData) => (dispatch) => {
-  setLoginAPI(formData)
-    .then(response => {
-      if (response.resultCode === 0) return userAuth()(dispatch)
-      if (response.resultCode === 1) return dispatch(stopSubmit("loginForm", {_error: response.messages[0]}))
-    })
+export const postLoginUser = (formData) => async (dispatch) => {
+  const response = await setLoginAPI(formData)
+  switch (response.resultCode) {
+    case 0: return userAuth()(dispatch)
+    case 1: return dispatch(stopSubmit("loginForm", {_error: response.messages[0]}))
+    default: return
+  }
 }
 
-export const deleteLoginUser = () => (dispatch) => {
-  setLogoutAPI()
-    .then(response => response && dispatch(setLogoutUser()))
+export const deleteLoginUser = () => async (dispatch) => {
+  const response = await setLogoutAPI()
+  response && dispatch(setLogoutUser())
 }

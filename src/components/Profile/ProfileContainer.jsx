@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import { withRouter } from "react-router-dom";
-import { getProfileUser, getIdCurrentUser } from "./../../redux/redux-store";
+import { getProfileUser } from "./../../redux/redux-store";
 import { compose } from "redux";
 import { getCurrentUserId, hasUserSuper } from "./../../redux/selectors/user-selector";
 
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = { getProfileUser, getIdCurrentUser }
+const mapDispatchToProps = { getProfileUser}
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

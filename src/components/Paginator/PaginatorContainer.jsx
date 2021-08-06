@@ -4,9 +4,8 @@ import { createUsers, updateUsers, setUsers } from "../../redux/redux-store";
 
 
 const mapStateToProps = (state) => {
-  const {totalCount, usersOnPage, currentPage} = state.usersPage.pagination
+  const {usersOnPage, currentPage} = state.usersPage.pagination
   return {
-    totalCount,
     usersOnPage,
     currentPage
   }

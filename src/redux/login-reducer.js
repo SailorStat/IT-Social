@@ -7,7 +7,7 @@ const UNSET_EDIT_MODE = "UNSET-EDIT-MODE"
 const SET_STATUS = "SET-STATUS"
 const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
 const SET_INITIALIZE = "SET-INITIALIZE"
-const SET_UNINITIALIZE = "SET-UNINITIALIZE"
+const SET_UNINITIALIZED = "SET-UNINITIALIZED"
 
 
 const initialState = {
@@ -65,8 +65,7 @@ const loginReducer = (state = initialState, action) => {
     case UNSET_EDIT_MODE: {
       return {
         ...state,
-        statusEditMode: false,
-        statusEditText: ""
+        statusEditMode: false
       }
     }
 
@@ -94,7 +93,7 @@ const loginReducer = (state = initialState, action) => {
         initialize: true
       }
     }
-    case SET_UNINITIALIZE: {
+    case SET_UNINITIALIZED: {
       return {
         ...state,
         initialize: false

@@ -8,51 +8,50 @@ const instance = axios.create({
   }
 })
 
-export const getUsersAPI = (currentPage, usersOnPage) => {
-  return instance.get(`users?page=${currentPage}&count=${usersOnPage}`)
-              .then(r => r.data)
+export const getUsersAPI = async (currentPage, usersOnPage) => {
+  return (await instance.get(`users?page=${currentPage}&count=${usersOnPage}`)).data
 }
 
-export const toggleFollowAPI = (userId, followed) => {
+export const toggleFollowAPI = async (userId, followed) => {
   const followEndPoint = `follow/${userId}`
-  const request = followed ? instance.delete(followEndPoint) : instance.post(followEndPoint, {})
-  return request.then(r => r.data.resultCode === 0)
+  const response = await (followed ? instance.delete(followEndPoint) : instance.post(followEndPoint, {}))
+  return response.data.resultCode === 0
 }
 
-export const authAPI = () => {
+export const authAPI = async () => {
   const authEndPoint = `auth/me`
-  return instance.get(authEndPoint).then(r => r.data)
+  return (await instance.get(authEndPoint)).data
 }
 
-export const userAPI = (id) => {
+export const userAPI = async (id) => {
   const authEndPoint =`profile/${id}`
-  return instance.get(authEndPoint).then(r => r.data)
+  return (await instance.get(authEndPoint)).data
 }
 
-export const profileAPI = (id) => {
+export const profileAPI = async (id) => {
   const profileEndPoint = `profile/${id}`
   const statusEndPoint = `profile/status/${id}`
-  return Promise.all([instance.get(profileEndPoint).then(r => r.data),
-                      instance.get(statusEndPoint).then(r => r.data)])
+  return Promise.all([(await instance.get(profileEndPoint)).data,
+                      (await instance.get(statusEndPoint)).data])
 }
 
-export const setStatusAPI = (status) => {
+export const setStatusAPI = async (status) => {
   const statusEndPoint = `profile/status`
-  return instance.put(statusEndPoint, {status}).then(r => r.data.resultCode === 0)
+  return (await instance.put(statusEndPoint, {status})).data.resultCode === 0
 }
 
-export const setStatsAPI = (stats) => {
+export const setStatsAPI = async (stats) => {
   const statsEndPoint = `profile`
-  return instance.put(statsEndPoint, stats).then(r => r.data.resultCode === 0)
+  return (await instance.put(statsEndPoint, stats)).data.resultCode === 0
 }
 
-export const setLoginAPI = (payload) => {
+export const setLoginAPI = async (payload) => {
   const statsEndPoint = `auth/login`
-  return instance.post(statsEndPoint, payload).then(r => r.data)
+  return (await instance.post(statsEndPoint, payload)).data
 }
 
-export const setLogoutAPI = () => {
+export const setLogoutAPI = async () => {
   const statsEndPoint = `auth/login`
-  return instance.delete(statsEndPoint).then(r => r.data.resultCode === 0)
+  return (await instance.delete(statsEndPoint)).data.resultCode === 0
 }
 
