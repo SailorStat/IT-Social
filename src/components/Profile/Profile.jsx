@@ -1,22 +1,23 @@
-import c from"./Profile.module.css"
+import s from"./Profile.module.css"
 import ProfileInfoContainer from "../ProfileInfo/ProfileInfoContainer";
 import PostWrapperContainer from "../PostWrapper/PostWrapperContainer";
-import Preloader from "../../assets/img/Preloader.svg"
 import { Redirect } from "react-router-dom";
 import { useEffect } from "react";
+import Preloader from "../../loc/Preloader/Preloader";
 
 
 const Profile = ({getProfileUser, ...props}) => {
   const userId = props.match.params.userId || props.idCurrentUser
   useEffect(() => getProfileUser(userId), [userId, getProfileUser])
-
   return ( props.hasUser &&
-    <div className={c.profile}>
+    <div className={s.profile}>
       <ProfileInfoContainer />
       <PostWrapperContainer />
     </div>
   ) || ( userId &&
-    <img src={Preloader} alt="" />
+    <div className={s.preloader}>
+      <Preloader />
+    </div>
   ) || (
     <Redirect to={"/login"}/>
   )

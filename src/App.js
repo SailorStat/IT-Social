@@ -15,7 +15,6 @@ const mapDispatchToProps = { userAuth }
 
 const App = (props) => {
   props.userAuth()
-
   return (
     <>
       <section className="section">

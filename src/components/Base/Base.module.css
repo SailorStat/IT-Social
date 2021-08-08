@@ -19,3 +19,9 @@
 .base::-webkit-scrollbar-track {
   background-color: #c49dbe;
 }
+
+.preloader {
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+}

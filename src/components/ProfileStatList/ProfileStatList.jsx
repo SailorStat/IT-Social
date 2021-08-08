@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import ProfileStat from "../ProfileStat/ProfileStat"
-import c from "./ProfileStatList.module.css"
+import s from "./ProfileStatList.module.css"
 
 let state = null
 
@@ -60,16 +60,16 @@ const ProfileStatList = ({ unsetEditStats, ...props }) => {
   return (
     <>
       {
-        props.isLoggedIn && !props.match.params.userId && !props.isEditMode && <div className={c.edit__button} onClick={props.setEditStats}>edit info</div>
+        props.isLoggedIn && !props.match.params.userId && !props.isEditMode && <div className={s.edit__button} onClick={props.setEditStats}>edit info</div>
       }
       {
         Object.keys(props.profileStats).map((el, index) => profileStatCreator(el, index, props.profileStats, props.userStats, props.isEditMode))
       }
       {
         !props.match.params.userId && props.isEditMode && (
-          <div className={c.button__wrapper}>
-            <button className={c.button + " " + c.button__cancel} onClick={unsetEditStats}>Cancel</button>
-            <button className={c.button} onClick={() => props.pullNewStats(state, props.loginUserId)}>Save</button>
+          <div className={s.button__wrapper}>
+            <button className={s.button + " " + s.button__cancel} onClick={unsetEditStats}>Cancel</button>
+            <button className={s.button} onClick={() => props.pullNewStats(state, props.loginUserId)}>Save</button>
           </div>
         )
       }
