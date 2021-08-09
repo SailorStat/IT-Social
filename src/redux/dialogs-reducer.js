@@ -7,6 +7,7 @@ const SET_CHECKED_DIALOG = "SET-CHECKED-DIALOG"
 const SET_DIALOG_VALUE_TEXT = "SET-DIALOG-VALUE-TEXT"
 const SET_LOGIN_USER = "SET-LOGIN-USER"
 const SET_LOGOUT_USER = "SET-LOGOUT-USER"
+const ADD_NEW_PROFILE_PHOTO = "ADD-NEW-PROFILE-PHOTO"
 
 const initialState = {
   dialogs: {
@@ -158,6 +159,17 @@ const dialogsReducer = (state = initialState, action) => {
       }
     }
     
+    case ADD_NEW_PROFILE_PHOTO: {
+      const photos = action.photos
+      return {
+        ...state,
+        loginUser: {
+          ...state.loginUser,
+          photo: photos.large || photos.small || noAvatar
+        }
+      }
+    }
+
     case SET_LOGOUT_USER: {
       return {
         ...state,

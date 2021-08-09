@@ -5,7 +5,7 @@ import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
-import { getUsersAPI, toggleFollowAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI } from "./../API";
+import { getUsersAPI, toggleFollowAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI, putNewProfilePhotoAPI } from "./../API";
 import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer, stopSubmit } from "redux-form"
 
@@ -51,6 +51,7 @@ const SET_EDIT_STATS = "SET_EDIT_STATS"
 const UNSET_EDIT_STATS = "UNSET_EDIT_STATS"
 const SET_INITIALIZE = "SET-INITIALIZE"
 const SET_UNINITIALIZED = "SET-UNINITIALIZED"
+const ADD_NEW_PROFILE_PHOTO = "ADD-NEW-PROFILE-PHOTO"
 
 
 export const addMessage = (event) => {
@@ -236,8 +237,16 @@ export const setUninitialized = () => {
   }
 }
 
+export const addNewProfilePhoto = (photos) => {
+  return {
+    type: ADD_NEW_PROFILE_PHOTO,
+    photos
+  }
+}
 
-// With API
+
+
+// Thunk
 export const setUsers = (currentPage, usersOnPage, func) => async (dispatch) => {
   dispatch(setFetchingTrue())
   const response = await getUsersAPI(currentPage, usersOnPage)
@@ -307,4 +316,9 @@ export const postLoginUser = (formData) => async (dispatch) => {
 export const deleteLoginUser = () => async (dispatch) => {
   const response = await setLogoutAPI()
   response && dispatch(setLogoutUser())
+}
+
+export const putNewPhoto = (photo) => async (dispatch) => {
+  const response = await putNewProfilePhotoAPI(photo)
+  response.resultCode === 0 && dispatch(addNewProfilePhoto(response.data.photos))
 }

@@ -1,6 +1,7 @@
 import s from "./ProfileInfo.module.css"
 import ProfileStatListContainer from "../ProfileStatList/ProfileStatListContainer";
 import StatusContainer from "./../Status/StatusContainer";
+import ProfilePhotoContainer from "../ProfilePhoto/ProfilePhotoContainer";
 
 
 const ProfileInfo = (props) => {
@@ -11,9 +12,7 @@ const ProfileInfo = (props) => {
         <StatusContainer />
         <ProfileStatListContainer />
       </div>
-      <div className={s.profile__photo}>
-        <img src={props.photo} alt="" />
-      </div>
+      <ProfilePhotoContainer />
     </div>
   )
 }

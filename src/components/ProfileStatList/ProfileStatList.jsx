@@ -55,12 +55,14 @@ function profileStatCreator(el, index, profileStats, userStats, isEditMode) {
 
 
 const ProfileStatList = ({ unsetEditStats, ...props }) => {
+  const matchId = props.match.params.userId
+  const isCurrentUserProfile = !matchId || +matchId === props.currentUserId
   useEffect(() => unsetEditStats(), [unsetEditStats])
   
   return (
     <>
       {
-        props.isLoggedIn && !props.match.params.userId && !props.isEditMode && <div className={s.edit__button} onClick={props.setEditStats}>edit info</div>
+        isCurrentUserProfile && !props.isEditMode && <div className={s.edit__button} onClick={props.setEditStats}>edit info</div>
       }
       {
         Object.keys(props.profileStats).map((el, index) => profileStatCreator(el, index, props.profileStats, props.userStats, props.isEditMode))

@@ -8,6 +8,7 @@ const SET_STATUS = "SET-STATUS"
 const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
 const SET_INITIALIZE = "SET-INITIALIZE"
 const SET_UNINITIALIZED = "SET-UNINITIALIZED"
+const ADD_NEW_PROFILE_PHOTO = "ADD-NEW-PROFILE-PHOTO"
 
 
 const initialState = {
@@ -34,6 +35,17 @@ const loginReducer = (state = initialState, action) => {
           status: userData.status || "no status",
           photo: userData.photos.large || userData.photos.small || noAvatar,
           followed: true
+        }
+      }
+    }
+
+    case ADD_NEW_PROFILE_PHOTO: {
+      const photos = action.photos
+      return {
+        ...state,
+        loginUser: {
+          ...state.loginUser,
+          photo: photos.large || photos.small || noAvatar
         }
       }
     }
@@ -93,6 +105,7 @@ const loginReducer = (state = initialState, action) => {
         initialize: true
       }
     }
+
     case SET_UNINITIALIZED: {
       return {
         ...state,

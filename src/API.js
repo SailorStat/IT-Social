@@ -55,3 +55,8 @@ export const setLogoutAPI = async () => {
   return (await instance.delete(statsEndPoint)).data.resultCode === 0
 }
 
+export const putNewProfilePhotoAPI = async (photo) => {
+  const statsEndPoint = `profile/photo`
+  return (await instance.put(statsEndPoint, photo, { headers: {"Content-Type": "multipart/form-data"} })).data
+}
+

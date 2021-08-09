@@ -1,16 +1,24 @@
 import s from "./HeaderWrapper.module.css"
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import AcceptButton from "../../loc/AcceptButton/AcceptButton";
+
 
 const HeaderWrapper = (props) => {
+  const history = useHistory()
+
+  const loginRedirect = () => {
+    history.push("/login")
+  }
+
   return ( props.isLoggedIn &&
     <div className={s.header__wrapper}>
-      <div className={s.header__button} onClick={props.deleteLoginUser}>Exit</div>
+      <AcceptButton callBackFunc={props.deleteLoginUser} buttonTitle="Exit"/>
     </div>
   ) || (
     <div className={s.header__wrapper}>
-      <div className={s.header__button}>Registration</div>
-      <NavLink key="login" to="/login" className={s.header__button}>Login</NavLink>
+      <AcceptButton callBackFunc={() => {}} buttonTitle="Registration"/>
+      <AcceptButton callBackFunc={loginRedirect} buttonTitle="Login"/>
     </div>
   )
 }

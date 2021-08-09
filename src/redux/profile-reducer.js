@@ -12,6 +12,7 @@ const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
 const SET_NEW_STATS = "SET_NEW_STATS"
 const SET_EDIT_STATS = "SET_EDIT_STATS"
 const UNSET_EDIT_STATS = "UNSET_EDIT_STATS"
+const ADD_NEW_PROFILE_PHOTO = "ADD-NEW-PROFILE-PHOTO"
 
 
 const initialState = {
@@ -96,8 +97,8 @@ const initialState = {
       "fullName": "Саша",
       "userId": 11251125,
       "photos": {
-        "small": null,
-        "large": null
+        "small": userPhoto,
+        "large": userPhoto
       }
     },
   },
@@ -228,6 +229,25 @@ const profileReducer = (state = initialState, action) => {
           status: userData.status || "no status",
           photo: userData.photos.large || userData.photos.small || noAvatar,
           followed: true
+        }
+      }
+    }
+
+    case ADD_NEW_PROFILE_PHOTO: {
+      const actPhotos = action.photos
+      const photos = actPhotos.large || actPhotos.small || noAvatar
+      return {
+        ...state,
+        users: {
+          ...state.users,
+          [state.loginUser.id]: {
+            ...state.users[state.loginUser.id],
+            photos
+          }
+        },
+        loginUser: {
+          ...state.loginUser,
+          photos
         }
       }
     }

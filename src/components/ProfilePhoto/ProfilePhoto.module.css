@@ -1,0 +1,63 @@
+.profile__photo {
+  margin-bottom: 5px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.profile__photo img {
+  width: 250px;
+  height: auto;
+}
+
+.input__wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.input__placeholder {
+  display: block;
+  position: relative;
+  width: 120px;
+  height: 30px;
+  z-index: 2;
+
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  border-radius: 10px 0 10px 15px;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color .3s linear;
+  cursor: pointer;
+}
+
+.input__placeholder:hover {
+  cursor: pointer;
+  background-color: #b66ec0;
+}
+
+.input__placeholder:active {
+  color: #000;
+  background-color: #b83dc9;
+}
+
+.input__placeholder span {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.photo__input {
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  z-index: 1;
+  border-radius: 50%;
+  cursor: pointer;
+}

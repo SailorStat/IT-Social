@@ -11,7 +11,7 @@ const mapStateToProps = state => {
     status: state.profilePage.users[currentUserPage].status,
     editText: state.loginPage.statusEditText,
     editMode: state.loginPage.statusEditMode,
-    currentUserId: getCurrentUserId(state),
+    currentUserId: getCurrentUserId(state)
   }
 }
 

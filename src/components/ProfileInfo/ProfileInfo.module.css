@@ -18,14 +18,3 @@
 .profile__description {
   margin-bottom: 5px;
 }
-
-.profile__photo {
-  width: 250px;
-  height: 250px;
-  overflow: hidden;
-}
-
-.profile__photo img {
-  width: 250px;
-  height: auto;
-}

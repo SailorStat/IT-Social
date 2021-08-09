@@ -1,0 +1,32 @@
+.button {
+  display: block;
+  margin-left: auto;
+  width: 120px;
+  height: 35px;
+  
+  font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";
+  font-size: 20px;
+
+  border: 2px #842691 solid;
+  background-color: #c49dbe;
+  border-radius: 10px 0 10px 15px;
+  outline: none;
+  transition: background-color .3s linear;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #b66ec0;
+  outline: none;
+}
+
+.button:active {
+  background-color: #b83dc9;
+  outline: none;
+}
+
+.button:disabled {
+  color: #85558d;
+  background-color: #b996b9;
+  outline: none;
+}
