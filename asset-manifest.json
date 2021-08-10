@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/IT-Social/static/css/main.fe543927.chunk.css",
+    "main.js": "/IT-Social/static/js/main.eb6b3a64.chunk.js",
+    "main.js.map": "/IT-Social/static/js/main.eb6b3a64.chunk.js.map",
+    "runtime-main.js": "/IT-Social/static/js/runtime-main.41fd1c48.js",
+    "runtime-main.js.map": "/IT-Social/static/js/runtime-main.41fd1c48.js.map",
+    "static/js/2.b345f943.chunk.js": "/IT-Social/static/js/2.b345f943.chunk.js",
+    "static/js/2.b345f943.chunk.js.map": "/IT-Social/static/js/2.b345f943.chunk.js.map",
+    "static/css/3.c1f31588.chunk.css": "/IT-Social/static/css/3.c1f31588.chunk.css",
+    "static/js/3.8750bdb8.chunk.js": "/IT-Social/static/js/3.8750bdb8.chunk.js",
+    "static/js/3.8750bdb8.chunk.js.map": "/IT-Social/static/js/3.8750bdb8.chunk.js.map",
+    "static/css/4.24e7f1db.chunk.css": "/IT-Social/static/css/4.24e7f1db.chunk.css",
+    "static/js/4.8ae9f66e.chunk.js": "/IT-Social/static/js/4.8ae9f66e.chunk.js",
+    "static/js/4.8ae9f66e.chunk.js.map": "/IT-Social/static/js/4.8ae9f66e.chunk.js.map",
+    "static/js/5.a730bdb5.chunk.js": "/IT-Social/static/js/5.a730bdb5.chunk.js",
+    "static/js/5.a730bdb5.chunk.js.map": "/IT-Social/static/js/5.a730bdb5.chunk.js.map",
+    "static/js/6.835bd529.chunk.js": "/IT-Social/static/js/6.835bd529.chunk.js",
+    "static/js/6.835bd529.chunk.js.map": "/IT-Social/static/js/6.835bd529.chunk.js.map",
+    "static/js/7.dc509fac.chunk.js": "/IT-Social/static/js/7.dc509fac.chunk.js",
+    "static/js/7.dc509fac.chunk.js.map": "/IT-Social/static/js/7.dc509fac.chunk.js.map",
+    "index.html": "/IT-Social/index.html",
+    "static/css/3.c1f31588.chunk.css.map": "/IT-Social/static/css/3.c1f31588.chunk.css.map",
+    "static/css/4.24e7f1db.chunk.css.map": "/IT-Social/static/css/4.24e7f1db.chunk.css.map",
+    "static/css/main.fe543927.chunk.css.map": "/IT-Social/static/css/main.fe543927.chunk.css.map",
+    "static/js/2.b345f943.chunk.js.LICENSE.txt": "/IT-Social/static/js/2.b345f943.chunk.js.LICENSE.txt",
+    "static/media/Preloader.cf7d0b36.svg": "/IT-Social/static/media/Preloader.cf7d0b36.svg",
+    "static/media/no-avatar.ead20e54.png": "/IT-Social/static/media/no-avatar.ead20e54.png",
+    "static/media/userPhoto.1c5ef562.jpg": "/IT-Social/static/media/userPhoto.1c5ef562.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.41fd1c48.js",
+    "static/js/2.b345f943.chunk.js",
+    "static/css/main.fe543927.chunk.css",
+    "static/js/main.eb6b3a64.chunk.js"
+  ]
+}

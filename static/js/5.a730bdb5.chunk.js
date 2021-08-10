@@ -1,0 +1,2 @@
+(this["webpackJsonpit-social"]=this["webpackJsonpit-social"]||[]).push([[5],{316:function(s,i,t){"use strict";t.r(i);var c=t(0);i.default=function(){return Object(c.jsx)("div",{className:"",children:"News"})}}}]);
+//# sourceMappingURL=5.a730bdb5.chunk.js.map
