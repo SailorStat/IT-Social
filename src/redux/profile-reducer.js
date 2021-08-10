@@ -106,40 +106,42 @@ const initialState = {
   userStats: ["About Me", "Contacts", "Looking for a job", "Looking for a job description"],
 
   posts: {
-    "17725": [{
-      userId: 17725,
-      postId: 1235,
-      authorFullName: "Sailor Stat",
-      postDate: "13.03.2021 13:15",
-      postText: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quae nam velit ad magni fugit enim corrupti eaque harum. Molestiae et, laboriosam neque hic odio velit ipsam porro consectetur dolore ipsa, iusto quia libero? Reprehenderit doloribus molestias nulla tempora suscipit!",
-      likeCount: 34,
-      currentUserLiked: false,
-      repostCount: 15,
-      currentUserReposted: false,
-      photo: userPhoto
-    }, {
-      userId: 17725,
-      postId: 1234,
-      authorFullName: "Sailor Stat",
-      postDate: "12.03.2021 13:56",
-      postText: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quae nam velit!",
-      likeCount: 23,
-      currentUserLiked: true,
-      repostCount: 9,
-      currentUserReposted: true,
-      photo: userPhoto
-    }, {
-      userId: 17725,
-      postId: 1233,
-      authorFullName: "Sailor Stat",
-      postDate: "11.03.2021 13:23",
-      postText: "Lorem ipsum dolor sit amet consectetur",
-      likeCount: 27,
-      currentUserLiked: true,
-      repostCount: 11,
-      currentUserReposted: false,
-      photo: userPhoto
-    }]
+    "17725": [
+      {
+        userId: 17725,
+        postId: 1235,
+        authorFullName: "Sailor Stat",
+        postDate: "13.03.2021 13:15",
+        postText: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quae nam velit ad magni fugit enim corrupti eaque harum. Molestiae et, laboriosam neque hic odio velit ipsam porro consectetur dolore ipsa, iusto quia libero? Reprehenderit doloribus molestias nulla tempora suscipit!",
+        likeCount: 34,
+        currentUserLiked: false,
+        repostCount: 15,
+        currentUserReposted: false,
+        photo: userPhoto
+      }, {
+        userId: 17725,
+        postId: 1234,
+        authorFullName: "Sailor Stat",
+        postDate: "12.03.2021 13:56",
+        postText: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quae nam velit!",
+        likeCount: 23,
+        currentUserLiked: true,
+        repostCount: 9,
+        currentUserReposted: true,
+        photo: userPhoto
+      }, {
+        userId: 17725,
+        postId: 1233,
+        authorFullName: "Sailor Stat",
+        postDate: "11.03.2021 13:23",
+        postText: "Lorem ipsum dolor sit amet consectetur",
+        likeCount: 27,
+        currentUserLiked: true,
+        repostCount: 11,
+        currentUserReposted: false,
+        photo: userPhoto
+      }
+    ]
   },
 
   postValueText: "",
@@ -219,15 +221,36 @@ const profileReducer = (state = initialState, action) => {
 
     case SET_LOGIN_USER: {
       const userData = action.userData
+      const photo = userData.photos.large || userData.photos.small || noAvatar
       return {
         ...state,
         statusEditText: userData.status,
+        posts: {
+          [userData.id]: [
+            {
+              ...state.posts[userData.id][0],
+              userId: userData.id,
+              authorFullName: userData.fullName,
+              photo
+            }, {
+              ...state.posts[userData.id][1],
+              userId: userData.id,
+              authorFullName: userData.fullName,
+              photo
+            }, {
+              ...state.posts[userData.id][2],
+              userId: userData.id,
+              authorFullName: userData.fullName,
+              photo
+            }
+          ]
+        },
         loginUser: {
           online: true,
           id: userData.id,
           name: userData.fullName,
           status: userData.status || "no status",
-          photo: userData.photos.large || userData.photos.small || noAvatar,
+          photo,
           followed: true
         }
       }

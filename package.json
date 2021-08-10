@@ -1,7 +1,7 @@
 {
   "name": "it-social",
   "version": "0.1.0",
-  "homepage": "https://sailorstat.github.io/IT-Social",
+  "homepage": "https://sailorstat.github.io/IT-Social/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

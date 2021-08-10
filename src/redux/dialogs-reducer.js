@@ -85,7 +85,7 @@ const initialState = {
         userPhoto: userPhoto,
         fromCurrentUser: true,
         date: "09:30 23.02.2021",
-        message: "Доброе утро мне",
+        message: "Доброе утро, Сайлор)",
         messageId: 546
       }]
     }
@@ -146,14 +146,62 @@ const dialogsReducer = (state = initialState, action) => {
     
     case SET_LOGIN_USER: {
       const userData = action.userData
+      const photo = userData.photos.large || userData.photos.small || noAvatar
       return {
         ...state,
+        dialogs: {
+          "11211121": {
+            messagesData: [{
+              ...state.dialogs["11211121"].messagesData[0],
+              fullName: userData.fullName,
+              userPhoto: photo
+            }, {
+              ...state.dialogs["11211121"].messagesData[1],
+            }, {
+              ...state.dialogs["11211121"].messagesData[2],
+              fullName: userData.fullName,
+              userPhoto: photo
+            }]
+          },
+          "11231123": {
+            messagesData: [{
+              ...state.dialogs["11231123"].messagesData[0],
+              fullName: userData.fullName,
+              userPhoto: photo
+            }, {
+              ...state.dialogs["11231123"].messagesData[1],
+            }, {
+              ...state.dialogs["11231123"].messagesData[2],
+              fullName: userData.fullName,
+              userPhoto: photo
+            }]
+          },
+          "11241124": {
+            messagesData: [{
+              ...state.dialogs["11241124"].messagesData[0],
+            }]
+          },
+          "11251125": {
+            messagesData: [{
+              ...state.dialogs["11251125"].messagesData[0],
+              fullName: userData.fullName,
+              userPhoto: photo
+            }]
+          },
+          "17725": {
+            messagesData: [{
+              ...state.dialogs["17725"].messagesData[0],
+              fullName: userData.fullName,
+              userPhoto: photo
+            }]
+          }
+        },
         loginUser: {
           online: true,
           id: userData.id,
           name: userData.fullName,
           status: userData.status || "no status",
-          photo: userData.photos.large || userData.photos.small || noAvatar,
+          photo,
           followed: true
         }
       }
