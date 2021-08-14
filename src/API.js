@@ -60,3 +60,27 @@ export const putNewProfilePhotoAPI = async (photo) => {
   return (await instance.put(statsEndPoint, photo, { headers: {"Content-Type": "multipart/form-data"} })).data
 }
 
+export const getCaptchaAPI = async () => {
+  const captchaEndPoint = `security/get-captcha-url`
+  return (await instance.get(captchaEndPoint)).data.url
+}
+
+export const upDialogAPI = async (userId) => {
+  const dialogEndPoint = `dialogs/${userId}`
+  return (await instance.put(dialogEndPoint)).data
+}
+
+export const getDialogsAPI = async () => {
+  const dialogEndPoint = `dialogs`
+  return (await instance.get(dialogEndPoint)).data
+}
+
+export const getMessageListAPI = async (userId) => {
+  const getMessageListEndPoint = `dialogs/${userId}/messages`
+  return (await instance.get(getMessageListEndPoint)).data
+}
+
+export const sendMessageAPI = async (userId) => {
+  const messageEndPoint = `dialogs/${userId}/messages`
+  return (await instance.post(messageEndPoint)).data
+}

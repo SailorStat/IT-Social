@@ -15,3 +15,8 @@ export const email = value => {
   const regexp = /.+@.+\..+/i
   return regexp.test(value) ? undefined : `It is allowed to enter a email`
 }
+
+export const english = value => {
+  const regexp = /^[a-zA-Z0-9]*$/
+  return regexp.test(value) ? undefined : `Has invalid characters`
+}

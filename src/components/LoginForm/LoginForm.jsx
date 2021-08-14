@@ -1,11 +1,13 @@
 import { Field } from "redux-form"
-import { email, maxLengthCreator, required} from "../../assets/validators/validators"
+import { email, maxLengthCreator, required, english} from "../../assets/validators/validators"
 import s from "./LoginForm.module.css"
 import { ComponentCreator } from "../../loc/FormsControls/FormsControls";
+import AcceptButton from "./../../loc/AcceptButton/AcceptButton";
 
 const maxLength100 = maxLengthCreator(100)
 
 const LoginForm = (props) => {
+  console.log(props.captchaUrl)
   return (
     <form onSubmit={props.handleSubmit}>
       <div className={s.form__wrapper}>
@@ -22,8 +24,16 @@ const LoginForm = (props) => {
           <Field name="rememberMe" component="input" type="checkbox" className={s.input__checkbox}/>
           <span className={s.input__description}>Remember me</span>
         </div>
+        {
+          props.captchaUrl && (
+            <div className={s.form__item}>
+              <Field name="captcha" component={ComponentCreator} placeholder="Captcha" tagname="input" className={s.input__text} validate={[required, english]} error={props.error} autoComplete="off"/>
+              <img src={props.captchaUrl} alt="" className={s.form__captcha}/>
+            </div>
+          )
+        }
         <div className={s.form__item}>
-          <button className={s.button}>Sign in</button>
+          <AcceptButton buttonTitle="Sign in"/>
         </div>
       </div>
     </form>

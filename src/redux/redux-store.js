@@ -5,7 +5,7 @@ import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
-import { getUsersAPI, toggleFollowAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI, putNewProfilePhotoAPI } from "./../API";
+import { getUsersAPI, toggleFollowAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI, putNewProfilePhotoAPI, getCaptchaAPI } from "./../API";
 import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer, stopSubmit } from "redux-form"
 
@@ -52,6 +52,7 @@ const UNSET_EDIT_STATS = "UNSET_EDIT_STATS"
 const SET_INITIALIZE = "SET-INITIALIZE"
 const SET_UNINITIALIZED = "SET-UNINITIALIZED"
 const ADD_NEW_PROFILE_PHOTO = "ADD-NEW-PROFILE-PHOTO"
+const SET_CAPTCHA_URL = "SET-CAPTCHA-URL"
 
 
 export const addMessage = (event) => {
@@ -244,6 +245,12 @@ export const addNewProfilePhoto = (photos) => {
   }
 }
 
+export const setCaptchaUrl = (captchaUrl) => {
+  return {
+    type: SET_CAPTCHA_URL,
+    captchaUrl
+  }
+}
 
 
 // Thunk
@@ -307,10 +314,26 @@ export const pullNewStats = (stats, id) => async (dispatch) => {
 export const postLoginUser = (formData) => async (dispatch) => {
   const response = await setLoginAPI(formData)
   switch (response.resultCode) {
-    case 0: return userAuth()(dispatch)
-    case 1: return dispatch(stopSubmit("loginForm", {_error: response.messages[0]}))
+    case 0:
+      dispatch(userAuth())
+      break
+
+    case 1: 
+      dispatch(stopSubmit("loginForm", {_error: response.messages[0]}))
+      break
+
+    case 10:
+      dispatch(getCaptchaUrl())
+      dispatch(stopSubmit("loginForm", {_error: response.messages[0]}))
+      break
+
     default: return
   }
+}
+
+export const getCaptchaUrl = () => async (dispatch) => {
+  const captchaUrl = await getCaptchaAPI()
+  dispatch(setCaptchaUrl(captchaUrl))
 }
 
 export const deleteLoginUser = () => async (dispatch) => {

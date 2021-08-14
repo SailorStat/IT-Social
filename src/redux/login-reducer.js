@@ -9,6 +9,7 @@ const SET_STATUS_EDIT_TEXT = "SET_STATUS_EDIT_TEXT"
 const SET_INITIALIZE = "SET-INITIALIZE"
 const SET_UNINITIALIZED = "SET-UNINITIALIZED"
 const ADD_NEW_PROFILE_PHOTO = "ADD-NEW-PROFILE-PHOTO"
+const SET_CAPTCHA_URL = "SET-CAPTCHA-URL"
 
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
   isLoggedIn: false,
   statusEditMode: false,
   statusEditText: "",
-  initialize: false
+  initialize: false,
+  captchaUrl: null
 }
 
 const loginReducer = (state = initialState, action) => {
@@ -28,6 +30,7 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: true,
         statusEditText: userData.status,
+        captchaUrl: null,
         loginUser: {
           online: true,
           id: userData.id,
@@ -110,6 +113,13 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         initialize: false
+      }
+    }
+
+    case SET_CAPTCHA_URL: {
+      return {
+        ...state,
+        captchaUrl: action.captchaUrl
       }
     }
 

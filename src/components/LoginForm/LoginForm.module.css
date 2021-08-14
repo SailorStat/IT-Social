@@ -27,11 +27,24 @@
   box-shadow: 4px 4px 8px 0px rgba(34, 80, 37, 0.2);
 }
 
+.form__captcha {
+  margin-top: 5px;
+  width: 200px;
+  height: 70px;
+  border: 2px solid #842691;
+  border-radius: 5px;
+}
+
 .form__item {
   position: relative;
   margin: 0 auto;
   max-width: 400px;
   text-align: center;
+}
+
+.form__item:last-child {
+  width: min-content;
+  margin-top: 20px;
 }
 
 .input__text {
