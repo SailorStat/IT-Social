@@ -7,7 +7,6 @@ import AcceptButton from "./../../loc/AcceptButton/AcceptButton";
 const maxLength100 = maxLengthCreator(100)
 
 const LoginForm = (props) => {
-  console.log(props.captchaUrl)
   return (
     <form onSubmit={props.handleSubmit}>
       <div className={s.form__wrapper}>

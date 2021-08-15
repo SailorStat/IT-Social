@@ -25,3 +25,10 @@
   width: 200px;
   height: 200px;
 }
+
+@media (max-width: 1000px) {
+  .base {
+    margin-top: 5px;
+    height: calc(100vh - 150px);
+  }
+}

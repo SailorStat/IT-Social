@@ -1,6 +1,6 @@
-import noAvatar from "../assets/img/no-avatar.png"
 import userPhoto from "../assets/img/userPhoto.jpg"
 import { dateCreator } from "../assets/scripts/dateCreator"
+import choosePhoto from "../assets/scripts/choosePhoto"
 
 const ADD_POST = "ADD-POST"
 const SET_POST_VALUE_TEXT = "SET-POST-VALUE-TEXT"
@@ -212,7 +212,7 @@ const profileReducer = (state = initialState, action) => {
           ...state.users,
           [`${action.user.userId}`]: {
             ...action.user,
-            photos: action.user.photos.large || action.user.photos.small || noAvatar,
+            photos: choosePhoto(action.user.photos),
             status: action.user.status|| "no status"
           }
         }
@@ -221,24 +221,24 @@ const profileReducer = (state = initialState, action) => {
 
     case SET_LOGIN_USER: {
       const userData = action.userData
-      const photo = userData.photos.large || userData.photos.small || noAvatar
+      const photo = choosePhoto(userData.photos)
       return {
         ...state,
         statusEditText: userData.status,
         posts: {
           [userData.id]: [
             {
-              ...state.posts[userData.id][0],
+              ...state.posts[17725][0],
               userId: userData.id,
               authorFullName: userData.fullName,
               photo
             }, {
-              ...state.posts[userData.id][1],
+              ...state.posts[17725][1],
               userId: userData.id,
               authorFullName: userData.fullName,
               photo
             }, {
-              ...state.posts[userData.id][2],
+              ...state.posts[17725][2],
               userId: userData.id,
               authorFullName: userData.fullName,
               photo
@@ -257,8 +257,7 @@ const profileReducer = (state = initialState, action) => {
     }
 
     case ADD_NEW_PROFILE_PHOTO: {
-      const actPhotos = action.photos
-      const photos = actPhotos.large || actPhotos.small || noAvatar
+      const photos = choosePhoto(action.photos)
       return {
         ...state,
         users: {

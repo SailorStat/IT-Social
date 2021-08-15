@@ -6,6 +6,8 @@
   color: #752280;
   border-radius: 5px;
   border: 2px rgba(133, 39, 145, 0) solid;
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-decoration: none;
   cursor: pointer;
 }

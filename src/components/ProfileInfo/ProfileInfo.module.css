@@ -18,3 +18,17 @@
 .profile__description {
   margin-bottom: 5px;
 }
+
+.profile__buttons {
+  display: grid;
+  grid-template-rows: repeat(1fr);
+  grid-gap: 5px;
+}
+
+
+
+@media (max-width: 550px) {
+  .profile__info {
+    grid-template-columns: 1fr;
+  }
+}

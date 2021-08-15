@@ -12,3 +12,9 @@
   justify-content: space-between;
   padding-right: 10px;
 }
+
+@media (max-width: 1000px) {
+  .dialogs {
+    height: calc(100vh - 160px);
+  }
+}

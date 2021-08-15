@@ -5,7 +5,7 @@ import s from "./ProfileStatList.module.css"
 let state = null
 
 function profileStatCreator(el, index, profileStats, userStats, isEditMode) {
-  if (["fullName", "userId", "photos", "status"].includes(el)) return
+  if (["fullName", "userId", "photos", "status", "follow"].includes(el)) return
   
   const elValue = profileStats[el]
   if (!elValue && !isEditMode) return
@@ -57,7 +57,7 @@ function profileStatCreator(el, index, profileStats, userStats, isEditMode) {
 const ProfileStatList = ({ unsetEditStats, ...props }) => {
   const matchId = props.match.params.userId
   const isCurrentUserProfile = !matchId || +matchId === props.currentUserId
-  useEffect(() => unsetEditStats(), [unsetEditStats])
+  useEffect(unsetEditStats, [unsetEditStats])
   
   return (
     <>

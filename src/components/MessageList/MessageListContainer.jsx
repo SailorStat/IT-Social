@@ -1,18 +1,25 @@
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { getCurrentUserId } from "../../redux/selectors/user-selector";
 import MessageList from "./MessageList";
+import { withRouter } from "react-router-dom";
+import { getMessageList, getProfileUser } from "./../../redux/redux-store";
 
 
 const mapStateToProps = (state) => {
   return {
-    messagesData: state.dialogsPage.dialogs[state.dialogsPage.checkedDialog]?.messagesData || [],
-    checkedDialog: state.dialogsPage.checkedDialog,
-    loginUser: getCurrentUserId(state)
+    users: state.usersPage.users,
+    dialogs: state.dialogsPage.dialogs,
+    loginUserId: getCurrentUserId(state),
+    messageLibrary: state.dialogsPage.messageLibrary
   }
 }
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = { getMessageList, getProfileUser }
 
-const MessageListContainer = connect(mapStateToProps, mapDispatchToProps)(MessageList)
+const MessageListContainer = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+)(MessageList)
 
 export default MessageListContainer

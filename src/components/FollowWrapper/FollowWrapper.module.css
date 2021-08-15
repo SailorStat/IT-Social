@@ -28,3 +28,10 @@
   width: 60px;
   height: 60px;
 }
+
+
+@media (max-width: 1000px) {
+  .follow__wrapper {
+    height: calc(100vh - 160px);
+  }
+}

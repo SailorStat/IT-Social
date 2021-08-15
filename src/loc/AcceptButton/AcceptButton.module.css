@@ -1,7 +1,9 @@
 .button {
   display: block;
   margin-left: auto;
+  padding: 0 15px;
   width: 120px;
+  min-width: max-content;
   height: 35px;
   
   font-family: "Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif";

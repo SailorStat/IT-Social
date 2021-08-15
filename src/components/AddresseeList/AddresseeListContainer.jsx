@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import AddresseeList from "./AddresseeList";
 import { setCheckedDialog } from "../../redux/redux-store";
-import { getUsers } from "./../../redux/selectors/user-selector";
+import { getDialogs } from "../../redux/selectors/dialogs-selector";
 
 const mapStateToProps = (state) => {
   return {
-    users: getUsers(state)
+    dialogs: getDialogs(state)
   }
 }
 

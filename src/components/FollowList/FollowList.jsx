@@ -1,12 +1,12 @@
 import s from "./FollowList.module.css"
-import FollowItemContainer from "./../FollowItem/FollowItemContainer";
+import FollowItem from "./../FollowItem/FollowItem";
 
 const FollowList = (props) => {
   return (
     <div className={s.follow__list}>
-      {props.users.map(el => (<FollowItemContainer key={el.id}
+      {props.users.map(el => (<FollowItem key={"FollowItem" + el.userId}
                                                    fullName={el.fullName}
-                                                   userId={el.id}
+                                                   userId={el.userId}
                                                    photo={el.photo}
                                                    location={el.location}
                                                    status={el.status}

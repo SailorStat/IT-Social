@@ -4,3 +4,9 @@
   grid-gap: 20px;
   text-align: left;
 }
+
+@media (max-width: 1000px) {
+  .body {
+    display: block;
+  }
+}

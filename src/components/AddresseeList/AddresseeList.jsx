@@ -4,8 +4,8 @@ import Addressee from "../Addressee/Addressee";
 const AddresseeList = (props) => {
   return (
     <div className={s.dialogs__inner}>
-      {Object.keys(props.users).map(el => (
-        <Addressee key={"Addressee" + el} fullName={props.users[el]["fullName"]} userId={el} setCheckedDialog={props.setCheckedDialog}/>
+      {props.dialogs.map(el => (
+        <Addressee key={"Addressee" + el.userId} fullName={el.fullName} userId={el.userId} setCheckedDialog={props.setCheckedDialog}/>
       ))}
     </div>
   )

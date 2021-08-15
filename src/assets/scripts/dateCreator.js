@@ -1,5 +1,5 @@
-export function dateCreator(order) {
-  const newDate = new Date()
+export function dateCreator(order, time) {
+  const newDate = time ? new Date(time) : new Date()
   const date = [newDate.getMonth(), newDate.getDate(), newDate.getHours(), newDate.getMinutes()]
   const [month, day, hour, minute] = date.map(el => `${el}`.length > 1 ? el : "0" + el)
 

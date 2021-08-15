@@ -53,32 +53,6 @@
   grid-area: "b";
   width: 100%;
   height: 30px;
-
-  font-weight: 600;
-  text-transform: uppercase;
-  color: rgb(247, 201, 239);
-  background-color: rgb(132, 38, 145);
-  border-radius: 5px;
-  border: 2px #842691 solid;
-  cursor: pointer;
-}
-
-.follow__button:hover {
-  background-color: #be78c0;
-}
-
-.follow__button.active {
-  color: #842691;
-  background-color: #f7c9ef;
-}
-
-.follow__button.active:hover {
-  background-color: #d78bdb;
-}
-
-.follow__button:disabled {
-  color: #85558d;
-  background-color: #b996b9;
 }
 
 .user__status {

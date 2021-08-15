@@ -10,3 +10,10 @@
   background-color: #a0809c;
   border-radius: 7px;
 }
+
+@media (max-width: 1000px) {
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+  }
+}

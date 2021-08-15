@@ -1,11 +1,10 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import noAvatar from "../assets/img/no-avatar.png"
 import dialogsReducer from "./dialogs-reducer";
 import pagesReducer from "./pages-reducer";
 import profileReducer from "./profile-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./users-reducer";
-import { getUsersAPI, toggleFollowAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI, putNewProfilePhotoAPI, getCaptchaAPI } from "./../API";
+import { getUsersAPI, toggleFollowAPI, authAPI, profileAPI, setStatusAPI, setStatsAPI, setLoginAPI, setLogoutAPI, putNewProfilePhotoAPI, getCaptchaAPI, sendMessageAPI, getDialogsAPI, putDialogAPI, getMessageListAPI, getFollowAPI } from "./../API";
 import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer, stopSubmit } from "redux-form"
 
@@ -25,6 +24,7 @@ window.store = store
 
 
 const ADD_MESSAGE = "ADD-MESSAGE"
+const SET_MESSAGES = "SET-MESSAGES"
 const SET_CHECKED_DIALOG = "SET-CHECKED-DIALOG"
 const SET_DIALOG_VALUE_TEXT = "SET-DIALOG-VALUE-TEXT"
 const ADD_POST = "ADD-POST"
@@ -53,13 +53,28 @@ const SET_INITIALIZE = "SET-INITIALIZE"
 const SET_UNINITIALIZED = "SET-UNINITIALIZED"
 const ADD_NEW_PROFILE_PHOTO = "ADD-NEW-PROFILE-PHOTO"
 const SET_CAPTCHA_URL = "SET-CAPTCHA-URL"
+const SET_DIALOGS = "SET-DIALOGS"
 
 
-export const addMessage = (event) => {
+export const addMessage = (userId) => {
   return {
     type: ADD_MESSAGE,
-    userPhoto: event.target.attributes.avatar.value || noAvatar,
-    fullName: event.target.attributes.fullname.value,
+    userId
+  }
+}
+
+export const setMessages = (messages, currentAddressee) => {
+  return {
+    type: SET_MESSAGES,
+    messages,
+    currentAddressee
+  }
+}
+
+export const setDialogs = (dialogs) => {
+  return {
+    type: SET_DIALOGS,
+    dialogs
   }
 }
 
@@ -159,24 +174,24 @@ export const setCurrentUserPage = (currentUserPage) => {
   }
 }
 
-export const setUser = ([profile, status]) => {
+export const setUser = ([profile, status, follow]) => {
   return {
     type: SET_USER,
-    user: {...profile, status}
+    user: {...profile, status, follow}
   }
 }
 
-export const addInFollowToggle = (id) => {
+export const addInFollowToggle = (userId) => {
   return {
     type: ADD_IN_FOLLOW_TOGGLE,
-    id
+    userId
   }
 }
 
-export const removeInFollowToggle = (id) => {
+export const removeInFollowToggle = (userId) => {
   return {
     type: REMOVE_IN_FOLLOW_TOGGLE,
-    id
+    userId
   }
 }
 
@@ -288,9 +303,12 @@ export const userAuth = () => async (dispatch) => {
   } else dispatch(setInitialize())
 }
 
-export const getProfileUser = (userId) => async (dispatch) => {
+export const getProfileUser = (userId, isLogin) => async (dispatch) => {
   dispatch(setCurrentUserPage(userId))
-  const response = await profileAPI(userId)
+  let response = null
+  isLogin
+    ? response = Promise.all([await profileAPI(userId), await getFollowAPI(userId)])
+    : response = await profileAPI(userId)
   dispatch(setUser(response))
 }
 
@@ -345,3 +363,24 @@ export const putNewPhoto = (photo) => async (dispatch) => {
   const response = await putNewProfilePhotoAPI(photo)
   response.resultCode === 0 && dispatch(addNewProfilePhoto(response.data.photos))
 }
+
+export const pullDialogs = () => async (dispatch) => {
+  const response = await getDialogsAPI()
+  dispatch(setDialogs(response))
+}
+
+export const postMessage = (userId, message) => async (dispatch) => {
+  await sendMessageAPI(userId, message)
+  dispatch(putDialog(userId))
+  dispatch(addMessage(userId))
+}
+
+export const putDialog = (userId) => async (dispatch) => {
+  await putDialogAPI(userId)
+}
+
+export const getMessageList = (userId, currentAddressee) => async (dispatch) => {
+  const response = await getMessageListAPI(userId)
+  dispatch(setMessages(response.items, currentAddressee))
+}
+

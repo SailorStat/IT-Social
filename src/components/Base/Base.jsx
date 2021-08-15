@@ -24,12 +24,14 @@ const mapDispatchToProps = { }
 
 
 const Base = (props) => {
+  const dialogsConf = [{path: "/dialogs", exact: true}, {path: "/dialogs/:interlocutor", exact: false}]
+  const profileConf = [{path: "/", exact: true}, {path: "/profile/:userId", exact: false}]
+
   return (props.initialize &&
     <div className={s.base}>
       <Switch>
-        <Route exact key="profile" path="/" component={ProfileContainer} />
-        <Route key="guestProfile" path="/profile/:userId" component={ProfileContainer} />
-        <Route key="dialogs" path="/dialogs" component={withSuspense(DialogsContainer)} />
+        { profileConf.map(el => <Route exact={el.exact} key="profile" path={el.path} component={ProfileContainer} />) }
+        { dialogsConf.map(el => <Route exact={el.exact} key="dialogs" path={el.path} component={withSuspense(DialogsContainer)} />) }
         <Route key="follows" path="/follows" component={withSuspense(FollowWrapperContainer)} />
         <Route key="news" path="/news" component={ withSuspense(News)} />
         <Route key="settings" path="/settings" component={withSuspense(Settings)} />

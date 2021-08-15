@@ -23,16 +23,22 @@ export const authAPI = async () => {
   return (await instance.get(authEndPoint)).data
 }
 
-export const userAPI = async (id) => {
-  const authEndPoint =`profile/${id}`
+export const userAPI = async (userId) => {
+  const authEndPoint =`profile/${userId}`
   return (await instance.get(authEndPoint)).data
 }
 
-export const profileAPI = async (id) => {
-  const profileEndPoint = `profile/${id}`
-  const statusEndPoint = `profile/status/${id}`
+export const profileAPI = async (userId) => {
+  const profileEndPoint = `profile/${userId}`
+  const statusEndPoint = `profile/status/${userId}`
   return Promise.all([(await instance.get(profileEndPoint)).data,
-                      (await instance.get(statusEndPoint)).data])
+                      (await instance.get(statusEndPoint)).data,
+                      ])
+}
+
+export const getFollowAPI = async (userId) => {
+  const followEndPoint = `follow/${userId}`
+  return (await instance.get(followEndPoint)).data
 }
 
 export const setStatusAPI = async (status) => {
@@ -65,7 +71,7 @@ export const getCaptchaAPI = async () => {
   return (await instance.get(captchaEndPoint)).data.url
 }
 
-export const upDialogAPI = async (userId) => {
+export const putDialogAPI = async (userId) => {
   const dialogEndPoint = `dialogs/${userId}`
   return (await instance.put(dialogEndPoint)).data
 }
@@ -80,7 +86,7 @@ export const getMessageListAPI = async (userId) => {
   return (await instance.get(getMessageListEndPoint)).data
 }
 
-export const sendMessageAPI = async (userId) => {
+export const sendMessageAPI = async (userId, message) => {
   const messageEndPoint = `dialogs/${userId}/messages`
-  return (await instance.post(messageEndPoint)).data
+  return (await instance.post(messageEndPoint, {body: message})).data
 }

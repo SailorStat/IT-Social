@@ -1,4 +1,4 @@
-import noAvatar from "../assets/img/no-avatar.png"
+import choosePhoto from "../assets/scripts/choosePhoto"
 
 const SET_LOGIN_USER = "SET-LOGIN-USER"
 const SET_LOGOUT_USER = "SET-LOGOUT-USER"
@@ -36,19 +36,18 @@ const loginReducer = (state = initialState, action) => {
           id: userData.id,
           name: userData.fullName,
           status: userData.status || "no status",
-          photo: userData.photos.large || userData.photos.small || noAvatar,
+          photo: choosePhoto(userData.photos),
           followed: true
         }
       }
     }
 
     case ADD_NEW_PROFILE_PHOTO: {
-      const photos = action.photos
       return {
         ...state,
         loginUser: {
           ...state.loginUser,
-          photo: photos.large || photos.small || noAvatar
+          photo: choosePhoto(action.photos)
         }
       }
     }

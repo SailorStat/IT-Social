@@ -1,5 +1,6 @@
 import userPhoto from "../assets/img/userPhoto.jpg"
 import noAvatar from "../assets/img/no-avatar.png"
+import choosePhoto from "./../assets/scripts/choosePhoto";
 
 
 const SET_FOLLOW = "SET-FOLLOW"
@@ -11,19 +12,20 @@ const SET_FETCHING_TRUE = "SET-FETCHING-TRUE"
 const SET_FETCHING_FALSE = "SET-FETCHING-FALSE"
 const ADD_IN_FOLLOW_TOGGLE = "ADD-IN-FOLLOW-TOGGLE"
 const REMOVE_IN_FOLLOW_TOGGLE = "REMOVE-IN-FOLLOW-TOGGLE"
+const SET_USER = "SET-USER"
 
 
 const initialState = {
   users: [{
       followed: false,
-      id: 1121,
+      userId: 1121,
       full: "Петя",
       status: "Самый быстрый кодер на диком западе",
       photo: userPhoto,
       location: "Смоленск, Россия"
     }, {
       online: true,
-      id: 1123,
+      userId: 1123,
       name: "Ира",
       status: "Не кресло красит человека, а человек кресло",
       photo: noAvatar,
@@ -31,7 +33,7 @@ const initialState = {
       location: "Киев, Украина"
     }, {
       online: true,
-      id: 1124,
+      userId: 1124,
       name: "Юра",
       status: "Хорошо структуророванного кода много не бывает",
       photo: noAvatar,
@@ -39,7 +41,7 @@ const initialState = {
       location: "Минск, Беларусь"
     }, {
       online: true,
-      id: 1125,
+      userId: 1125,
       name: "Света",
       status: "Отличное настроение :)",
       photo: noAvatar,
@@ -60,7 +62,7 @@ const usersReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_FOLLOW: {
       const newUsersState = [...state.users]
-      newUsersState[newUsersState.findIndex(el => el.id === action.userId)].followed = true
+      newUsersState[newUsersState.findIndex(el => el.userId === action.userId)].followed = true
       return {
         ...state,
         users: newUsersState
@@ -69,7 +71,7 @@ const usersReducer = (state = initialState, action) => {
 
     case SET_UNFOLLOW: {
       const newUsersState = [...state.users]
-      newUsersState[newUsersState.findIndex(el => el.id === action.userId)].followed = false
+      newUsersState[newUsersState.findIndex(el => el.userId === action.userId)].followed = false
       return {
         ...state,
         users: newUsersState
@@ -83,39 +85,34 @@ const usersReducer = (state = initialState, action) => {
           ...state.pagination,
           totalCount: action.totalCount
         },
-        users: action.users.map(el => {
-          return {
+        users: action.users.map(el => ({
           followed: el.followed,
-          id: el.id,
+          userId: el.id,
           fullName: el.name,
           status: el.status || "no status",
-          photo: el.photos.small || noAvatar
-        }})
+          photo: choosePhoto(el.photos)
+        }))
       }
     }
 
     case UPDATE_USERS: {
       const actionUsersId = action.users.map(el => el.id)
-      const users = [
-        ...state.users.filter(user => !actionUsersId.includes(user.id)),
-        ...action.users.map(el => ({
-          followed: el.followed,
-          id: el.id,
-          fullName: el.name || "lal",
-          status: el.status || "no status",
-          photo: el.photos.small || noAvatar
-        }))
-      ]
-      // const stringUsers = newUsersArr.map(el => JSON.stringify(el))
-      // const users = Array.from(new Set(stringUsers)).map(el => JSON.parse(el))
-
       return {
         ...state,
         pagination: {
           ...state.pagination,
           totalCount: action.totalCount
         },
-        users
+        users: [
+          ...state.users.filter(user => !actionUsersId.includes(user.userId)),
+          ...action.users.map(el => ({
+            followed: el.followed,
+            userId: el.id,
+            fullName: el.name || "lal",
+            status: el.status || "no status",
+            photo: choosePhoto(el.photos)
+          }))
+        ]
       }
     }
 
@@ -124,7 +121,7 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         inFollowToggle: [
           ...state.inFollowToggle,
-          action.id
+          action.userId
         ]
       }
     }
@@ -133,7 +130,7 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         inFollowToggle: [
-          ...state.inFollowToggle.filter(el => el !== action.id)
+          ...state.inFollowToggle.filter(el => el !== action.userId)
         ]
       }
     }
@@ -162,8 +159,28 @@ const usersReducer = (state = initialState, action) => {
       }
     }
 
+    case SET_USER: {
+      const user = action.user
+      if (state.users.filter(el => el.userId === user.userId).length) return state
+      const newUser = {
+        userId: user.userId,
+        fullName: user.fullName,
+        status: user.status || "no status",
+        photo: choosePhoto(user.photos),
+        followed: user.follow,
+      }
+      return {
+        ...state,
+        users: [
+          ...state.users,
+          newUser
+        ]
+      }
+    }
+
     default: return state
   }
 }
+
 
 export default usersReducer
