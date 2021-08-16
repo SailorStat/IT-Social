@@ -17,9 +17,6 @@ const Post = (props) => {
       </div>
       <div className={s.post__body}>
         <div className={s.post__text}>{props.postText}</div>
-        {/* <div className={s.post__image}>
-          <img src={Placeholder} alt="" />
-        </div> */}
       </div>
       <div className={s.post__activity}>
         <span className={s.like + " " + (props.currentUserLiked ? s.active : "")}>

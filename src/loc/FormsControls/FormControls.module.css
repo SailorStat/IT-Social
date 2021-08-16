@@ -35,3 +35,9 @@
 .form__controls.error .error__message {
   display: block;
 }
+
+@media (max-width: 700px) {
+  .error__message {
+    min-width: 100%;
+  }
+}
