@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
         <StatusContainer />
         <ProfileStatListContainer />
       </div>
-      <div className={s.profile__buttons}>
+      <div className={s.profile__item}>
         <ProfilePhotoContainer />
         { isOtherUser && <FollowButton followed={props.isFollow} inFollowToggle={props.inFollowToggle} toggleFollow={props.toggleFollow} userId={matchId} isLogin={props.currentUserId}/> }
         { props.isFollow && isOtherUser && <WriteMessageButton userId={matchId} putDialog={props.putDialog}/> }

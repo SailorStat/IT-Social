@@ -31,3 +31,15 @@
   color: #000;
   background-color: #b83dc9;
 }
+
+
+
+@media (max-width: 550px) {
+  .header__wrapper {
+    display: block;
+  }
+  
+  .header__wrapper button {
+    margin: 3px auto;
+  }
+}

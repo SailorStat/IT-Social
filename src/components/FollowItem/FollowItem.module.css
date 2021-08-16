@@ -14,11 +14,13 @@
 .user__info {
   display: grid;
   grid-template-columns: 1fr 100px;
-  grid-template-areas: "a b" "c c";
+  grid-template-areas: "condition button"
+                       "status    status";
 }
 
 .user__condition {
-  grid-area: "a";
+  order: 1;
+  grid-area: "condition";
 }
 
 .user__name {
@@ -50,12 +52,36 @@
 
 
 .follow__button {
-  grid-area: "b";
+  order: 2;
+  grid-area: "button";
   width: 100%;
   height: 30px;
 }
 
 .user__status {
-  grid-area: "c";
+  order: 3;
+  grid-area: "status";
   font-style: italic;
+}
+
+@media (max-width: 1000px) {
+  .follow__item {
+    grid-template-columns: 50px 1fr;
+  }
+
+}
+
+@media (max-width: 700px) {
+  .user__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .follow__button {
+    order: 3;
+  }
+
+  .user__status {
+    order: 2;
+  }
 }

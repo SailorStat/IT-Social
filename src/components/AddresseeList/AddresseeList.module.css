@@ -1,19 +1,61 @@
-.dialogs__inner {
+.addressee__inner {
   overflow-y: scroll;
 }
 
 
-.dialogs__inner::-webkit-scrollbar {
+.addressee__inner::-webkit-scrollbar {
   margin-right: 1px;
   width: 12px;
   background-color: #c49dbe;
 }
 
-.dialogs__inner::-webkit-scrollbar-thumb {
+.addressee__inner::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #842691;
 }
 
-.dialogs__inner::-webkit-scrollbar-track {
+.addressee__inner::-webkit-scrollbar-track {
   background-color: #c49dbe;
+}
+
+@media (max-width: 1000px) {
+  .addressee__opener {
+    display: block;
+    margin: 0 auto;
+    padding: 0 10px;
+  
+    color: #000;
+    border-radius: 5px;
+    border: 2px rgba(133, 39, 145, 0) solid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .addressee__opener:hover {
+    background-color: #b18aac;
+  }
+  
+  .addressee__opener:active {
+    color: #44144b;
+    background-color: #842691;
+  }
+  
+  .addressee__opener.checked {
+    border: 2px #842691 solid;
+  }
+  
+  .addressee__opener {
+    display: block;
+  }
+
+  .addressee__item {
+    display: none;
+  }
+
+  .addressee__item.active {
+    display: block;
+  }
 }

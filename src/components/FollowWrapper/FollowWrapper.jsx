@@ -2,6 +2,7 @@ import s from "./FollowWrapper.module.css"
 import FollowListContainer from "../FollowList/FollowListContainer";
 import PaginatorContainer from "./../Paginator/PaginatorContainer";
 import Preloader from "../../loc/Preloader/Preloader";
+import cn from "classnames";
 
 const FollowWrapper = (props) => {
   return(
@@ -9,8 +10,8 @@ const FollowWrapper = (props) => {
       <div className={s.follow__preloader + " " + props.isFetching}>
         <Preloader />
       </div>
-      <FollowListContainer />
-      <PaginatorContainer />
+        <FollowListContainer />
+        <PaginatorContainer />
     </div>
   )
 }

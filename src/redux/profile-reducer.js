@@ -149,13 +149,6 @@ const initialState = {
   currentUserPage: undefined,
 
   loginUser: {
-  //   online: true,
-  //   id: 17725,
-  //   name: "Sailor Stat",
-  //   status: "Live is perfect",
-  //   photo: userPhoto,
-  //   followed: true,
-  //   location: "Ростов-на-Дону, Россия"
   },
 
   statusEditText: "",

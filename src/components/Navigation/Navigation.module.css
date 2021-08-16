@@ -9,11 +9,55 @@
   border: 2px #842691 solid;
   background-color: #a0809c;
   border-radius: 7px;
+  user-select: none;
 }
+
+.navigation__opener {
+  display: none;
+  margin: 3px 0;
+  padding: 0 10px;
+
+  color: #000000;
+  border-radius: 5px;
+  border: 2px rgba(133, 39, 145, 0) solid;
+  background-color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation__opener.active {
+  background-color: #c573bc;
+}
+
+.navigation__opener:hover,
+.navigation__opener.active:hover {
+  background-color: #e0abda;
+}
+
 
 @media (max-width: 1000px) {
   .navigation {
     display: flex;
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 550px) {
+  .navigation {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .navigation__opener {
+    display: block;
+  }
+
+  .navigation__item {
+    display: none;
+  }
+
+  .navigation__item.active {
+    display: block;
   }
 }

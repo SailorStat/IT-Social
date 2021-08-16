@@ -7,7 +7,6 @@
 
 .follow__wrapper.loading {
   grid-template-rows: 40px 1fr 50px;
-  height: calc(100vh - 105px);
 }
 
 
@@ -28,7 +27,6 @@
   width: 60px;
   height: 60px;
 }
-
 
 @media (max-width: 1000px) {
   .follow__wrapper {

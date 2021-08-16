@@ -3,6 +3,7 @@ import TextCreator from "../../loc/TextCreator/TextCreator";
 import MessageListContainer from "../MessageList/MessageListContainer";
 import AddresseeListContainer from "../AddresseeList/AddresseeListContainer";
 import { useEffect } from "react";
+import cn from "classnames";
 
 const Dialogs = ({pullDialogs, ...props}) => {
   const interlocutorId = props.match.params.interlocutor
@@ -13,7 +14,9 @@ const Dialogs = ({pullDialogs, ...props}) => {
 
   return (
     <div className={"content__wrapper " + s.dialogs}>
-      <AddresseeListContainer />
+      <div className={cn(s.addressee__wrapper)}>
+        <AddresseeListContainer />
+      </div>
       
       {
         interlocutorId && (

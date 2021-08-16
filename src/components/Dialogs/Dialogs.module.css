@@ -15,6 +15,21 @@
 
 @media (max-width: 1000px) {
   .dialogs {
+    position: relative;
     height: calc(100vh - 160px);
+    grid-template-columns: 1fr;
   }
+
+  .addressee__wrapper {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    padding: 5px 10px;
+
+    border: 2px #842691 solid;
+    border-radius: 5px;
+    background-color: #c49dbe;
+  }
+
 }

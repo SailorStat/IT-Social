@@ -45,3 +45,15 @@
   background-color: #c49dbe;
   border-radius: 5px;
 }
+
+@media (max-width: 600px) {
+  .profile__stat,
+  .stat__select,
+  .stat__input {
+    font-size: 15px;
+  }
+
+  .link__warning {
+    font-size: 10px;
+  }
+}

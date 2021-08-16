@@ -61,3 +61,23 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+
+@media (max-width: 550px) {
+  .profile__photo {
+    margin: 5px auto;
+    width: 200px;
+    height: 200px;
+  }
+  
+  .input__wrapper {
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .profile__photo img {
+    width: 200px;
+    height: auto;
+  }
+}
