@@ -7,7 +7,7 @@ const TextCreator = (props) => {
     <div className={s.textcreator__wrapper}>
       <Avatar avatar={props.userPhoto} userid={props.userid}/>
       <div className={s.textcreator__content}>
-        <textarea name="content" id="" rows="4" className={s.textcreator__textarea} placeholder={props.placeholderText} onChange={props.setText} value={props.getText} autoFocus></textarea>
+        <textarea name="content" id="" rows="4" className={s.textcreator__textarea} placeholder={props.placeholderText} onChange={props.setText} value={props.getText}></textarea>
         <AcceptButton callBackFunc={props.addBlock} isDisabled={!props.userid} buttonTitle="Send"/>
       </div>
     </div >
