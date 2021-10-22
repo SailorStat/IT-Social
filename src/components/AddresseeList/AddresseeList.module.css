@@ -1,29 +1,23 @@
 .addressee__inner {
-  overflow-y: scroll;
 }
-
-
 
 .addressee__item {
   height: calc(100vh - 170px);
   overflow-y: scroll;
 }
 
-.addressee__item::-webkit-scrollbar,
-.addressee__inner::-webkit-scrollbar {
+.addressee__item::-webkit-scrollbar {
   margin-right: 1px;
   width: 12px;
   background-color: #c49dbe;
 }
 
-.addressee__item::-webkit-scrollbar-thumb,
-.addressee__inner::-webkit-scrollbar-thumb {
+.addressee__item::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #842691;
 }
 
-.addressee__item::-webkit-scrollbar-track,
-.addressee__inner::-webkit-scrollbar-track {
+.addressee__item::-webkit-scrollbar-track {
   background-color: #c49dbe;
 }
 
@@ -66,7 +60,7 @@
 
   .addressee__item.active {
     display: block;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 265px);
     overflow-y: scroll;
   }
 }

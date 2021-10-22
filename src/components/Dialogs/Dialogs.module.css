@@ -22,12 +22,12 @@
 
   .addressee__wrapper {
     position: absolute;
-    height: 90%;
+    height: min-content;
+    max-height: 90%;
     top: 10px;
     left: 10px;
     z-index: 1;
-    padding: 5px 10px;
-    overflow-y: scroll;
+    padding: 5px 0px 5px 10px;
 
     border: 2px #842691 solid;
     border-radius: 5px;
